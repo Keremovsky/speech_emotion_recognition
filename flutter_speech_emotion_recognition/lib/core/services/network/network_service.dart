@@ -1,0 +1,99 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_speech_emotion_recognition/core/constants/network_constants.dart';
+import 'package:flutter_speech_emotion_recognition/core/enums/network_keys_enum.dart';
+import 'package:flutter_speech_emotion_recognition/core/extensions/network_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/connection_failure_model/connection_failure_model.dart';
+import 'package:flutter_speech_emotion_recognition/core/services/connectivity/connectivity_service.dart';
+import 'package:fpdart/fpdart.dart';
+
+part 'i_network_service.dart';
+
+class NetworkService implements INetworkService {
+  late Dio _dio;
+  late ConnectivityService _connectivityService;
+
+  factory NetworkService() => _instance;
+  static final NetworkService _instance = NetworkService._init();
+
+  NetworkService._init() {
+    _dio = Dio();
+    _connectivityService = ConnectivityService();
+  }
+
+  @override
+  void setBaseUrl(String baseUrl) {
+    _dio.options.baseUrl = baseUrl;
+  }
+
+  @override
+  void setHeaders(Map<NetworkHeaderKeys, String> headers) {
+    headers.forEach((key, value) {
+      _dio.options.headers[key.name] = value;
+    });
+  }
+
+  @override
+  void setHeader(NetworkHeaderKeys key, String value) {
+    _dio.options.headers[key.name] = value;
+  }
+
+  @override
+  void removeHeader(NetworkHeaderKeys key) {
+    _dio.options.headers.remove(key.name);
+  }
+
+  @override
+  void setToken(String token) {
+    _dio.options.headers[NetworkConstants.authorization] = token;
+  }
+
+  @override
+  void removeToken() {
+    _dio.options.headers.remove(NetworkConstants.authorization);
+  }
+
+  @override
+  Future<Either<ConnectionFailureModel, Response<Map<String, dynamic>>>> get(String url) async {
+    return await _doRequest(() => _dio.get(url));
+  }
+
+  @override
+  Future<Either<ConnectionFailureModel, Response<Map<String, dynamic>>>> post(
+    String url, {
+    required dynamic data,
+  }) async {
+    return await _doRequest(() => _dio.post(url, data: data));
+  }
+
+  Future<Either<ConnectionFailureModel, Response<Map<String, dynamic>>>> _doRequest(
+      AsyncValueGetter<Response<Map<String, dynamic>>> operation) async {
+    try {
+      if (await _connectivityService.isConnected) {
+        final result = await operation();
+
+        if (!result.isSuccess) {
+          log(result.data.toString());
+          return Left(
+            ConnectionFailureModel.responseError(result.data?["message"] as String? ?? ""),
+          );
+        }
+
+        return Right(result);
+      } else {
+        return const Left(ConnectionFailureModel.noConnection("No connection"));
+      }
+    } on TimeoutException {
+      return const Left(ConnectionFailureModel.connectionTimedOut("Connection is timed out"));
+    } on DioException catch (e) {
+      log(e.message ?? "");
+      return Left(ConnectionFailureModel.responseError(e.message ?? ""));
+    } catch (e) {
+      log(e.toString());
+      return Left(ConnectionFailureModel.unknownError(e.toString()));
+    }
+  }
+}
