@@ -4,13 +4,17 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 class AppProvider {
-  static final AppProvider _instance = AppProvider._init();
   factory AppProvider() => _instance;
+  static final AppProvider _instance = AppProvider._init();
 
   AppProvider._init();
 
-  List<SingleChildWidget> dependItems = [
+  static List<SingleChildWidget> dependItems = [
     Provider(create: (_) => CacheService()),
     ChangeNotifierProvider(create: (_) => AppRouter()),
   ];
+
+  static Future<void> ensureInitialized() async {
+    await CacheService().ensureInitialized();
+  }
 }
