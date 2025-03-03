@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/locale_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/main_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
+import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 import 'package:flutter_speech_emotion_recognition/theme/theme.dart';
 import 'package:provider/provider.dart';
@@ -62,6 +63,8 @@ class __MaterialAppState extends State<_MaterialApp> {
       locale: context.locale,
       debugShowCheckedModeBanner: false,
       theme: theme,
+      darkTheme: ThemeData.dark(),
+      themeMode: context.watch<ThemeService>().currentTheme,
       builder:
           (context, child) => MediaQuery(
             data: MediaQuery.of(
