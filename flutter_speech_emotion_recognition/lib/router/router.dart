@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/features/home/view/home_view.dart';
+import 'package:flutter_speech_emotion_recognition/features/on_boarding/view/on_boarding_view.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_speech_emotion_recognition/router/auto_route_guards/first_entrance_guard.dart';
 
 part 'router.gr.dart';
 
@@ -7,6 +10,11 @@ part 'router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: HomeViewRoute.page, initial: true),
-      ];
+    AutoRoute(
+      page: HomeViewRoute.page,
+      guards: [FirstEntranceGuard()],
+      initial: true,
+    ),
+    AutoRoute(page: OnBoardingViewRoute.page),
+  ];
 }

@@ -44,6 +44,7 @@ dependencies:
   cross_connectivity: ^3.3.0
   easy_localization: ^3.0.7+1
   flutter_screenutil: ^5.9.3
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_test:

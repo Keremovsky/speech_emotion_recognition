@@ -1,3 +1,1 @@
-enum CacheKeys {
-  themeMode,
-}
+enum CacheKeys { themeMode, firstEntrance }
