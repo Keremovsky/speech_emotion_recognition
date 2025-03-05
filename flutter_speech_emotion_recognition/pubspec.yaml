@@ -46,6 +46,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   smooth_page_indicator: ^1.2.1
   flutter_svg: ^2.0.17
+  flutter_hooks: ^0.21.2
 
 dev_dependencies:
   flutter_test:
