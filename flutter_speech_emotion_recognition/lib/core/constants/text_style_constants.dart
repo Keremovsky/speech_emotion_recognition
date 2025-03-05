@@ -7,7 +7,7 @@ class TextStyleConstants {
   static final titleMedium = TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: FontSizeConstants.fontSize24,
-    color: ColorConstants.whiteText,
+    color: ColorConstants.blackText,
   );
 
   /// input area text, question text and result page texts
@@ -21,7 +21,7 @@ class TextStyleConstants {
   static final displayMedium = TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: FontSizeConstants.fontSize18,
-    color: ColorConstants.whiteText,
+    color: ColorConstants.blackText,
   );
 
   /// checkbox text in test start page and question number in test result page

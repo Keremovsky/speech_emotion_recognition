@@ -63,7 +63,7 @@ class __MaterialAppState extends State<_MaterialApp> {
       locale: context.locale,
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
-      darkTheme: ThemeData.dark(),
+      darkTheme: darkTheme,
       themeMode: context.watch<ThemeService>().currentTheme,
       builder:
           (context, child) => MediaQuery(
