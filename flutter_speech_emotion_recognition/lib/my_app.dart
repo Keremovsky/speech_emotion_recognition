@@ -62,7 +62,7 @@ class __MaterialAppState extends State<_MaterialApp> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       debugShowCheckedModeBanner: false,
-      theme: theme,
+      theme: lightTheme,
       darkTheme: ThemeData.dark(),
       themeMode: context.watch<ThemeService>().currentTheme,
       builder:
