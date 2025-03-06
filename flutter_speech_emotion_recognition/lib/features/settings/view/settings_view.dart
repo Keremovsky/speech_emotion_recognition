@@ -23,6 +23,8 @@ class SettingsView extends StatelessWidget {
           child: Column(
             children: [
               CustomSwitch.text(
+                initialState:
+                    context.read<ThemeService>().currentTheme == ThemeMode.light,
                 text: LocaleKeys.theme.tr(),
                 textStyle: context.displayLarge,
                 onChanged: (value) {

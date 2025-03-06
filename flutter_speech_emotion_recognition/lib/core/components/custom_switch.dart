@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 enum _Type { normal, text }
 
 abstract class CustomSwitch extends StatefulWidget {
+  final bool? initialState;
   final String? text;
   final TextStyle? textStyle;
   final Function(bool) onChanged;
@@ -18,6 +19,7 @@ abstract class CustomSwitch extends StatefulWidget {
 
   const CustomSwitch({
     super.key,
+    this.initialState,
     this.text,
     this.textStyle,
     required this.onChanged,
@@ -33,6 +35,7 @@ abstract class CustomSwitch extends StatefulWidget {
   });
 
   const factory CustomSwitch.text({
+    bool? initialState,
     required String text,
     TextStyle? textStyle,
     required Function(bool) onChanged,
@@ -47,6 +50,7 @@ abstract class CustomSwitch extends StatefulWidget {
   }) = _Text;
 
   const factory CustomSwitch.normal({
+    bool? initialState,
     required Function(bool) onChanged,
     Color? activeColor,
     Color? activeTrackColor,
@@ -62,6 +66,7 @@ abstract class CustomSwitch extends StatefulWidget {
 class _Text extends CustomSwitch {
   const _Text({
     super.key,
+    super.initialState,
     required super.text,
     super.textStyle,
     required super.onChanged,
@@ -80,7 +85,13 @@ class _Text extends CustomSwitch {
 }
 
 class _TextState extends State<_Text> {
-  bool isOn = false;
+  late bool isOn;
+
+  @override
+  void initState() {
+    super.initState();
+    isOn = widget.initialState ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +126,7 @@ class _TextState extends State<_Text> {
 class _Normal extends CustomSwitch {
   const _Normal({
     super.key,
+    super.initialState,
     required super.onChanged,
     super.activeColor,
     super.activeTrackColor,
@@ -131,7 +143,13 @@ class _Normal extends CustomSwitch {
 }
 
 class _NormalState extends State<_Normal> {
-  bool isOn = false;
+  late bool isOn;
+
+  @override
+  void initState() {
+    super.initState();
+    isOn = widget.initialState ?? false;
+  }
 
   @override
   Widget build(BuildContext context) {
