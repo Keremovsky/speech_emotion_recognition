@@ -1,3 +1,12 @@
 {
+    "english": "English",
+    "turkish": "Turkish",
+
+    "skip": "Skip",
+    "next": "Next",
+    
+    "settings": "Settings",
+    "theme": "Change Theme",
+
     "emptyFieldMessage": "Field can't be empty."
 }

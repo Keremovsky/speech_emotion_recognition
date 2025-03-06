@@ -4,11 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_text_field.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
-import 'package:flutter_speech_emotion_recognition/core/extensions/theme_extensions.dart';
-import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
-
-// TODO: add words to localization file
 
 @RoutePage()
 class HomeView extends StatelessWidget {

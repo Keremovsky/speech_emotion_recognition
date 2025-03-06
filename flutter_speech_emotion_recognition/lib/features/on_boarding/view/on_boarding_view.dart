@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/asset_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/features/on_boarding/state/on_boarding_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/features/on_boarding/widgets/single_on_boarding_page.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 @RoutePage()
@@ -55,12 +57,14 @@ class _OnBoardingViewState extends OnBoardingViewState {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // TODO: add words to localization files
                     TextButton(
                       onPressed: widget.onFinished,
-                      child: Text("Skip"),
+                      child: Text(LocaleKeys.skip.tr()),
                     ),
-                    TextButton(onPressed: onNextPressed, child: Text("Next")),
+                    TextButton(
+                      onPressed: onNextPressed,
+                      child: Text(LocaleKeys.next.tr()),
+                    ),
                   ],
                 ),
               ),

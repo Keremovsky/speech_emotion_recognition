@@ -7,8 +7,7 @@ import 'package:flutter_speech_emotion_recognition/core/constants/locale_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
-
-// TODO: add words to localization file
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
 @RoutePage()
 class SettingsView extends StatelessWidget {
@@ -17,14 +16,14 @@ class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Settings")),
+      appBar: AppBar(title: Text(LocaleKeys.settings.tr())),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(SizeConstants.screenPadding),
           child: Column(
             children: [
               CustomSwitch.text(
-                text: "Theme",
+                text: LocaleKeys.theme.tr(),
                 textStyle: context.displayLarge,
                 onChanged: (value) {
                   if (value) {
@@ -43,13 +42,13 @@ class SettingsView extends StatelessWidget {
                     onPressed: () {
                       context.setLocale(LocaleConstants.en);
                     },
-                    child: Text("English"),
+                    child: Text(LocaleKeys.english.tr()),
                   ),
                   CustomButton(
                     onPressed: () {
                       context.setLocale(LocaleConstants.tr);
                     },
-                    child: Text("Turkish"),
+                    child: Text(LocaleKeys.turkish.tr()),
                   ),
                 ],
               ),
