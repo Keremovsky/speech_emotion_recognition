@@ -17,6 +17,8 @@ class ThemeConstants {
   );
 
   static final darkAppBarTheme = lightAppBarTheme.copyWith(
+    iconTheme: darkIconThemeData,
+    actionsIconTheme: darkIconThemeData,
     titleTextStyle: TextStyleConstants.titleMedium.copyWith(
       color: ColorConstants.whiteText,
     ),
@@ -34,7 +36,9 @@ class ThemeConstants {
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       ),
-      textStyle: WidgetStatePropertyAll(TextStyleConstants.displayLarge as TextStyle?),
+      textStyle: WidgetStatePropertyAll(
+        TextStyleConstants.displayLarge as TextStyle?,
+      ),
       foregroundColor: const WidgetStatePropertyAll(ColorConstants.whiteText),
       elevation: const WidgetStatePropertyAll(0),
     ),
@@ -50,7 +54,9 @@ class ThemeConstants {
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       ),
-      textStyle: WidgetStatePropertyAll(TextStyleConstants.displayLarge as TextStyle?),
+      textStyle: WidgetStatePropertyAll(
+        TextStyleConstants.displayLarge as TextStyle?,
+      ),
       foregroundColor: const WidgetStatePropertyAll(ColorConstants.whiteText),
       elevation: const WidgetStatePropertyAll(0),
     ),
@@ -130,12 +136,12 @@ class ThemeConstants {
   );
 
   static final lightIconThemeData = IconThemeData(
-    color: ColorConstants.lightScaffoldBackground,
-    size: 28.r,
+    color: ColorConstants.darkScaffoldBackground,
+    size: 24.r,
   );
 
   static final darkIconThemeData = lightIconThemeData.copyWith(
-    color: ColorConstants.darkScaffoldBackground,
+    color: ColorConstants.lightScaffoldBackground,
   );
 
   static final lightTextTheme = TextTheme(
@@ -148,7 +154,9 @@ class ThemeConstants {
   );
 
   static final darkTextTheme = TextTheme(
-    titleMedium: TextStyleConstants.titleMedium.copyWith(color: ColorConstants.whiteText),
+    titleMedium: TextStyleConstants.titleMedium.copyWith(
+      color: ColorConstants.whiteText,
+    ),
     displayLarge: TextStyleConstants.displayLarge.copyWith(
       color: ColorConstants.whiteText,
     ),
@@ -160,5 +168,17 @@ class ThemeConstants {
     ),
     bodyMedium: TextStyleConstants.bodyMedium,
     bodySmall: TextStyleConstants.bodySmall,
+  );
+
+  static final lightSwitchThemeData = SwitchThemeData(
+    thumbColor: WidgetStatePropertyAll(ColorConstants.whiteText),
+    trackColor: WidgetStatePropertyAll(ColorConstants.darkScaffoldBackground),
+    trackOutlineColor: WidgetStatePropertyAll(ColorConstants.lightInputAreaBorder),
+  );
+
+  static final darkSwitchThemeData = SwitchThemeData(
+    thumbColor: WidgetStatePropertyAll(ColorConstants.blackText),
+    trackColor: WidgetStatePropertyAll(ColorConstants.lightScaffoldBackground),
+    trackOutlineColor: WidgetStatePropertyAll(ColorConstants.darkInputAreaBorder),
   );
 }

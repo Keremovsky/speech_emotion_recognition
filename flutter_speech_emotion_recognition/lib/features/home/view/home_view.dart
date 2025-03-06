@@ -6,6 +6,9 @@ import 'package:flutter_speech_emotion_recognition/core/components/custom_text_f
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/theme_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/router/router.dart';
+
+// TODO: add words to localization file
 
 @RoutePage()
 class HomeView extends StatelessWidget {
@@ -23,19 +26,14 @@ class HomeView extends StatelessWidget {
             children: [Text(context.routeData.path, style: context.displayLarge)],
           ),
           _Gap15(),
+          CustomTextField(icon: Icon(Icons.home)),
+          _Gap15(),
           CustomButton(
             onPressed: () {
-              final currentTheme = context.read<ThemeService>().currentTheme;
-              if (currentTheme.isLight) {
-                context.read<ThemeService>().setTheme(ThemeMode.dark);
-              } else {
-                context.read<ThemeService>().setTheme(ThemeMode.light);
-              }
+              context.pushRoute(const SettingsViewRoute());
             },
-            child: Text("Change Theme"),
+            child: Text("Go to Settings"),
           ),
-          _Gap15(),
-          CustomTextField(icon: Icon(Icons.home)),
         ],
       ),
     );

@@ -62,3 +62,19 @@ class OnBoardingViewRouteArgs {
     return 'OnBoardingViewRouteArgs{key: $key, onFinished: $onFinished}';
   }
 }
+
+/// generated route for
+/// [SettingsView]
+class SettingsViewRoute extends PageRouteInfo<void> {
+  const SettingsViewRoute({List<PageRouteInfo>? children})
+    : super(SettingsViewRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsViewRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsView();
+    },
+  );
+}

@@ -12,6 +12,7 @@ final lightTheme = ThemeData(
   inputDecorationTheme: ThemeConstants.lightInputDecorationTheme,
   iconTheme: ThemeConstants.lightIconThemeData,
   textSelectionTheme: ThemeConstants.lightTextSelectionThemeData,
+  switchTheme: ThemeConstants.lightSwitchThemeData,
 );
 
 final darkTheme = ThemeData(
@@ -24,4 +25,5 @@ final darkTheme = ThemeData(
   inputDecorationTheme: ThemeConstants.darkInputDecorationTheme,
   iconTheme: ThemeConstants.darkIconThemeData,
   textSelectionTheme: ThemeConstants.darkTextSelectionThemeData,
+  switchTheme: ThemeConstants.darkSwitchThemeData,
 );
