@@ -29,6 +29,10 @@ class ColorConstants {
   static const darkInputAreaIcon = Color.fromRGBO(110, 110, 110, 1);
   static const lightInputAreaBackground = Color.fromRGBO(240, 240, 240, 0.8);
   static const darkInputAreaBackground = Color.fromRGBO(28, 28, 28, 0.8);
+
   static const lightTextCursor = Color.fromRGBO(28, 28, 28, 0.8);
   static const darkTextCursor = Color.fromRGBO(225, 225, 225, 0.9);
+
+  static const lightFilledButton = Color.fromRGBO(235, 235, 235, 1);
+  static const darkFilledButton = Color.fromRGBO(36, 36, 36, 1);
 }

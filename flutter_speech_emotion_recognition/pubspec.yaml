@@ -78,6 +78,7 @@ flutter:
   assets:
     - assets/lang/
     - assets/svg/
+    - assets/svg/language/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

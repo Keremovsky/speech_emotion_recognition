@@ -29,17 +29,17 @@ class ThemeConstants {
   static final lightFilledButtonThemeData = FilledButtonThemeData(
     style: ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) => ColorConstants.lightMain,
+        (states) => ColorConstants.lightFilledButton,
       ),
       side: const WidgetStatePropertyAll(BorderSide.none),
-      padding: WidgetStatePropertyAll(EdgeInsets.all(12.r)),
+      padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 22.w)),
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       ),
       textStyle: WidgetStatePropertyAll(
         TextStyleConstants.displayLarge as TextStyle?,
       ),
-      foregroundColor: const WidgetStatePropertyAll(ColorConstants.whiteText),
+      foregroundColor: const WidgetStatePropertyAll(ColorConstants.blackText),
       elevation: const WidgetStatePropertyAll(0),
     ),
   );
@@ -47,10 +47,10 @@ class ThemeConstants {
   static final darkFilledButtonThemeData = FilledButtonThemeData(
     style: ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) => ColorConstants.darkMain,
+        (states) => ColorConstants.darkFilledButton,
       ),
       side: const WidgetStatePropertyAll(BorderSide.none),
-      padding: WidgetStatePropertyAll(EdgeInsets.all(12.r)),
+      padding: WidgetStatePropertyAll(EdgeInsets.symmetric(horizontal: 22.w)),
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       ),
