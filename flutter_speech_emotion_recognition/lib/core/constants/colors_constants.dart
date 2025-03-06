@@ -3,14 +3,15 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ColorConstants {
-  static const lightMain = Color.fromRGBO(33, 85, 138, 1);
+  static const lightMain = Color.fromRGBO(10, 132, 255, 1);
+  static const darkMain = Color.fromRGBO(0, 122, 255, 1);
   static const green = Color.fromRGBO(30, 204, 53, 1);
   static const yellow = Color.fromRGBO(236, 236, 34, 1);
   static const red = Color.fromRGBO(229, 0, 2, 1);
 
-  static const whiteText = Color.fromRGBO(254, 254, 254, 1);
+  static const whiteText = Color.fromRGBO(245, 245, 245, 1);
   static const greyText = Color.fromRGBO(66, 66, 66, 1);
-  static const blackText = Color.fromRGBO(0, 0, 0, 1);
+  static const blackText = Color.fromRGBO(10, 10, 10, 1);
 
   static const checkboxDisabled = Color.fromRGBO(250, 250, 250, 1);
   static const dropdownMenuIcon = Color.fromRGBO(144, 144, 144, 1);
@@ -18,14 +19,16 @@ class ColorConstants {
   static const darkScaffoldBackground = Color.fromRGBO(18, 18, 18, 1);
   static const toastBackground = Color.fromRGBO(48, 114, 182, 0.95);
 
-  // TODO: update for dark theme
   static const lightInputAreaSelectedBackground = Color.fromRGBO(52, 134, 218, 0.2);
-  static const darkInputAreaSelectedBackground = Colors.red;
   static const lightInputAreaBorder = Color.fromRGBO(208, 208, 208, 1);
-  static const darkInputAreaBorder = Colors.red;
+  static const darkInputAreaBorder = Color.fromRGBO(110, 110, 110, 1);
   static const lightInputAreaFocusedBorder = Color.fromRGBO(52, 134, 218, 0.8);
-  static const darkInputAreaFocusedBorder = Colors.red;
+  static const darkInputAreaFocusedBorder = Color.fromRGBO(47, 139, 231, 0.8);
   static const inputAreaErrorBorder = Color.fromRGBO(229, 0, 2, 0.75);
   static const lightInputAreaIcon = Color.fromRGBO(144, 144, 144, 1);
-  static const darkInputAreaIcon = Colors.red;
+  static const darkInputAreaIcon = Color.fromRGBO(110, 110, 110, 1);
+  static const lightInputAreaBackground = Color.fromRGBO(240, 240, 240, 0.8);
+  static const darkInputAreaBackground = Color.fromRGBO(28, 28, 28, 0.8);
+  static const lightTextCursor = Color.fromRGBO(28, 28, 28, 0.8);
+  static const darkTextCursor = Color.fromRGBO(225, 225, 225, 0.9);
 }

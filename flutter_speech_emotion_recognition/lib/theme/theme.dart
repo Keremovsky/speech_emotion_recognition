@@ -11,16 +11,17 @@ final lightTheme = ThemeData(
   filledButtonTheme: ThemeConstants.lightFilledButtonThemeData,
   inputDecorationTheme: ThemeConstants.lightInputDecorationTheme,
   iconTheme: ThemeConstants.lightIconThemeData,
+  textSelectionTheme: ThemeConstants.lightTextSelectionThemeData,
 );
 
-// TODO: update for dark theme
 final darkTheme = ThemeData(
-  colorScheme: ColorScheme.fromSeed(seedColor: ColorConstants.red),
-  primaryColor: ColorConstants.red,
+  colorScheme: ColorScheme.fromSeed(seedColor: ColorConstants.darkMain),
+  primaryColor: ColorConstants.darkMain,
   scaffoldBackgroundColor: ColorConstants.darkScaffoldBackground,
   appBarTheme: ThemeConstants.darkAppBarTheme,
   textTheme: ThemeConstants.darkTextTheme,
   filledButtonTheme: ThemeConstants.darkFilledButtonThemeData,
   inputDecorationTheme: ThemeConstants.darkInputDecorationTheme,
   iconTheme: ThemeConstants.darkIconThemeData,
+  textSelectionTheme: ThemeConstants.darkTextSelectionThemeData,
 );

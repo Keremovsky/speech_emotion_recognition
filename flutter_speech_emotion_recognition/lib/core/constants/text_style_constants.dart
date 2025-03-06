@@ -13,7 +13,7 @@ class TextStyleConstants {
   /// input area text, question text and result page texts
   static final displayLarge = TextStyle(
     fontWeight: FontWeight.w400,
-    fontSize: FontSizeConstants.fontSize18,
+    fontSize: FontSizeConstants.fontSize16,
     color: ColorConstants.blackText,
   );
 

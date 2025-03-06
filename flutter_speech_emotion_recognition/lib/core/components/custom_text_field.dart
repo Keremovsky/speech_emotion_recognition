@@ -39,6 +39,8 @@ class CustomTextField extends HookWidget {
   final InputBorder? focusedErrorBorder;
   final TextAlign textAlign;
   final EdgeInsetsGeometry? contentPadding;
+  final Icon? icon;
+  final Color? iconColor;
 
   const CustomTextField({
     super.key,
@@ -76,6 +78,8 @@ class CustomTextField extends HookWidget {
     this.focusedErrorBorder,
     this.textAlign = TextAlign.start,
     this.contentPadding,
+    this.icon,
+    this.iconColor,
   });
 
   @override
@@ -107,6 +111,8 @@ class CustomTextField extends HookWidget {
         readOnly: readOnly,
         textAlign: textAlign,
         decoration: InputDecoration(
+          icon: icon,
+          iconColor: iconColor,
           enabled: enabled,
           contentPadding: contentPadding,
           fillColor: fillColor,

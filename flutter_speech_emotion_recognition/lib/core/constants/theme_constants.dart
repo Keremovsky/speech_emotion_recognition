@@ -4,26 +4,24 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/text_style_constants.dart';
 
-// ! Colors which must be updated are in RED
 class ThemeConstants {
   static final lightAppBarTheme = AppBarTheme(
     iconTheme: lightIconThemeData,
     actionsIconTheme: lightIconThemeData,
     titleTextStyle: TextStyleConstants.titleMedium,
     foregroundColor: ColorConstants.lightScaffoldBackground,
+    backgroundColor: ColorConstants.lightScaffoldBackground,
     scrolledUnderElevation: 0,
     elevation: 0,
     centerTitle: true,
-    backgroundColor: ColorConstants.lightMain,
   );
 
-  // TODO: update for dark theme
   static final darkAppBarTheme = lightAppBarTheme.copyWith(
     titleTextStyle: TextStyleConstants.titleMedium.copyWith(
-      color: ColorConstants.blackText,
+      color: ColorConstants.whiteText,
     ),
     foregroundColor: ColorConstants.darkScaffoldBackground,
-    backgroundColor: ColorConstants.red,
+    backgroundColor: ColorConstants.darkScaffoldBackground,
   );
 
   static final lightFilledButtonThemeData = FilledButtonThemeData(
@@ -32,26 +30,25 @@ class ThemeConstants {
         (states) => ColorConstants.lightMain,
       ),
       side: const WidgetStatePropertyAll(BorderSide.none),
-      padding: WidgetStatePropertyAll(EdgeInsets.all(15.r)),
+      padding: WidgetStatePropertyAll(EdgeInsets.all(12.r)),
       shape: WidgetStatePropertyAll(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       ),
       textStyle: WidgetStatePropertyAll(TextStyleConstants.displayLarge as TextStyle?),
-      foregroundColor: const WidgetStatePropertyAll(ColorConstants.blackText),
+      foregroundColor: const WidgetStatePropertyAll(ColorConstants.whiteText),
       elevation: const WidgetStatePropertyAll(0),
     ),
   );
 
-  // TODO: update for dark theme
   static final darkFilledButtonThemeData = FilledButtonThemeData(
     style: ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) => ColorConstants.red,
+        (states) => ColorConstants.darkMain,
       ),
       side: const WidgetStatePropertyAll(BorderSide.none),
-      padding: WidgetStatePropertyAll(EdgeInsets.all(15.r)),
+      padding: WidgetStatePropertyAll(EdgeInsets.all(12.r)),
       shape: WidgetStatePropertyAll(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       ),
       textStyle: WidgetStatePropertyAll(TextStyleConstants.displayLarge as TextStyle?),
       foregroundColor: const WidgetStatePropertyAll(ColorConstants.whiteText),
@@ -98,23 +95,38 @@ class ThemeConstants {
       borderSide: BorderSide(color: ColorConstants.inputAreaErrorBorder, width: 1.r),
     ),
     constraints: BoxConstraints(maxWidth: 306.w),
+    iconColor: ColorConstants.lightInputAreaIcon,
+    hoverColor: ColorConstants.lightInputAreaBackground,
   );
 
-  // TODO: update for dark theme
   static final darkInputDecorationTheme = lightInputDecorationTheme.copyWith(
     fillColor: ColorConstants.darkScaffoldBackground,
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.r),
-      borderSide: BorderSide(color: ColorConstants.red, width: 1.r),
+      borderSide: BorderSide(color: ColorConstants.darkInputAreaBorder, width: 1.r),
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.r),
-      borderSide: BorderSide(color: ColorConstants.red, width: 1.r),
+      borderSide: BorderSide(
+        color: ColorConstants.darkInputAreaFocusedBorder,
+        width: 1.r,
+      ),
     ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(15.r),
-      borderSide: BorderSide(color: ColorConstants.red, width: 1.r),
+      borderSide: BorderSide(color: ColorConstants.darkInputAreaBorder, width: 1.r),
     ),
+    iconColor: ColorConstants.darkInputAreaIcon,
+    hoverColor: ColorConstants.darkInputAreaBackground,
+  );
+
+  static final lightTextSelectionThemeData = TextSelectionThemeData(
+    cursorColor: ColorConstants.lightTextCursor,
+  );
+
+  static final darkTextSelectionThemeData = lightTextSelectionThemeData.copyWith(
+    cursorColor: ColorConstants.darkTextCursor,
+    selectionColor: ColorConstants.darkInputAreaFocusedBorder,
   );
 
   static final lightIconThemeData = IconThemeData(
