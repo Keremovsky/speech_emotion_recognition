@@ -13,6 +13,7 @@ final lightTheme = ThemeData(
   iconTheme: ThemeConstants.lightIconThemeData,
   textSelectionTheme: ThemeConstants.lightTextSelectionThemeData,
   switchTheme: ThemeConstants.lightSwitchThemeData,
+  progressIndicatorTheme: ThemeConstants.lightProgressIndicatorThemeData,
 );
 
 final darkTheme = ThemeData(
@@ -26,4 +27,5 @@ final darkTheme = ThemeData(
   iconTheme: ThemeConstants.darkIconThemeData,
   textSelectionTheme: ThemeConstants.darkTextSelectionThemeData,
   switchTheme: ThemeConstants.darkSwitchThemeData,
+  progressIndicatorTheme: ThemeConstants.darkProgressIndicatorThemeData,
 );

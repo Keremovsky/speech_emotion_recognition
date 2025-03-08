@@ -181,4 +181,12 @@ class ThemeConstants {
     trackColor: WidgetStatePropertyAll(ColorConstants.lightScaffoldBackground),
     trackOutlineColor: WidgetStatePropertyAll(ColorConstants.darkInputAreaBorder),
   );
+
+  static final lightProgressIndicatorThemeData = ProgressIndicatorThemeData(
+    color: ColorConstants.lightInputAreaBorder,
+  );
+
+  static final darkProgressIndicatorThemeData = ProgressIndicatorThemeData(
+    color: ColorConstants.darkInputAreaBorder,
+  );
 }
