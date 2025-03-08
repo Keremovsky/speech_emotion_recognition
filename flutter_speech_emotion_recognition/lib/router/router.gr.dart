@@ -11,6 +11,22 @@
 part of 'router.dart';
 
 /// generated route for
+/// [ChallengeView]
+class ChallengeViewRoute extends PageRouteInfo<void> {
+  const ChallengeViewRoute({List<PageRouteInfo>? children})
+    : super(ChallengeViewRoute.name, initialChildren: children);
+
+  static const String name = 'ChallengeViewRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ChallengeView();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeView]
 class HomeViewRoute extends PageRouteInfo<void> {
   const HomeViewRoute({List<PageRouteInfo>? children})

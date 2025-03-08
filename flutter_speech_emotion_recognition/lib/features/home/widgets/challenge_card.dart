@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:audio_waveforms/audio_waveforms.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/file/file_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/router/router.dart';
 
 /// Card widget that shows given challenge title and level, and able to play audio.
 ///
@@ -129,19 +131,25 @@ class _ChallengeCardState extends State<ChallengeCard> {
       ),
       child: Row(
         children: [
-          SizedBox(
-            width:
-                widget.width == null
-                    ? 110.w
-                    : widget.width! / 2 + widget.width! / 20,
-            child: Padding(
-              padding: EdgeInsets.only(top: 10.h, bottom: 10.h, left: 10.w),
-              child: Column(
-                children: [
-                  _TitleText(widget: widget),
-                  Spacer(),
-                  _ContentText(widget: widget),
-                ],
+          GestureDetector(
+            onTap: () async {
+              await context.pushRoute(ChallengeViewRoute());
+            },
+            behavior: HitTestBehavior.translucent,
+            child: SizedBox(
+              width:
+                  widget.width == null
+                      ? 110.w
+                      : widget.width! / 2 + widget.width! / 20,
+              child: Padding(
+                padding: EdgeInsets.only(top: 10.h, bottom: 10.h, left: 10.w),
+                child: Column(
+                  children: [
+                    _TitleText(widget: widget),
+                    Spacer(),
+                    _ContentText(widget: widget),
+                  ],
+                ),
               ),
             ),
           ),

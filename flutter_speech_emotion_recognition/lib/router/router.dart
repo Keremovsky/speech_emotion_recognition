@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/view/challenge_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/home/view/home_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/on_boarding/view/on_boarding_view.dart';
 import 'package:auto_route/auto_route.dart';
@@ -18,5 +19,6 @@ class AppRouter extends RootStackRouter {
       initial: true,
     ),
     AutoRoute(page: SettingsViewRoute.page),
+    AutoRoute(page: ChallengeViewRoute.page),
   ];
 }
