@@ -12,18 +12,38 @@ part of 'router.dart';
 
 /// generated route for
 /// [ChallengeView]
-class ChallengeViewRoute extends PageRouteInfo<void> {
-  const ChallengeViewRoute({List<PageRouteInfo>? children})
-    : super(ChallengeViewRoute.name, initialChildren: children);
+class ChallengeViewRoute extends PageRouteInfo<ChallengeViewRouteArgs> {
+  ChallengeViewRoute({Key? key, File? file, List<PageRouteInfo>? children})
+    : super(
+        ChallengeViewRoute.name,
+        args: ChallengeViewRouteArgs(key: key, file: file),
+        initialChildren: children,
+      );
 
   static const String name = 'ChallengeViewRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ChallengeView();
+      final args = data.argsAs<ChallengeViewRouteArgs>(
+        orElse: () => const ChallengeViewRouteArgs(),
+      );
+      return ChallengeView(key: args.key, file: args.file);
     },
   );
+}
+
+class ChallengeViewRouteArgs {
+  const ChallengeViewRouteArgs({this.key, this.file});
+
+  final Key? key;
+
+  final File? file;
+
+  @override
+  String toString() {
+    return 'ChallengeViewRouteArgs{key: $key, file: $file}';
+  }
 }
 
 /// generated route for
