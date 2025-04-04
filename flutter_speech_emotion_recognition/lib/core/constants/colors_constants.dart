@@ -35,4 +35,6 @@ class ColorConstants {
 
   static const lightFilledButton = Color.fromRGBO(235, 235, 235, 1);
   static const darkFilledButton = Color.fromRGBO(36, 36, 36, 1);
+
+  static const darkGreyTextColor = Color.fromRGBO(102, 102, 102, 1);
 }

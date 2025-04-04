@@ -8,5 +8,11 @@
     "settings": "Ayarlar",
     "theme": "Temayı Değiştir",
 
+    "home": "Ana Sayfa",
+    "welcome": "Hoşgeldiniz",
+    "goToProfile": "Profile Git",
+    "tryOutAChallenge": "Meydan Okuma Dene",
+    "mostTriedChallenges": "En Çok Denenler",
+
     "emptyFieldMessage": "Alan boş bırakılamaz."
 }

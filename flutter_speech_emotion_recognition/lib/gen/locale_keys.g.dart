@@ -9,6 +9,11 @@ abstract class  LocaleKeys {
   static const next = 'next';
   static const settings = 'settings';
   static const theme = 'theme';
+  static const home = 'home';
+  static const welcome = 'welcome';
+  static const goToProfile = 'goToProfile';
+  static const tryOutAChallenge = 'tryOutAChallenge';
+  static const mostTriedChallenges = 'mostTriedChallenges';
   static const emptyFieldMessage = 'emptyFieldMessage';
 
 }

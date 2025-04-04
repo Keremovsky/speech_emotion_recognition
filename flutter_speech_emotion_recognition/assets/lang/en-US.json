@@ -7,6 +7,12 @@
     
     "settings": "Settings",
     "theme": "Change Theme",
+    
+    "home": "Home",
+    "welcome": "Welcome",
+    "goToProfile": "Go to Profile",
+    "tryOutAChallenge": "Try Out A Challenge",
+    "mostTriedChallenges": "Most Tried Challenges",
 
     "emptyFieldMessage": "Field can't be empty."
 }
