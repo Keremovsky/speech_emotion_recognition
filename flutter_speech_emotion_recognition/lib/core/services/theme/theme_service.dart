@@ -30,4 +30,14 @@ class ThemeService extends IThemeService {
     _cacheService.set<int>(CacheKeys.themeMode, _currentTheme.index);
     notifyListeners();
   }
+
+  @override
+  bool isLightTheme() {
+    return _currentTheme == ThemeMode.light;
+  }
+
+  @override
+  bool isDarkTheme() {
+    return _currentTheme == ThemeMode.dark;
+  }
 }
