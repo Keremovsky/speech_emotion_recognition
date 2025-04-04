@@ -9,6 +9,14 @@ abstract class  LocaleKeys {
   static const next = 'next';
   static const settings = 'settings';
   static const theme = 'theme';
+  static const welcomeTo = 'welcomeTo';
+  static const app = 'app';
+  static const email = 'email';
+  static const password = 'password';
+  static const forgotPassword = 'forgotPassword';
+  static const login = 'login';
+  static const dontHaveAccount = 'dontHaveAccount';
+  static const createRightNow = 'createRightNow';
   static const home = 'home';
   static const welcome = 'welcome';
   static const goToProfile = 'goToProfile';

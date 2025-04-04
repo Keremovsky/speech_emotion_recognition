@@ -8,6 +8,15 @@
     "settings": "Ayarlar",
     "theme": "Temayı Değiştir",
 
+    "welcomeTo": "Uygulamaya",
+    "app": "Hoşgeldiniz",
+    "email": "E-posta",
+    "password": "Şifre",
+    "forgotPassword": "Şifremi unuttum.",
+    "login": "Giriş Yap",
+    "dontHaveAccount": "Hesabınız mı yok?",
+    "createRightNow": "Hemen oluşturun!",
+
     "home": "Ana Sayfa",
     "welcome": "Hoşgeldiniz",
     "goToProfile": "Profile Git",

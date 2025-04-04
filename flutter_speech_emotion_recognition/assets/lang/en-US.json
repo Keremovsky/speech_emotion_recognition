@@ -7,6 +7,15 @@
     
     "settings": "Settings",
     "theme": "Change Theme",
+
+    "welcomeTo": "Welcome to",
+    "app": "App",
+    "email": "E-mail",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "login": "Login",
+    "dontHaveAccount": "Don't have account?",
+    "createRightNow": "Create right now!",
     
     "home": "Home",
     "welcome": "Welcome",
