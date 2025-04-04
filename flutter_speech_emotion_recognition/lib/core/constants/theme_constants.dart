@@ -164,7 +164,7 @@ class ThemeConstants {
       color: ColorConstants.whiteText,
     ),
     displaySmall: TextStyleConstants.displaySmall.copyWith(
-      color: ColorConstants.whiteText,
+      color: ColorConstants.darkGreyTextColor,
     ),
     bodyMedium: TextStyleConstants.bodyMedium,
     bodySmall: TextStyleConstants.bodySmall,

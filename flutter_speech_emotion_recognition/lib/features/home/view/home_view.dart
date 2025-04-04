@@ -4,7 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/features/home/widgets/challenge_card.dart';
@@ -69,12 +68,7 @@ class _UserRow extends StatelessWidget {
                       "${LocaleKeys.welcome.tr()} Kerem",
                       style: context.titleMedium,
                     ),
-                    Text(
-                      LocaleKeys.goToProfile.tr(),
-                      style: context.displaySmall?.copyWith(
-                        color: ColorConstants.darkGreyTextColor,
-                      ),
-                    ),
+                    Text(LocaleKeys.goToProfile.tr(), style: context.displaySmall),
                   ],
                 ),
               ],
