@@ -23,5 +23,10 @@
     "tryOutAChallenge": "Try Out A Challenge",
     "mostTriedChallenges": "Most Tried Challenges",
 
-    "emptyFieldMessage": "Field can't be empty."
+    "emptyFieldMessage": "Field can't be empty.",
+    "invalidEmailMessage": "E-mail format is not suitable.",
+    "invalidEmailDomainMessage": "E-mail domain is not valid.",
+    "invalidPasswordMessage": "Password format is not suitable.",
+    "invalidPasswordShortLengthMessage": "Password can't be shorter than 8 characters.",
+    "invalidPasswordLongLengthMessage": "Password can't be longer than 16 characters."
 }

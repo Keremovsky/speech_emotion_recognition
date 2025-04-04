@@ -23,5 +23,10 @@ abstract class  LocaleKeys {
   static const tryOutAChallenge = 'tryOutAChallenge';
   static const mostTriedChallenges = 'mostTriedChallenges';
   static const emptyFieldMessage = 'emptyFieldMessage';
+  static const invalidEmailMessage = 'invalidEmailMessage';
+  static const invalidEmailDomainMessage = 'invalidEmailDomainMessage';
+  static const invalidPasswordMessage = 'invalidPasswordMessage';
+  static const invalidPasswordShortLengthMessage = 'invalidPasswordShortLengthMessage';
+  static const invalidPasswordLongLengthMessage = 'invalidPasswordLongLengthMessage';
 
 }

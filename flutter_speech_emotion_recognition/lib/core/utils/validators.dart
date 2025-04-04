@@ -8,7 +8,7 @@ class InputFieldValidator {
   static final String _emailPattern =
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
   static final String _passwordPattern =
-      r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$';
+      r'^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$';
 
   static Option<ValueFailureModel> validateEmptiness(String? input) {
     if (input == null || input.isEmpty) {
@@ -25,12 +25,18 @@ class InputFieldValidator {
 
     final RegExp regex = RegExp(_emailPattern);
 
-    if (!regex.hasMatch(input)) return some(ValueFailureModel.invalidInput(""));
+    if (!regex.hasMatch(input)) {
+      return some(
+        ValueFailureModel.invalidInput(LocaleKeys.invalidEmailMessage.tr()),
+      );
+    }
 
     final String domain = input.split("@").last;
 
     if (!_validDomains.contains(domain)) {
-      return some(ValueFailureModel.invalidInput(""));
+      return some(
+        ValueFailureModel.invalidInput(LocaleKeys.invalidEmailDomainMessage.tr()),
+      );
     }
 
     return none();
@@ -43,7 +49,25 @@ class InputFieldValidator {
 
     final RegExp regex = RegExp(_passwordPattern);
 
-    if (!regex.hasMatch(input)) return some(ValueFailureModel.invalidInput(""));
+    if (input.length < 8) {
+      return some(
+        ValueFailureModel.invalidInput(
+          LocaleKeys.invalidPasswordShortLengthMessage.tr(),
+        ),
+      );
+    } else if (input.length > 16) {
+      return some(
+        ValueFailureModel.invalidInput(
+          LocaleKeys.invalidPasswordLongLengthMessage.tr(),
+        ),
+      );
+    }
+
+    if (!regex.hasMatch(input)) {
+      return some(
+        ValueFailureModel.invalidInput(LocaleKeys.invalidPasswordMessage.tr()),
+      );
+    }
 
     return none();
   }

@@ -23,5 +23,10 @@
     "tryOutAChallenge": "Meydan Okuma Dene",
     "mostTriedChallenges": "En Çok Denenler",
 
-    "emptyFieldMessage": "Alan boş bırakılamaz."
+    "emptyFieldMessage": "Alan boş bırakılamaz.",
+    "invalidEmailMessage": "E-posta formatı uygun değil.",
+    "invalidEmailDomainMessage": "E-posta alanı uygun değil.",
+    "invalidPasswordMessage": "Şifre formatı uygun değil.",
+    "invalidPasswordShortLengthMessage": "Şifre 8 karakterden kısa olamaz.",
+    "invalidPasswordLongLengthMessage": "Şifre 16 karakterden uzun olamaz."
 }
