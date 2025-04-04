@@ -100,7 +100,7 @@ class ThemeConstants {
       borderRadius: BorderRadius.circular(15.r),
       borderSide: BorderSide(color: ColorConstants.inputAreaErrorBorder, width: 1.r),
     ),
-    constraints: BoxConstraints(maxWidth: 306.w),
+    constraints: BoxConstraints(maxWidth: 360.w),
     iconColor: ColorConstants.lightInputAreaIcon,
     hoverColor: ColorConstants.lightInputAreaBackground,
   );
