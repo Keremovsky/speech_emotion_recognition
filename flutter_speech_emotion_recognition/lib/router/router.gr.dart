@@ -116,6 +116,22 @@ class OnBoardingViewRouteArgs {
 }
 
 /// generated route for
+/// [RegisterView]
+class RegisterViewRoute extends PageRouteInfo<void> {
+  const RegisterViewRoute({List<PageRouteInfo>? children})
+    : super(RegisterViewRoute.name, initialChildren: children);
+
+  static const String name = 'RegisterViewRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const RegisterView();
+    },
+  );
+}
+
+/// generated route for
 /// [SettingsView]
 class SettingsViewRoute extends PageRouteInfo<void> {
   const SettingsViewRoute({List<PageRouteInfo>? children})

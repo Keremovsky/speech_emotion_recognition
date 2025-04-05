@@ -8,14 +8,21 @@
     "settings": "Ayarlar",
     "theme": "Temayı Değiştir",
 
-    "welcomeTo": "Uygulamaya",
-    "app": "Hoşgeldiniz",
+    "welcomeTo": "Hoşgeldiniz",
+    "app": "Uygulamaya",
     "email": "E-posta",
     "password": "Şifre",
     "forgotPassword": "Şifremi unuttum.",
     "login": "Giriş Yap",
     "dontHaveAccount": "Hesabınız mı yok?",
     "createRightNow": "Hemen oluşturun!",
+
+    "registerTo": "Kayıt Olun",
+    "username": "Kullanıcı Adı",
+    "passwordAgain": "Tekrardan Şifre",
+    "register": "Kayıt Ol",
+    "alreadyHaveAccount": "Zaten hesabınız var mı?",
+    "loginRightNow": "Hemen giriş yapın!",
 
     "home": "Ana Sayfa",
     "welcome": "Hoşgeldiniz",
@@ -28,5 +35,8 @@
     "invalidEmailDomainMessage": "E-posta alanı uygun değil.",
     "invalidPasswordMessage": "Şifre formatı uygun değil.",
     "invalidPasswordShortLengthMessage": "Şifre 8 karakterden kısa olamaz.",
-    "invalidPasswordLongLengthMessage": "Şifre 16 karakterden uzun olamaz."
+    "invalidPasswordLongLengthMessage": "Şifre 16 karakterden uzun olamaz.",
+    "invalidUsernameShortLength": "Kullanıcı adı 5 karakterden kısa olamaz.",
+    "invalidUsernameLongLength": "Kullanıcı adı 20 karakterden uzun olamaz.",
+    "invalidPasswordConfirmMatch": "Her iki şifrenin de aynı olduğundan emin olun."
 }

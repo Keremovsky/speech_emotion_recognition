@@ -48,7 +48,6 @@ abstract class LoginViewState extends State<LoginView> {
   }
 
   void onCreateAccountPressed() {
-    // TODO: implement register page navigation
-    log("navigate to register");
+    context.pushRoute(RegisterViewRoute());
   }
 }

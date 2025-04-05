@@ -16,6 +16,13 @@
     "login": "Login",
     "dontHaveAccount": "Don't have account?",
     "createRightNow": "Create right now!",
+
+    "registerTo": "Register to",
+    "username": "Username",
+    "passwordAgain": "Password Again",
+    "register": "Register",
+    "alreadyHaveAccount": "Already have account?",
+    "loginRightNow": "Login right now!",
     
     "home": "Home",
     "welcome": "Welcome",
@@ -28,5 +35,8 @@
     "invalidEmailDomainMessage": "E-mail domain is not valid.",
     "invalidPasswordMessage": "Password format is not suitable.",
     "invalidPasswordShortLengthMessage": "Password can't be shorter than 8 characters.",
-    "invalidPasswordLongLengthMessage": "Password can't be longer than 16 characters."
+    "invalidPasswordLongLengthMessage": "Password can't be longer than 16 characters.",
+    "invalidUsernameShortLength": "Username can't be shorter than 5 characters.",
+    "invalidUsernameLongLength": "Username can't be longer than 20 characters.",
+    "invalidPasswordConfirmMatch": "Make sure both password fields are the same."
 }

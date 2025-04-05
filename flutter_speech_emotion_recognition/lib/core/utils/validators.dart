@@ -18,6 +18,24 @@ class InputFieldValidator {
     return none();
   }
 
+  static Option<ValueFailureModel> validateUsername(String? input) {
+    if (input == null || input.isEmpty) {
+      return some(ValueFailureModel.invalidInput(LocaleKeys.emptyFieldMessage.tr()));
+    }
+
+    if (input.length < 5) {
+      return some(
+        ValueFailureModel.invalidInput(LocaleKeys.invalidUsernameShortLength.tr()),
+      );
+    } else if (input.length > 20) {
+      return some(
+        ValueFailureModel.invalidInput(LocaleKeys.invalidUsernameLongLength.tr()),
+      );
+    }
+
+    return none();
+  }
+
   static Option<ValueFailureModel> validateEmail(String? input) {
     if (input == null || input.isEmpty) {
       return some(ValueFailureModel.invalidInput(LocaleKeys.emptyFieldMessage.tr()));
@@ -70,5 +88,32 @@ class InputFieldValidator {
     }
 
     return none();
+  }
+
+  static Option<ValueFailureModel> validatePasswordConfirm(
+    String? input,
+    String pass,
+  ) {
+    if (input == null || input.isEmpty) {
+      return some(ValueFailureModel.invalidInput(LocaleKeys.emptyFieldMessage.tr()));
+    }
+
+    final control = validatePassword(pass);
+    return control.fold(
+      () {
+        if (input != pass) {
+          return some(
+            ValueFailureModel.invalidInput(
+              LocaleKeys.invalidPasswordConfirmMatch.tr(),
+            ),
+          );
+        }
+
+        return none();
+      },
+      (message) {
+        return some(message);
+      },
+    );
   }
 }

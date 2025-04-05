@@ -17,6 +17,12 @@ abstract class  LocaleKeys {
   static const login = 'login';
   static const dontHaveAccount = 'dontHaveAccount';
   static const createRightNow = 'createRightNow';
+  static const registerTo = 'registerTo';
+  static const username = 'username';
+  static const passwordAgain = 'passwordAgain';
+  static const register = 'register';
+  static const alreadyHaveAccount = 'alreadyHaveAccount';
+  static const loginRightNow = 'loginRightNow';
   static const home = 'home';
   static const welcome = 'welcome';
   static const goToProfile = 'goToProfile';
@@ -28,5 +34,8 @@ abstract class  LocaleKeys {
   static const invalidPasswordMessage = 'invalidPasswordMessage';
   static const invalidPasswordShortLengthMessage = 'invalidPasswordShortLengthMessage';
   static const invalidPasswordLongLengthMessage = 'invalidPasswordLongLengthMessage';
+  static const invalidUsernameShortLength = 'invalidUsernameShortLength';
+  static const invalidUsernameLongLength = 'invalidUsernameLongLength';
+  static const invalidPasswordConfirmMatch = 'invalidPasswordConfirmMatch';
 
 }
