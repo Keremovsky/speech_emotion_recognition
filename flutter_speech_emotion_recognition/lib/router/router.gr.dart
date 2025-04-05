@@ -132,6 +132,22 @@ class RegisterViewRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ResetPasswordMailView]
+class ResetPasswordMailViewRoute extends PageRouteInfo<void> {
+  const ResetPasswordMailViewRoute({List<PageRouteInfo>? children})
+    : super(ResetPasswordMailViewRoute.name, initialChildren: children);
+
+  static const String name = 'ResetPasswordMailViewRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ResetPasswordMailView();
+    },
+  );
+}
+
+/// generated route for
 /// [SettingsView]
 class SettingsViewRoute extends PageRouteInfo<void> {
   const SettingsViewRoute({List<PageRouteInfo>? children})

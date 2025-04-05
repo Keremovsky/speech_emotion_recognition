@@ -23,6 +23,9 @@
     "register": "Register",
     "alreadyHaveAccount": "Already have account?",
     "loginRightNow": "Login right now!",
+
+    "sendMailToReset": "Send Mail To Reset",
+    "sendMail":"Send Mail",
     
     "home": "Home",
     "welcome": "Welcome",

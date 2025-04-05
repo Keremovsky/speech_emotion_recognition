@@ -23,6 +23,8 @@ abstract class  LocaleKeys {
   static const register = 'register';
   static const alreadyHaveAccount = 'alreadyHaveAccount';
   static const loginRightNow = 'loginRightNow';
+  static const sendMailToReset = 'sendMailToReset';
+  static const sendMail = 'sendMail';
   static const home = 'home';
   static const welcome = 'welcome';
   static const goToProfile = 'goToProfile';

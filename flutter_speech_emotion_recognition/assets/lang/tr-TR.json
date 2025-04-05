@@ -16,6 +16,7 @@
     "login": "Giriş Yap",
     "dontHaveAccount": "Hesabınız mı yok?",
     "createRightNow": "Hemen oluşturun!",
+    
 
     "registerTo": "Kayıt Olun",
     "username": "Kullanıcı Adı",
@@ -23,6 +24,9 @@
     "register": "Kayıt Ol",
     "alreadyHaveAccount": "Zaten hesabınız var mı?",
     "loginRightNow": "Hemen giriş yapın!",
+
+    "sendMailToReset": "E-posta Yolla Yenilemek",
+    "sendMail":"E-posta Yolla",
 
     "home": "Ana Sayfa",
     "welcome": "Hoşgeldiniz",
