@@ -56,6 +56,7 @@ class _LoginViewState extends LoginViewState {
                       onSaved: onEmailSaved,
                       validator: onEmailValidate,
                       hintText: LocaleKeys.email.tr(),
+                      autovalidateMode: AutovalidateMode.onUnfocus,
                     ),
                     SizedBox(height: 12.h),
                     CustomTextField(
@@ -64,6 +65,7 @@ class _LoginViewState extends LoginViewState {
                       hintText: LocaleKeys.password.tr(),
                       obscureText: true,
                       textInputAction: TextInputAction.done,
+                      autovalidateMode: AutovalidateMode.onUnfocus,
                     ),
                   ],
                 ),
