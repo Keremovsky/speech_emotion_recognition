@@ -2,20 +2,26 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_speech_emotion_recognition/core/components/check_box_tile.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_switch.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/asset_constants.dart';
-import 'package:flutter_speech_emotion_recognition/core/constants/locale_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/features/settings/state/settings_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 @RoutePage()
-class SettingsView extends StatelessWidget {
+class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
 
+  @override
+  SettingsViewState createState() => _SettingsViewState();
+}
+
+class _SettingsViewState extends SettingsViewState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,27 +32,26 @@ class SettingsView extends StatelessWidget {
           child: Column(
             children: [
               CustomSwitch.text(
-                initialState:
-                    context.read<ThemeService>().currentTheme == ThemeMode.light,
-                text: LocaleKeys.theme.tr(),
+                initialState: context.read<ThemeService>().isLightTheme(),
+                text: LocaleKeys.changeTheme.tr(),
                 textStyle: context.displayLarge,
-                onChanged: (value) {
-                  if (value) {
-                    context.read<ThemeService>().setTheme(ThemeMode.light);
-                  } else {
-                    context.read<ThemeService>().setTheme(ThemeMode.dark);
-                  }
-                },
+                onChanged: onSwitchChanged,
                 onIcon: Icon(Icons.sunny),
                 offIcon: Icon(Icons.mode_night),
               ),
+              SizedBox(height: 8.h),
+              CheckBoxTile.short(
+                onChanged: onCheckBoxChanged,
+                size: 22.r,
+                label: LocaleKeys.shareData.tr(),
+                value: dataPermission,
+              ),
+              SizedBox(height: 16.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomButton(
-                    onPressed: () {
-                      context.setLocale(LocaleConstants.en);
-                    },
+                    onPressed: onEnglishPressed,
                     child: Row(
                       children: [
                         Text(LocaleKeys.english.tr()),
@@ -59,9 +64,7 @@ class SettingsView extends StatelessWidget {
                     ),
                   ),
                   CustomButton(
-                    onPressed: () {
-                      context.setLocale(LocaleConstants.tr);
-                    },
+                    onPressed: onTurkishPressed,
                     child: Row(
                       children: [
                         Text(LocaleKeys.turkish.tr()),

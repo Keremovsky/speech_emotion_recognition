@@ -1,12 +1,6 @@
 {
-    "english": "İngilizce",
-    "turkish": "Türkçe",
-
     "skip": "Atla",
     "next": "Sonraki",
-    
-    "settings": "Ayarlar",
-    "theme": "Temayı Değiştir",
 
     "welcomeTo": "Hoşgeldiniz",
     "app": "Uygulamaya",
@@ -43,6 +37,12 @@
     "goToProfile": "Profile Git",
     "tryOutAChallenge": "Meydan Okuma Dene",
     "mostTriedChallenges": "En Çok Denenler",
+
+    "settings": "Ayarlar",
+    "changeTheme": "Temayı Değiştir",
+    "english": "İngilizce",
+    "turkish": "Türkçe",
+    "shareData": "Veri Paylaşımı",
 
     "emptyFieldMessage": "Alan boş bırakılamaz.",
     "invalidEmailMessage": "E-posta formatı uygun değil.",

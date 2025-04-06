@@ -3,12 +3,8 @@
 // ignore_for_file: constant_identifier_names
 
 abstract class  LocaleKeys {
-  static const english = 'english';
-  static const turkish = 'turkish';
   static const skip = 'skip';
   static const next = 'next';
-  static const settings = 'settings';
-  static const theme = 'theme';
   static const welcomeTo = 'welcomeTo';
   static const app = 'app';
   static const email = 'email';
@@ -38,6 +34,11 @@ abstract class  LocaleKeys {
   static const goToProfile = 'goToProfile';
   static const tryOutAChallenge = 'tryOutAChallenge';
   static const mostTriedChallenges = 'mostTriedChallenges';
+  static const settings = 'settings';
+  static const changeTheme = 'changeTheme';
+  static const english = 'english';
+  static const turkish = 'turkish';
+  static const shareData = 'shareData';
   static const emptyFieldMessage = 'emptyFieldMessage';
   static const invalidEmailMessage = 'invalidEmailMessage';
   static const invalidEmailDomainMessage = 'invalidEmailDomainMessage';

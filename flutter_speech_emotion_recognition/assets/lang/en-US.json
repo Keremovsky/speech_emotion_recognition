@@ -1,12 +1,6 @@
 {
-    "english": "English",
-    "turkish": "Turkish",
-
     "skip": "Skip",
     "next": "Next",
-    
-    "settings": "Settings",
-    "theme": "Change Theme",
 
     "welcomeTo": "Welcome to",
     "app": "App",
@@ -42,6 +36,12 @@
     "goToProfile": "Go to Profile",
     "tryOutAChallenge": "Try Out A Challenge",
     "mostTriedChallenges": "Most Tried Challenges",
+
+    "settings": "Settings",
+    "changeTheme": "Change Theme",
+    "english": "English",
+    "turkish": "Turkish",
+    "shareData": "Share Data",
 
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",

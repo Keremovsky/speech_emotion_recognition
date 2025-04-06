@@ -20,12 +20,16 @@ class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
     AutoRoute(page: OnBoardingViewRoute.page),
-    AutoRoute(page: LoginViewRoute.page, initial: true),
+    AutoRoute(page: LoginViewRoute.page),
     AutoRoute(page: RegisterViewRoute.page),
     AutoRoute(page: ResetPasswordMailViewRoute.page),
     AutoRoute(page: ResetPasswordPinViewRoute.page),
     AutoRoute(page: ResetPasswordViewRoute.page),
-    AutoRoute(page: HomeViewRoute.page, guards: [FirstEntranceGuard()]),
+    AutoRoute(
+      page: HomeViewRoute.page,
+      initial: true,
+      guards: [FirstEntranceGuard()],
+    ),
     AutoRoute(page: SettingsViewRoute.page),
     AutoRoute(page: ChallengeViewRoute.page),
   ];
