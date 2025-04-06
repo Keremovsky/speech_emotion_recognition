@@ -8,7 +8,7 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
-import 'package:flutter_speech_emotion_recognition/features/auth/state/reset_password_pin_state.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/state/reset_password_pin_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:pinput/pinput.dart';
 
@@ -17,10 +17,10 @@ class ResetPasswordPinView extends StatefulWidget {
   const ResetPasswordPinView({super.key});
 
   @override
-  ResetPasswordPinState createState() => _ResetPasswordPinViewState();
+  ResetPasswordPinViewState createState() => _ResetPasswordPinViewState();
 }
 
-class _ResetPasswordPinViewState extends ResetPasswordPinState {
+class _ResetPasswordPinViewState extends ResetPasswordPinViewState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

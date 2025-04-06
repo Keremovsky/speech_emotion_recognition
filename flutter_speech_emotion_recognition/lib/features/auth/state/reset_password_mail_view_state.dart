@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
-import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_mail.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_mail_view.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 
-abstract class ResetPasswordMailState extends State<ResetPasswordMailView> {
+abstract class ResetPasswordMailViewState extends State<ResetPasswordMailView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   late String email;

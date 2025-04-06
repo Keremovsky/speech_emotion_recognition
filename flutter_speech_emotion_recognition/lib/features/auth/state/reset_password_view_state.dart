@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_view.dart';
 
-abstract class ResetPasswordState extends State<ResetPasswordView> {
+abstract class ResetPasswordViewState extends State<ResetPasswordView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController passwordController = TextEditingController();
 

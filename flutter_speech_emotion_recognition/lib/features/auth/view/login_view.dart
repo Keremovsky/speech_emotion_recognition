@@ -57,6 +57,7 @@ class _LoginViewState extends LoginViewState {
                       validator: onEmailValidate,
                       hintText: LocaleKeys.email.tr(),
                       autovalidateMode: AutovalidateMode.onUnfocus,
+                      textInputType: TextInputType.emailAddress,
                     ),
                     SizedBox(height: 12.h),
                     CustomTextField(

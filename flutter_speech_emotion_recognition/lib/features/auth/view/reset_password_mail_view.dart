@@ -9,7 +9,7 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
-import 'package:flutter_speech_emotion_recognition/features/auth/state/reset_password_mail_state.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/state/reset_password_mail_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
 @RoutePage()
@@ -17,10 +17,10 @@ class ResetPasswordMailView extends StatefulWidget {
   const ResetPasswordMailView({super.key});
 
   @override
-  ResetPasswordMailState createState() => _ResetPasswordMailViewState();
+  ResetPasswordMailViewState createState() => _ResetPasswordMailViewState();
 }
 
-class _ResetPasswordMailViewState extends ResetPasswordMailState {
+class _ResetPasswordMailViewState extends ResetPasswordMailViewState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +58,7 @@ class _ResetPasswordMailViewState extends ResetPasswordMailState {
                       hintText: LocaleKeys.email.tr(),
                       autovalidateMode: AutovalidateMode.onUnfocus,
                       textInputAction: TextInputAction.done,
+                      textInputType: TextInputType.emailAddress,
                     ),
                   ],
                 ),

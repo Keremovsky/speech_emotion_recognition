@@ -58,12 +58,13 @@ class _LoginViewState extends RegisterViewState {
                       hintText: LocaleKeys.username.tr(),
                       autovalidateMode: AutovalidateMode.onUnfocus,
                     ),
-                    SizedBox(height: 12.h),
+                    _Gap12H(),
                     CustomTextField(
                       onSaved: onEmailSaved,
                       validator: onEmailValidate,
                       hintText: LocaleKeys.email.tr(),
                       autovalidateMode: AutovalidateMode.onUnfocus,
+                      textInputType: TextInputType.emailAddress,
                     ),
                     SizedBox(height: 12.h),
                     CustomTextField(
@@ -116,6 +117,15 @@ class _LoginViewState extends RegisterViewState {
         ),
       ),
     );
+  }
+}
+
+class _Gap12H extends StatelessWidget {
+  const _Gap12H();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: 12.h);
   }
 }
 

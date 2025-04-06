@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/login_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/register_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_pin_view.dart';
-import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_mail.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_mail_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/view/challenge_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/home/view/home_view.dart';

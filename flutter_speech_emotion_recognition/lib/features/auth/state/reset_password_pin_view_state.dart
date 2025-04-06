@@ -4,7 +4,7 @@ import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_pin_view.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 
-abstract class ResetPasswordPinState extends State<ResetPasswordPinView> {
+abstract class ResetPasswordPinViewState extends State<ResetPasswordPinView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   late String code;
