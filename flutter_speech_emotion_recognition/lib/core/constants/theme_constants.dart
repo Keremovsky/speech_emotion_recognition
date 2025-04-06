@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/text_style_constants.dart';
+import 'package:pinput/pinput.dart';
 
 class ThemeConstants {
   static final lightAppBarTheme = AppBarTheme(
@@ -188,5 +189,45 @@ class ThemeConstants {
 
   static final darkProgressIndicatorThemeData = ProgressIndicatorThemeData(
     color: ColorConstants.darkInputAreaBorder,
+  );
+
+  // PinPut themes
+
+  static final lightDefaultPinTheme = PinTheme(
+    height: 77.h,
+    width: 77.w,
+    textStyle: TextStyleConstants.displayLarge,
+    decoration: BoxDecoration(
+      color: ColorConstants.lightInputAreaBackground,
+      border: Border.all(color: ColorConstants.lightInputAreaBorder),
+      borderRadius: BorderRadius.circular(15.r),
+    ),
+  );
+
+  static final lightErrorPinTheme = lightDefaultPinTheme.copyDecorationWith(
+    border: Border.all(color: ColorConstants.inputAreaErrorBorder),
+  );
+
+  static final lightFocusedPinTheme = lightDefaultPinTheme.copyDecorationWith(
+    border: Border.all(color: ColorConstants.lightInputAreaFocusedBorder),
+  );
+
+  static final darkDefaultPinTheme = lightDefaultPinTheme.copyWith(
+    textStyle: TextStyleConstants.displayLarge.copyWith(
+      color: ColorConstants.whiteText,
+    ),
+    decoration: BoxDecoration(
+      color: ColorConstants.darkInputAreaBackground,
+      border: Border.all(color: ColorConstants.darkInputAreaBorder),
+      borderRadius: BorderRadius.circular(15.r),
+    ),
+  );
+
+  static final darkErrorPinTheme = darkDefaultPinTheme.copyDecorationWith(
+    border: Border.all(color: ColorConstants.inputAreaErrorBorder),
+  );
+
+  static final darkFocusedPinTheme = darkDefaultPinTheme.copyDecorationWith(
+    border: Border.all(color: ColorConstants.darkInputAreaFocusedBorder),
   );
 }

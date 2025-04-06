@@ -4,13 +4,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
+import 'package:flutter_speech_emotion_recognition/core/components/custom_pinput.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/state/reset_password_pin_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
-import 'package:pinput/pinput.dart';
 
 @RoutePage()
 class ResetPasswordPinView extends StatefulWidget {
@@ -42,43 +42,9 @@ class _ResetPasswordPinViewState extends ResetPasswordPinViewState {
               Spacer(),
               Form(
                 key: formKey,
-                child: Pinput(
-                  length: 4,
-                  onCompleted: onPinComplete,
-                  validator: onValidatePin,
-                  errorTextStyle: context.bodySmall,
-                  defaultPinTheme: PinTheme(
-                    height: 77.h,
-                    width: 77.w,
-                    textStyle: context.displayLarge,
-                    decoration: BoxDecoration(
-                      color: ColorConstants.darkInputAreaBackground,
-                      border: Border.all(color: ColorConstants.darkInputAreaBorder),
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                  ),
-                  errorPinTheme: PinTheme(
-                    height: 77.h,
-                    width: 77.w,
-                    textStyle: context.displayLarge,
-                    decoration: BoxDecoration(
-                      color: ColorConstants.darkInputAreaBackground,
-                      border: Border.all(color: ColorConstants.inputAreaErrorBorder),
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                  ),
-                  focusedPinTheme: PinTheme(
-                    height: 77.h,
-                    width: 77.w,
-                    textStyle: context.displayLarge,
-                    decoration: BoxDecoration(
-                      color: ColorConstants.darkInputAreaBackground,
-                      border: Border.all(
-                        color: ColorConstants.darkInputAreaFocusedBorder,
-                      ),
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                  ),
+                child: CustomPinput(
+                  onPinComplete: onPinComplete,
+                  onValidatePin: onValidatePin,
                 ),
               ),
               _Gap30H(),
