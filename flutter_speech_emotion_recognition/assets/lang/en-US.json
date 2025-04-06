@@ -31,6 +31,11 @@
     "confirm": "Confirm",
     "didntReceiveCode": "Didn't receive code?",
     "resendMail": "Resend mail!",
+
+    "resetYour": "Reset Your",
+    "newPassword": "New Password",
+    "newPasswordAgain":"New Password Again",
+    "reset": "Reset",
     
     "home": "Home",
     "welcome": "Welcome",

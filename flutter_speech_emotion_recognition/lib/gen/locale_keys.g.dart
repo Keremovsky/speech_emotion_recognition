@@ -29,6 +29,10 @@ abstract class  LocaleKeys {
   static const confirm = 'confirm';
   static const didntReceiveCode = 'didntReceiveCode';
   static const resendMail = 'resendMail';
+  static const resetYour = 'resetYour';
+  static const newPassword = 'newPassword';
+  static const newPasswordAgain = 'newPasswordAgain';
+  static const reset = 'reset';
   static const home = 'home';
   static const welcome = 'welcome';
   static const goToProfile = 'goToProfile';

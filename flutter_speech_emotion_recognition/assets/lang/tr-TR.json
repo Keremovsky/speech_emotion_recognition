@@ -33,6 +33,11 @@
     "didntReceiveCode": "Kod ulaşmadı mı?",
     "resendMail": "Tekrar e-posta yolla!",
 
+    "resetYour": "Sıfırla",
+    "newPassword": "Yeni Şifre",
+    "newPasswordAgain":"Tekrardan Yeni Şifre",
+    "reset": "Sıfırla",
+
     "home": "Ana Sayfa",
     "welcome": "Hoşgeldiniz",
     "goToProfile": "Profile Git",

@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_pin_view.dart';
+import 'package:flutter_speech_emotion_recognition/router/router.dart';
 
 abstract class ResetPasswordPinState extends State<ResetPasswordPinView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -20,7 +22,16 @@ abstract class ResetPasswordPinState extends State<ResetPasswordPinView> {
 
   void onConfirmPressed() {
     if (formKey.currentState!.validate()) {
-      // TODO: implement pin confirmation and reset password view navigation
+      // TODO: implement pin confirmation
+      context.router.pushAndPopUntil(
+        ResetPasswordViewRoute(),
+        predicate: (route) {
+          if (route.isFirst) {
+            return true;
+          }
+          return false;
+        },
+      );
     }
   }
 
