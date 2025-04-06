@@ -8,6 +8,7 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/input_formatters.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/state/reset_password_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
@@ -58,6 +59,7 @@ class _ResetPasswordMailViewState extends ResetPasswordViewState {
                       hintText: LocaleKeys.newPassword.tr(),
                       obscureText: true,
                       autovalidateMode: AutovalidateMode.onUnfocus,
+                      inputFormatters: InputFormatters.passwordFormatter,
                     ),
                     SizedBox(height: 12.h),
                     CustomTextField(
@@ -66,6 +68,7 @@ class _ResetPasswordMailViewState extends ResetPasswordViewState {
                       autovalidateMode: AutovalidateMode.onUnfocus,
                       obscureText: true,
                       textInputAction: TextInputAction.done,
+                      inputFormatters: InputFormatters.passwordFormatter,
                     ),
                   ],
                 ),

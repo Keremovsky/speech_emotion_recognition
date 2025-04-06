@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/theme_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/input_formatters.dart';
 import 'package:pinput/pinput.dart';
 
 class CustomPinput extends StatelessWidget {
@@ -23,6 +24,7 @@ class CustomPinput extends StatelessWidget {
       onCompleted: onPinComplete,
       validator: onValidatePin,
       errorTextStyle: context.bodySmall,
+      inputFormatters: InputFormatters.pinPutFormatter,
       defaultPinTheme:
           context.read<ThemeService>().isLightTheme()
               ? ThemeConstants.lightDefaultPinTheme

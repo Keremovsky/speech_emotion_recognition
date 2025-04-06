@@ -9,6 +9,7 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/input_formatters.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/state/login_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
@@ -58,6 +59,7 @@ class _LoginViewState extends LoginViewState {
                       hintText: LocaleKeys.email.tr(),
                       autovalidateMode: AutovalidateMode.onUnfocus,
                       textInputType: TextInputType.emailAddress,
+                      inputFormatters: InputFormatters.emailFormatter,
                     ),
                     SizedBox(height: 12.h),
                     CustomTextField(
@@ -67,6 +69,7 @@ class _LoginViewState extends LoginViewState {
                       obscureText: true,
                       textInputAction: TextInputAction.done,
                       autovalidateMode: AutovalidateMode.onUnfocus,
+                      inputFormatters: InputFormatters.passwordFormatter,
                     ),
                   ],
                 ),
