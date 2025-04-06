@@ -148,6 +148,22 @@ class ResetPasswordMailViewRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ResetPasswordPinView]
+class ResetPasswordPinViewRoute extends PageRouteInfo<void> {
+  const ResetPasswordPinViewRoute({List<PageRouteInfo>? children})
+    : super(ResetPasswordPinViewRoute.name, initialChildren: children);
+
+  static const String name = 'ResetPasswordPinViewRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ResetPasswordPinView();
+    },
+  );
+}
+
+/// generated route for
 /// [SettingsView]
 class SettingsViewRoute extends PageRouteInfo<void> {
   const SettingsViewRoute({List<PageRouteInfo>? children})

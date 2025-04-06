@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
@@ -25,8 +23,8 @@ abstract class ResetPasswordMailState extends State<ResetPasswordMailView> {
   void onSendMailPressed() {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      // TODO: implement e-mail control and navigate to reset password code view
-      log("navigate to reset password code view");
+      // TODO: implement e-mail control
+      context.pushRoute(ResetPasswordPinViewRoute());
     }
   }
 

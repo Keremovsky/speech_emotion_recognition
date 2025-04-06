@@ -25,6 +25,10 @@ abstract class  LocaleKeys {
   static const loginRightNow = 'loginRightNow';
   static const sendMailToReset = 'sendMailToReset';
   static const sendMail = 'sendMail';
+  static const verification = 'verification';
+  static const confirm = 'confirm';
+  static const didntReceiveCode = 'didntReceiveCode';
+  static const resendMail = 'resendMail';
   static const home = 'home';
   static const welcome = 'welcome';
   static const goToProfile = 'goToProfile';
@@ -39,5 +43,7 @@ abstract class  LocaleKeys {
   static const invalidUsernameShortLength = 'invalidUsernameShortLength';
   static const invalidUsernameLongLength = 'invalidUsernameLongLength';
   static const invalidPasswordConfirmMatch = 'invalidPasswordConfirmMatch';
+  static const invalidPinLength = 'invalidPinLength';
+  static const invalidPinType = 'invalidPinType';
 
 }

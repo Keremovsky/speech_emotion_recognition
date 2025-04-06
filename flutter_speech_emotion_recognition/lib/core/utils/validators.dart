@@ -116,4 +116,23 @@ class InputFieldValidator {
       },
     );
   }
+
+  static Option<ValueFailureModel> validatePin(String? input) {
+    if (input == null || input.isEmpty) {
+      return some(ValueFailureModel.invalidInput(LocaleKeys.emptyFieldMessage.tr()));
+    }
+
+    if (input.length != 4) {
+      return some(ValueFailureModel.invalidInput(LocaleKeys.invalidPinLength.tr()));
+    }
+
+    return input.toIntOption.fold(
+      () {
+        return some(ValueFailureModel.invalidInput(LocaleKeys.invalidPinType.tr()));
+      },
+      (_) {
+        return none();
+      },
+    );
+  }
 }

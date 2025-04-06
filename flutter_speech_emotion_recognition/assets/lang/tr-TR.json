@@ -28,6 +28,11 @@
     "sendMailToReset": "E-posta Yolla Yenilemek",
     "sendMail":"E-posta Yolla",
 
+    "verification": "Doğrulama",
+    "confirm": "Onayla",
+    "didntReceiveCode": "Kod ulaşmadı mı?",
+    "resendMail": "Tekrar e-posta yolla!",
+
     "home": "Ana Sayfa",
     "welcome": "Hoşgeldiniz",
     "goToProfile": "Profile Git",
@@ -42,5 +47,7 @@
     "invalidPasswordLongLengthMessage": "Şifre 16 karakterden uzun olamaz.",
     "invalidUsernameShortLength": "Kullanıcı adı 5 karakterden kısa olamaz.",
     "invalidUsernameLongLength": "Kullanıcı adı 20 karakterden uzun olamaz.",
-    "invalidPasswordConfirmMatch": "Her iki şifrenin de aynı olduğundan emin olun."
+    "invalidPasswordConfirmMatch": "Her iki şifrenin de aynı olduğundan emin olun.",
+    "invalidPinLength": "Pin 4 karakter uzunluğunda olmalıdır.",
+    "invalidPinType": "Pin karakerleri tam sayı olmalıdır."
 }
