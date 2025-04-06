@@ -44,6 +44,10 @@
     "turkish": "Türkçe",
     "shareData": "Veri Paylaşımı",
 
+    "profile": "Profil",
+    "editProfile": "Profili Güncelle",
+    "history": "Geçmiş",
+
     "emptyFieldMessage": "Alan boş bırakılamaz.",
     "invalidEmailMessage": "E-posta formatı uygun değil.",
     "invalidEmailDomainMessage": "E-posta alanı uygun değil.",

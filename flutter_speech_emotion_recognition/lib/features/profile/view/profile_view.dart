@@ -1,0 +1,121 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
+import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
+import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
+import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/features/home/widgets/challenge_card.dart';
+import 'package:flutter_speech_emotion_recognition/features/profile/state/profile_view_state.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
+
+@RoutePage()
+class ProfileView extends StatefulWidget {
+  const ProfileView({super.key});
+
+  @override
+  ProfileViewState createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends ProfileViewState {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(LocaleKeys.profile.tr())),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: SizeConstants.screenPadding),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 110.h,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          bottom: 0,
+                          child: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/image/pp.jpg"),
+                                fit: BoxFit.cover,
+                              ),
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: ColorConstants.darkScaffoldBackground,
+                                width: 6,
+                                strokeAlign: BorderSide.strokeAlignOutside,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: CustomButton(
+                            onPressed: onEditProfilePressed,
+                            child: Text(LocaleKeys.editProfile.tr()),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(children: [Text("Kerem", style: context.displayLarge)]),
+                  SizedBox(height: 5.h),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.calendar_month_outlined,
+                        color: ColorConstants.darkGreyTextColor,
+                        size: 15,
+                      ),
+                      const SizedBox(width: 5),
+                      Text("Joined February 2025", style: context.displaySmall),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 15.h),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: SizeConstants.screenPadding,
+                  ),
+                  child: Text(LocaleKeys.history.tr(), style: context.titleMedium),
+                ),
+                SizedBox(
+                  height: 125.h,
+                  child: ListView.separated(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: SizeConstants.screenPadding,
+                    ),
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      return ChallengeCard(
+                        title: titleList[index],
+                        level: levelList[index],
+                        audioFilePath: "assets/audio/test.mp3",
+                        onPressed: (controller) {},
+                        width: 230.w,
+                      );
+                    },
+                    separatorBuilder: (context, index) => SizedBox(width: 15.w),
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

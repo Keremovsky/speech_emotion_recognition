@@ -43,6 +43,10 @@
     "turkish": "Turkish",
     "shareData": "Share Data",
 
+    "profile": "Profile",
+    "editProfile": "Edit Profile",
+    "history": "History",
+
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",
     "invalidEmailDomainMessage": "E-mail domain is not valid.",

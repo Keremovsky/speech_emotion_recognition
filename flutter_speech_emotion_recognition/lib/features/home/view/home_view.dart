@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -49,8 +47,7 @@ class _UserRow extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              // TODO: implement profile navigation
-              log("navigate to profile");
+              context.pushRoute(ProfileViewRoute());
             },
             child: Row(
               children: [

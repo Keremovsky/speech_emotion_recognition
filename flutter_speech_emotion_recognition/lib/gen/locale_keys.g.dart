@@ -39,6 +39,9 @@ abstract class  LocaleKeys {
   static const english = 'english';
   static const turkish = 'turkish';
   static const shareData = 'shareData';
+  static const profile = 'profile';
+  static const editProfile = 'editProfile';
+  static const history = 'history';
   static const emptyFieldMessage = 'emptyFieldMessage';
   static const invalidEmailMessage = 'invalidEmailMessage';
   static const invalidEmailDomainMessage = 'invalidEmailDomainMessage';
