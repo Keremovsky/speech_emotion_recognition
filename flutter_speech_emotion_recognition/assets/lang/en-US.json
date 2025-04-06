@@ -47,6 +47,10 @@
     "editProfile": "Edit Profile",
     "history": "History",
 
+    "cancel": "Cancel",
+    "Save": "Save",
+    "deleteAccount": "Delete Account",
+
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",
     "invalidEmailDomainMessage": "E-mail domain is not valid.",

@@ -47,6 +47,22 @@ class ChallengeViewRouteArgs {
 }
 
 /// generated route for
+/// [EditProfileView]
+class EditProfileViewRoute extends PageRouteInfo<void> {
+  const EditProfileViewRoute({List<PageRouteInfo>? children})
+    : super(EditProfileViewRoute.name, initialChildren: children);
+
+  static const String name = 'EditProfileViewRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const EditProfileView();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeView]
 class HomeViewRoute extends PageRouteInfo<void> {
   const HomeViewRoute({List<PageRouteInfo>? children})

@@ -48,6 +48,10 @@
     "editProfile": "Profili Güncelle",
     "history": "Geçmiş",
 
+    "cancel": "İptal",
+    "Save": "Kaydet",
+    "deleteAccount": "Hesabı Sil",
+
     "emptyFieldMessage": "Alan boş bırakılamaz.",
     "invalidEmailMessage": "E-posta formatı uygun değil.",
     "invalidEmailDomainMessage": "E-posta alanı uygun değil.",

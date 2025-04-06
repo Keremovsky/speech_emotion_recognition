@@ -17,10 +17,10 @@ class ResetPasswordView extends StatefulWidget {
   const ResetPasswordView({super.key});
 
   @override
-  ResetPasswordViewState createState() => _ResetPasswordMailViewState();
+  ResetPasswordViewState createState() => _ResetPasswordViewState();
 }
 
-class _ResetPasswordMailViewState extends ResetPasswordViewState {
+class _ResetPasswordViewState extends ResetPasswordViewState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

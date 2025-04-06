@@ -10,6 +10,7 @@ import 'package:flutter_speech_emotion_recognition/features/challenge/view/chall
 import 'package:flutter_speech_emotion_recognition/features/home/view/home_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/on_boarding/view/on_boarding_view.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_speech_emotion_recognition/features/profile/view/edit_profile_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/profile/view/profile_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/settings/view/settings_view.dart';
 import 'package:flutter_speech_emotion_recognition/router/auto_route_guards/first_entrance_guard.dart';
@@ -33,6 +34,7 @@ class AppRouter extends RootStackRouter {
     ),
     AutoRoute(page: SettingsViewRoute.page),
     AutoRoute(page: ProfileViewRoute.page),
+    AutoRoute(page: EditProfileViewRoute.page),
     AutoRoute(page: ChallengeViewRoute.page),
   ];
 }
