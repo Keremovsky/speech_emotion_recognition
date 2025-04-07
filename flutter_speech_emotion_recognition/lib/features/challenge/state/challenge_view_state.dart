@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/file/file_service.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/view/challenge_view.dart';
-import 'package:path_provider/path_provider.dart';
 
 abstract class ChallengeViewState extends State<ChallengeView> {
   late File file;

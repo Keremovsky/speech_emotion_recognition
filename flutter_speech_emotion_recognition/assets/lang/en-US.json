@@ -51,6 +51,11 @@
     "Save": "Save",
     "deleteAccount": "Delete Account",
 
+    "startTheChallenge": "Start the Challenge",
+    "bestScore": "Best Score",
+    "previousScores": "Previous Scores",
+    "details": "Details",
+
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",
     "invalidEmailDomainMessage": "E-mail domain is not valid.",

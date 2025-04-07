@@ -52,6 +52,11 @@
     "Save": "Kaydet",
     "deleteAccount": "Hesabı Sil",
 
+    "startTheChallenge": "Meydan Okumayı Başlat",
+    "bestScore": "En İyi Skor",
+    "previousScores": "Geçmiş Skorlar",
+    "details": "Detay",
+
     "emptyFieldMessage": "Alan boş bırakılamaz.",
     "invalidEmailMessage": "E-posta formatı uygun değil.",
     "invalidEmailDomainMessage": "E-posta alanı uygun değil.",
