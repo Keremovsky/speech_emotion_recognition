@@ -146,6 +146,7 @@ class ThemeConstants {
   );
 
   static final lightTextTheme = TextTheme(
+    titleLarge: TextStyleConstants.titleLarge,
     titleMedium: TextStyleConstants.titleMedium,
     displayLarge: TextStyleConstants.displayLarge,
     displayMedium: TextStyleConstants.displayMedium,
@@ -155,6 +156,9 @@ class ThemeConstants {
   );
 
   static final darkTextTheme = TextTheme(
+    titleLarge: TextStyleConstants.titleLarge.copyWith(
+      color: ColorConstants.whiteText,
+    ),
     titleMedium: TextStyleConstants.titleMedium.copyWith(
       color: ColorConstants.whiteText,
     ),
@@ -229,5 +233,14 @@ class ThemeConstants {
 
   static final darkFocusedPinTheme = darkDefaultPinTheme.copyDecorationWith(
     border: Border.all(color: ColorConstants.darkInputAreaFocusedBorder),
+  );
+
+  static final lightBottomSheetTheme = BottomSheetThemeData(
+    backgroundColor: ColorConstants.lightScaffoldBackground,
+    showDragHandle: true,
+  );
+
+  static final darkBottomSheetTheme = lightBottomSheetTheme.copyWith(
+    backgroundColor: ColorConstants.darkScaffoldBackground,
   );
 }

@@ -3,6 +3,12 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/font_size_constants.dart';
 
 class TextStyleConstants {
+  static final titleLarge = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: FontSizeConstants.fontSize42,
+    color: ColorConstants.blackText,
+  );
+
   /// app bar title
   static final titleMedium = TextStyle(
     fontWeight: FontWeight.w400,
