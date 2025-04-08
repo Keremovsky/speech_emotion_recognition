@@ -11,6 +11,7 @@ import 'package:flutter_speech_emotion_recognition/core/constants/size_constants
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/state/challenge_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/audio_player.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_action_bottom_sheet.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/level_box.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/previous_challenge_score_box.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
@@ -103,7 +104,15 @@ class _Success extends StatelessWidget {
             children: [
               CustomButton(
                 onPressed: () {
-                  // TODO: implement starting the challenge
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return ChallengeActionBottomSheet(
+                        title: "Dune: Paul Muad’dib vs Shaddam",
+                        sentence: sentence,
+                      );
+                    },
+                  );
                 },
                 child: Text(LocaleKeys.startTheChallenge.tr()),
               ),
@@ -137,22 +146,20 @@ class _Success extends StatelessWidget {
                     SizedBox(height: 4.h),
                     SizedBox(
                       height: 70.h,
-                      child: Flexible(
-                        child: ListView.separated(
-                          itemBuilder: (context, index) {
-                            return PreviousChallengeScoreBox(
-                              onPressed: () {
-                                log("AAAAAAAAAAAAAAA");
-                              },
-                              score: 80,
-                            );
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(width: 12.w);
-                          },
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 8,
-                        ),
+                      child: ListView.separated(
+                        itemBuilder: (context, index) {
+                          return PreviousChallengeScoreBox(
+                            onPressed: () {
+                              log("AAAAAAAAAAAAAAA");
+                            },
+                            score: 80,
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return SizedBox(width: 8.w);
+                        },
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 8,
                       ),
                     ),
                   ],
