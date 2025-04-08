@@ -56,6 +56,9 @@
     "previousScores": "Previous Scores",
     "details": "Details",
 
+    "stop": "Stop",
+    "abort": "Abort",
+
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",
     "invalidEmailDomainMessage": "E-mail domain is not valid.",

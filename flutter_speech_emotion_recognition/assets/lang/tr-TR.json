@@ -57,6 +57,9 @@
     "previousScores": "Geçmiş Skorlar",
     "details": "Detay",
 
+    "stop": "Dur",
+    "abort": "İptal Et",
+
     "emptyFieldMessage": "Alan boş bırakılamaz.",
     "invalidEmailMessage": "E-posta formatı uygun değil.",
     "invalidEmailDomainMessage": "E-posta alanı uygun değil.",
