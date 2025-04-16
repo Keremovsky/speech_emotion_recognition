@@ -59,6 +59,10 @@
     "stop": "Stop",
     "abort": "Abort",
 
+    "lightColorIsYourResult": "Light color your result, dark color what it should be.",
+    "yourScoreIs": "Your score is",
+    "andAverageIs": "and average is",
+
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",
     "invalidEmailDomainMessage": "E-mail domain is not valid.",

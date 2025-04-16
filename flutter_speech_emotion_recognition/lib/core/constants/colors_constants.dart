@@ -40,4 +40,12 @@ class ColorConstants {
 
   static const darkBoxColor = Color.fromRGBO(32, 32, 32, 1);
   static const lightBoxColor = Color.fromRGBO(220, 220, 220, 1);
+
+  static const userPerformanceHappyColor = Color.fromRGBO(226, 0, 185, 1);
+  static const userPerformanceAngryColor = Color.fromRGBO(225, 0, 0, 1);
+  static const userPerformanceSadColor = Color.fromRGBO(8, 180, 227, 1);
+  static const userPerformanceNeutralColor = Color.fromRGBO(183, 183, 183, 1);
+  static const userPerformanceFearColor = Color.fromRGBO(239, 232, 22, 1);
+  static const userPerformanceDisgustColor = Color.fromRGBO(26, 212, 32, 1);
+  static const userPerformanceSurpriseColor = Color.fromRGBO(158, 24, 235, 1);
 }

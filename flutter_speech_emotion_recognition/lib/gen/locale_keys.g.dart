@@ -51,6 +51,9 @@ abstract class  LocaleKeys {
   static const details = 'details';
   static const stop = 'stop';
   static const abort = 'abort';
+  static const lightColorIsYourResult = 'lightColorIsYourResult';
+  static const yourScoreIs = 'yourScoreIs';
+  static const andAverageIs = 'andAverageIs';
   static const emptyFieldMessage = 'emptyFieldMessage';
   static const invalidEmailMessage = 'invalidEmailMessage';
   static const invalidEmailDomainMessage = 'invalidEmailDomainMessage';

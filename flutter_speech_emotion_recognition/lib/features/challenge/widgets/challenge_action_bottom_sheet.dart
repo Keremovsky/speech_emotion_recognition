@@ -1,11 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/audio_recorder.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/count_down_timer.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/result_chart.dart';
 
-class ChallengeActionBottomSheet extends StatelessWidget {
+class ChallengeActionBottomSheet extends StatefulWidget {
   final String title;
   final String sentence;
 
@@ -14,6 +17,14 @@ class ChallengeActionBottomSheet extends StatelessWidget {
     required this.title,
     required this.sentence,
   });
+
+  @override
+  State<ChallengeActionBottomSheet> createState() =>
+      _ChallengeActionBottomSheetState();
+}
+
+class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet> {
+  bool isFinished = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +36,25 @@ class ChallengeActionBottomSheet extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: context.titleMedium),
+            Text(widget.title, style: context.titleMedium),
             SizedBox(height: 12.h),
-            Text(sentence, style: context.displayLarge),
-            CountDownTimer(time: 3, finishedWidget: AudioRecorder()),
+            isFinished
+                ? SizedBox()
+                : Text(widget.sentence, style: context.displayLarge),
+            CountDownTimer(
+              time: 3,
+              finishedWidget:
+                  isFinished
+                      ? ResultChart()
+                      : AudioRecorder(
+                        onFinished: () {
+                          log("recording finished");
+                          setState(() {
+                            isFinished = true;
+                          });
+                        },
+                      ),
+            ),
           ],
         ),
       ),

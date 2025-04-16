@@ -12,8 +12,9 @@ import 'package:provider/provider.dart';
 class AudioRecorder extends StatefulWidget {
   final double? height;
   final double? width;
+  final VoidCallback? onFinished;
 
-  const AudioRecorder({super.key, this.height, this.width});
+  const AudioRecorder({super.key, this.height, this.width, this.onFinished});
 
   @override
   State<AudioRecorder> createState() => _AudioRecorderState();
@@ -59,6 +60,9 @@ class _AudioRecorderState extends State<AudioRecorder> {
               onPressed: () async {
                 await _recorderController.stop(false);
                 // TODO: implement challenge upload and analysis logic
+                if (widget.onFinished != null) {
+                  widget.onFinished!();
+                }
               },
               child: Text(LocaleKeys.stop.tr()),
             ),

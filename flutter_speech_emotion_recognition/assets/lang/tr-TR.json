@@ -60,6 +60,10 @@
     "stop": "Dur",
     "abort": "İptal Et",
 
+    "lightColorIsYourResult": "Açık renk sizin sonucunuz, koyu renk ise olması gereken.",
+    "yourScoreIs": "Skorunuz",
+    "andAverageIs": "ve ortalama skor",
+
     "emptyFieldMessage": "Alan boş bırakılamaz.",
     "invalidEmailMessage": "E-posta formatı uygun değil.",
     "invalidEmailDomainMessage": "E-posta alanı uygun değil.",
