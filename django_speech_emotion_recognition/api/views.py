@@ -1,13 +1,22 @@
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework import viewsets
+from .models import User, Challenge, ChallengeHistory
+from .serializers import (
+    UserSerializer,
+    ChallengeSerializer,
+    ChallengeHistorySerializer,
+)
 
 
-# Create your views here.
-@api_view(["GET"])
-def hello(request):
-    return Response({"message": "Hello from API!"})
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
-@api_view(["GET"])
-def bye(request):
-    return Response({"message": "Goodbye from API!"})
+class ChallengeViewSet(viewsets.ModelViewSet):
+    queryset = Challenge.objects.all()
+    serializer_class = ChallengeSerializer
+
+
+class CHallengeHistoryViewSet(viewsets.ModelViewSet):
+    queryset = ChallengeHistory.objects.all()
+    serializer_class = ChallengeHistorySerializer

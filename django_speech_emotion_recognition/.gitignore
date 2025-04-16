@@ -136,3 +136,8 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# custom files
+profile_pics/
+challenge_recordings/
+user_recordings/
