@@ -63,6 +63,16 @@
     "yourScoreIs": "Your score is",
     "andAverageIs": "and average is",
 
+    "emotionShort": {
+        "happy":"Happ",
+        "angry":"Angr",
+        "sad":"Sad",
+        "neutral":"Neut",
+        "fear":"Fear",
+        "disgust":"Disg",
+        "surprise":"Surp"
+    },
+
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",
     "invalidEmailDomainMessage": "E-mail domain is not valid.",

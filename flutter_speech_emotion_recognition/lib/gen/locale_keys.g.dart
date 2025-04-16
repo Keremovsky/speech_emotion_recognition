@@ -54,6 +54,14 @@ abstract class  LocaleKeys {
   static const lightColorIsYourResult = 'lightColorIsYourResult';
   static const yourScoreIs = 'yourScoreIs';
   static const andAverageIs = 'andAverageIs';
+  static const emotionShort_happy = 'emotionShort.happy';
+  static const emotionShort_angry = 'emotionShort.angry';
+  static const emotionShort_sad = 'emotionShort.sad';
+  static const emotionShort_neutral = 'emotionShort.neutral';
+  static const emotionShort_fear = 'emotionShort.fear';
+  static const emotionShort_disgust = 'emotionShort.disgust';
+  static const emotionShort_surprise = 'emotionShort.surprise';
+  static const emotionShort = 'emotionShort';
   static const emptyFieldMessage = 'emptyFieldMessage';
   static const invalidEmailMessage = 'invalidEmailMessage';
   static const invalidEmailDomainMessage = 'invalidEmailDomainMessage';

@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
+import 'package:flutter_speech_emotion_recognition/core/constants/font_size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/color_extension.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
@@ -16,29 +17,39 @@ class ResultChart extends StatefulWidget {
 }
 
 class _ResultChartState extends State<ResultChart> {
+  final List<Color> _emotionColor = [
+    ColorConstants.userPerformanceHappyColor,
+    ColorConstants.userPerformanceAngryColor,
+    ColorConstants.userPerformanceSadColor,
+    ColorConstants.userPerformanceNeutralColor,
+    ColorConstants.userPerformanceFearColor,
+    ColorConstants.userPerformanceDisgustColor,
+    ColorConstants.userPerformanceSurpriseColor,
+  ];
+
   Widget _bottomTitles(double value, TitleMeta meta) {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = 'Happ';
+        text = LocaleKeys.emotionShort_happy.tr();
         break;
       case 1:
-        text = 'Angr';
+        text = LocaleKeys.emotionShort_angry.tr();
         break;
       case 2:
-        text = 'Sad';
+        text = LocaleKeys.emotionShort_sad.tr();
         break;
       case 3:
-        text = 'Neut';
+        text = LocaleKeys.emotionShort_neutral.tr();
         break;
       case 4:
-        text = 'Fear';
+        text = LocaleKeys.emotionShort_fear.tr();
         break;
       case 5:
-        text = 'Disg';
+        text = LocaleKeys.emotionShort_disgust.tr();
         break;
       case 6:
-        text = 'Surp';
+        text = LocaleKeys.emotionShort_surprise.tr();
         break;
       default:
         text = '';
@@ -46,7 +57,7 @@ class _ResultChartState extends State<ResultChart> {
     }
     return SideTitleWidget(
       meta: meta,
-      child: Text(text, style: context.displaySmall?.copyWith(fontSize: 12)),
+      child: Text(text, style: context.displaySmall?.copyWith(fontSize: 12.r)),
     );
   }
 
@@ -64,13 +75,39 @@ class _ResultChartState extends State<ResultChart> {
     );
   }
 
+  BarTouchData _getBarTouchData() {
+    return BarTouchData(
+      enabled: true,
+      touchTooltipData: BarTouchTooltipData(
+        getTooltipColor: (group) => Colors.transparent,
+        tooltipPadding: EdgeInsets.zero,
+        tooltipMargin: 2.h,
+        getTooltipItem: (
+          BarChartGroupData group,
+          int groupIndex,
+          BarChartRodData rod,
+          int rodIndex,
+        ) {
+          return BarTooltipItem(
+            rod.toY.round().toString(),
+            TextStyle(
+              color: _emotionColor[groupIndex],
+              fontWeight: FontWeight.bold,
+              fontSize: FontSizeConstants.fontSize16,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Center(
           child: Text(
-            "${LocaleKeys.yourScoreIs.tr()} 87.25 ${LocaleKeys.andAverageIs.tr()} 71.09.",
+            "${LocaleKeys.yourScoreIs.tr()} 87.25 ${LocaleKeys.andAverageIs.tr()} 71.09",
             style: context.displayLarge,
           ),
         ),
@@ -86,20 +123,20 @@ class _ResultChartState extends State<ResultChart> {
                 BarChartData(
                   maxY: 101,
                   alignment: BarChartAlignment.center,
-                  barTouchData: BarTouchData(enabled: false),
+                  barTouchData: _getBarTouchData(),
                   titlesData: FlTitlesData(
                     show: true,
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
-                        reservedSize: 28,
+                        reservedSize: 32.r,
                         getTitlesWidget: _bottomTitles,
                       ),
                     ),
                     leftTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
-                        reservedSize: 28,
+                        reservedSize: 32.r,
                         getTitlesWidget: _leftTitles,
                       ),
                     ),
@@ -144,6 +181,12 @@ class _ResultChartState extends State<ResultChart> {
 
   List<BarChartGroupData> _getBarGroups(double barsWidth, double barsSpace) {
     // ! stack item with lower value must be at the bottom
+
+    final BorderRadius borderRadius = BorderRadius.only(
+      topLeft: Radius.circular(6.r),
+      topRight: Radius.circular(6.r),
+    );
+
     return [
       BarChartGroupData(
         x: 0,
@@ -159,7 +202,7 @@ class _ResultChartState extends State<ResultChart> {
               ),
               BarChartRodStackItem(0, 1.5, ColorConstants.userPerformanceHappyColor),
             ],
-            borderRadius: BorderRadius.zero,
+            borderRadius: borderRadius,
             width: barsWidth,
           ),
         ],
@@ -178,7 +221,7 @@ class _ResultChartState extends State<ResultChart> {
               ),
               BarChartRodStackItem(0, 1.5, ColorConstants.userPerformanceAngryColor),
             ],
-            borderRadius: BorderRadius.zero,
+            borderRadius: borderRadius,
             width: barsWidth,
           ),
         ],
@@ -197,7 +240,7 @@ class _ResultChartState extends State<ResultChart> {
               ),
               BarChartRodStackItem(0, 55, ColorConstants.userPerformanceSadColor),
             ],
-            borderRadius: BorderRadius.zero,
+            borderRadius: borderRadius,
             width: barsWidth,
           ),
         ],
@@ -220,7 +263,7 @@ class _ResultChartState extends State<ResultChart> {
                 ColorConstants.userPerformanceNeutralColor,
               ),
             ],
-            borderRadius: BorderRadius.zero,
+            borderRadius: borderRadius,
             width: barsWidth,
           ),
         ],
@@ -239,7 +282,7 @@ class _ResultChartState extends State<ResultChart> {
               ),
               BarChartRodStackItem(0, 37, ColorConstants.userPerformanceFearColor),
             ],
-            borderRadius: BorderRadius.zero,
+            borderRadius: borderRadius,
             width: barsWidth,
           ),
         ],
@@ -262,7 +305,7 @@ class _ResultChartState extends State<ResultChart> {
                 ColorConstants.userPerformanceDisgustColor,
               ),
             ],
-            borderRadius: BorderRadius.zero,
+            borderRadius: borderRadius,
             width: barsWidth,
           ),
         ],
@@ -285,7 +328,7 @@ class _ResultChartState extends State<ResultChart> {
                 ColorConstants.userPerformanceSurpriseColor,
               ),
             ],
-            borderRadius: BorderRadius.zero,
+            borderRadius: borderRadius,
             width: barsWidth,
           ),
         ],

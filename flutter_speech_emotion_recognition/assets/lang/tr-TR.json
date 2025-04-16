@@ -64,6 +64,16 @@
     "yourScoreIs": "Skorunuz",
     "andAverageIs": "ve ortalama skor",
 
+    "emotionShort": {
+        "happy":"Mut",
+        "angry":"Kız",
+        "sad":"Üzg",
+        "neutral":"Norm",
+        "fear":"Kork",
+        "disgust":"İğren",
+        "surprise":"Süpr"
+    },
+
     "emptyFieldMessage": "Alan boş bırakılamaz.",
     "invalidEmailMessage": "E-posta formatı uygun değil.",
     "invalidEmailDomainMessage": "E-posta alanı uygun değil.",
