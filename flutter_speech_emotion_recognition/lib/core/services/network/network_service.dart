@@ -57,20 +57,21 @@ class NetworkService implements INetworkService {
   }
 
   @override
-  Future<Either<ConnectionFailureModel, Response<Map<String, dynamic>>>> get(String url) async {
+  Future<Either<ConnectionFailureModel, Response<dynamic>>> get(String url) async {
     return await _doRequest(() => _dio.get(url));
   }
 
   @override
-  Future<Either<ConnectionFailureModel, Response<Map<String, dynamic>>>> post(
+  Future<Either<ConnectionFailureModel, Response<dynamic>>> post(
     String url, {
     required dynamic data,
   }) async {
     return await _doRequest(() => _dio.post(url, data: data));
   }
 
-  Future<Either<ConnectionFailureModel, Response<Map<String, dynamic>>>> _doRequest(
-      AsyncValueGetter<Response<Map<String, dynamic>>> operation) async {
+  Future<Either<ConnectionFailureModel, Response<dynamic>>> _doRequest(
+    AsyncValueGetter<Response<dynamic>> operation,
+  ) async {
     try {
       if (await _connectivityService.isConnected) {
         final result = await operation();
@@ -78,16 +79,20 @@ class NetworkService implements INetworkService {
         if (!result.isSuccess) {
           log(result.data.toString());
           return Left(
-            ConnectionFailureModel.responseError(result.data?["message"] as String? ?? ""),
+            ConnectionFailureModel.responseError(
+              result.data?["message"] as String? ?? "",
+            ),
           );
         }
 
         return Right(result);
       } else {
-        return const Left(ConnectionFailureModel.noConnection("No connection"));
+        return const Left(ConnectionFailureModel.noConnection("No connection."));
       }
     } on TimeoutException {
-      return const Left(ConnectionFailureModel.connectionTimedOut("Connection is timed out"));
+      return const Left(
+        ConnectionFailureModel.connectionTimedOut("Connection is timed out."),
+      );
     } on DioException catch (e) {
       log(e.message ?? "");
       return Left(ConnectionFailureModel.responseError(e.message ?? ""));
