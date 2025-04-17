@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChallengeModel implements DiagnosticableTreeMixin {
 
- int get id; String get title; String get description; String get sentence; String get level; double get average; List<double> get emotions;@Base64Uint8ListConverter() Uint8List get audioData;
+ int get id; String get title; String get description; String get sentence; int get level; double get average; List<double> get emotions;@Base64Uint8ListConverter() Uint8List get recording;
 /// Create a copy of ChallengeModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,21 +30,21 @@ $ChallengeModelCopyWith<ChallengeModel> get copyWith => _$ChallengeModelCopyWith
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChallengeModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('sentence', sentence))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('average', average))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('audioData', audioData));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('sentence', sentence))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('average', average))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('recording', recording));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.sentence, sentence) || other.sentence == sentence)&&(identical(other.level, level) || other.level == level)&&(identical(other.average, average) || other.average == average)&&const DeepCollectionEquality().equals(other.emotions, emotions)&&const DeepCollectionEquality().equals(other.audioData, audioData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.sentence, sentence) || other.sentence == sentence)&&(identical(other.level, level) || other.level == level)&&(identical(other.average, average) || other.average == average)&&const DeepCollectionEquality().equals(other.emotions, emotions)&&const DeepCollectionEquality().equals(other.recording, recording));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,description,sentence,level,average,const DeepCollectionEquality().hash(emotions),const DeepCollectionEquality().hash(audioData));
+int get hashCode => Object.hash(runtimeType,id,title,description,sentence,level,average,const DeepCollectionEquality().hash(emotions),const DeepCollectionEquality().hash(recording));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChallengeModel(id: $id, title: $title, description: $description, sentence: $sentence, level: $level, average: $average, emotions: $emotions, audioData: $audioData)';
+  return 'ChallengeModel(id: $id, title: $title, description: $description, sentence: $sentence, level: $level, average: $average, emotions: $emotions, recording: $recording)';
 }
 
 
@@ -55,7 +55,7 @@ abstract mixin class $ChallengeModelCopyWith<$Res>  {
   factory $ChallengeModelCopyWith(ChallengeModel value, $Res Function(ChallengeModel) _then) = _$ChallengeModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String title, String description, String sentence, String level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List audioData
+ int id, String title, String description, String sentence, int level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List recording
 });
 
 
@@ -72,16 +72,16 @@ class _$ChallengeModelCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? description = null,Object? sentence = null,Object? level = null,Object? average = null,Object? emotions = null,Object? audioData = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? title = null,Object? description = null,Object? sentence = null,Object? level = null,Object? average = null,Object? emotions = null,Object? recording = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sentence: null == sentence ? _self.sentence : sentence // ignore: cast_nullable_to_non_nullable
 as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as String,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
+as int,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
 as double,emotions: null == emotions ? _self.emotions : emotions // ignore: cast_nullable_to_non_nullable
-as List<double>,audioData: null == audioData ? _self.audioData : audioData // ignore: cast_nullable_to_non_nullable
+as List<double>,recording: null == recording ? _self.recording : recording // ignore: cast_nullable_to_non_nullable
 as Uint8List,
   ));
 }
@@ -93,14 +93,14 @@ as Uint8List,
 @JsonSerializable()
 
 class _ChallengeModel with DiagnosticableTreeMixin implements ChallengeModel {
-  const _ChallengeModel({required this.id, required this.title, required this.description, required this.sentence, required this.level, required this.average, required final  List<double> emotions, @Base64Uint8ListConverter() required this.audioData}): _emotions = emotions;
+  const _ChallengeModel({required this.id, required this.title, required this.description, required this.sentence, required this.level, required this.average, required final  List<double> emotions, @Base64Uint8ListConverter() required this.recording}): _emotions = emotions;
   factory _ChallengeModel.fromJson(Map<String, dynamic> json) => _$ChallengeModelFromJson(json);
 
 @override final  int id;
 @override final  String title;
 @override final  String description;
 @override final  String sentence;
-@override final  String level;
+@override final  int level;
 @override final  double average;
  final  List<double> _emotions;
 @override List<double> get emotions {
@@ -109,7 +109,7 @@ class _ChallengeModel with DiagnosticableTreeMixin implements ChallengeModel {
   return EqualUnmodifiableListView(_emotions);
 }
 
-@override@Base64Uint8ListConverter() final  Uint8List audioData;
+@override@Base64Uint8ListConverter() final  Uint8List recording;
 
 /// Create a copy of ChallengeModel
 /// with the given fields replaced by the non-null parameter values.
@@ -125,21 +125,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChallengeModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('sentence', sentence))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('average', average))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('audioData', audioData));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('title', title))..add(DiagnosticsProperty('description', description))..add(DiagnosticsProperty('sentence', sentence))..add(DiagnosticsProperty('level', level))..add(DiagnosticsProperty('average', average))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('recording', recording));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.sentence, sentence) || other.sentence == sentence)&&(identical(other.level, level) || other.level == level)&&(identical(other.average, average) || other.average == average)&&const DeepCollectionEquality().equals(other._emotions, _emotions)&&const DeepCollectionEquality().equals(other.audioData, audioData));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeModel&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.description, description) || other.description == description)&&(identical(other.sentence, sentence) || other.sentence == sentence)&&(identical(other.level, level) || other.level == level)&&(identical(other.average, average) || other.average == average)&&const DeepCollectionEquality().equals(other._emotions, _emotions)&&const DeepCollectionEquality().equals(other.recording, recording));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,title,description,sentence,level,average,const DeepCollectionEquality().hash(_emotions),const DeepCollectionEquality().hash(audioData));
+int get hashCode => Object.hash(runtimeType,id,title,description,sentence,level,average,const DeepCollectionEquality().hash(_emotions),const DeepCollectionEquality().hash(recording));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChallengeModel(id: $id, title: $title, description: $description, sentence: $sentence, level: $level, average: $average, emotions: $emotions, audioData: $audioData)';
+  return 'ChallengeModel(id: $id, title: $title, description: $description, sentence: $sentence, level: $level, average: $average, emotions: $emotions, recording: $recording)';
 }
 
 
@@ -150,7 +150,7 @@ abstract mixin class _$ChallengeModelCopyWith<$Res> implements $ChallengeModelCo
   factory _$ChallengeModelCopyWith(_ChallengeModel value, $Res Function(_ChallengeModel) _then) = __$ChallengeModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String title, String description, String sentence, String level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List audioData
+ int id, String title, String description, String sentence, int level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List recording
 });
 
 
@@ -167,16 +167,16 @@ class __$ChallengeModelCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? description = null,Object? sentence = null,Object? level = null,Object? average = null,Object? emotions = null,Object? audioData = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? title = null,Object? description = null,Object? sentence = null,Object? level = null,Object? average = null,Object? emotions = null,Object? recording = null,}) {
   return _then(_ChallengeModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sentence: null == sentence ? _self.sentence : sentence // ignore: cast_nullable_to_non_nullable
 as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as String,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
+as int,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
 as double,emotions: null == emotions ? _self._emotions : emotions // ignore: cast_nullable_to_non_nullable
-as List<double>,audioData: null == audioData ? _self.audioData : audioData // ignore: cast_nullable_to_non_nullable
+as List<double>,recording: null == recording ? _self.recording : recording // ignore: cast_nullable_to_non_nullable
 as Uint8List,
   ));
 }

@@ -13,10 +13,10 @@ abstract class ChallengeModel with _$ChallengeModel {
     required final String title,
     required final String description,
     required final String sentence,
-    required final String level,
+    required final int level,
     required final double average,
     required final List<double> emotions,
-    @Base64Uint8ListConverter() required final Uint8List audioData,
+    @Base64Uint8ListConverter() required final Uint8List recording,
   }) = _ChallengeModel;
 
   factory ChallengeModel.fromJson(Map<String, Object?> json) =>

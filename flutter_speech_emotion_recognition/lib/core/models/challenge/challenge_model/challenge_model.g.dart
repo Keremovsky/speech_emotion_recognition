@@ -12,14 +12,14 @@ _ChallengeModel _$ChallengeModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       description: json['description'] as String,
       sentence: json['sentence'] as String,
-      level: json['level'] as String,
+      level: (json['level'] as num).toInt(),
       average: (json['average'] as num).toDouble(),
       emotions:
           (json['emotions'] as List<dynamic>)
               .map((e) => (e as num).toDouble())
               .toList(),
-      audioData: const Base64Uint8ListConverter().fromJson(
-        json['audioData'] as String,
+      recording: const Base64Uint8ListConverter().fromJson(
+        json['recording'] as String,
       ),
     );
 
@@ -32,5 +32,5 @@ Map<String, dynamic> _$ChallengeModelToJson(_ChallengeModel instance) =>
       'level': instance.level,
       'average': instance.average,
       'emotions': instance.emotions,
-      'audioData': const Base64Uint8ListConverter().toJson(instance.audioData),
+      'recording': const Base64Uint8ListConverter().toJson(instance.recording),
     };
