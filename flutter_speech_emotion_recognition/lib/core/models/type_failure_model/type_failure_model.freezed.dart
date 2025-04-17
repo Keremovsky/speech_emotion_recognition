@@ -4,7 +4,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'value_failure_model.dart';
+part of 'type_failure_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,26 +13,26 @@ part of 'value_failure_model.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$ValueFailureModel implements DiagnosticableTreeMixin {
+mixin _$TypeFailureModel implements DiagnosticableTreeMixin {
 
  String get message;
-/// Create a copy of ValueFailureModel
+/// Create a copy of TypeFailureModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ValueFailureModelCopyWith<ValueFailureModel> get copyWith => _$ValueFailureModelCopyWithImpl<ValueFailureModel>(this as ValueFailureModel, _$identity);
+$TypeFailureModelCopyWith<TypeFailureModel> get copyWith => _$TypeFailureModelCopyWithImpl<TypeFailureModel>(this as TypeFailureModel, _$identity);
 
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'ValueFailureModel'))
+    ..add(DiagnosticsProperty('type', 'TypeFailureModel'))
     ..add(DiagnosticsProperty('message', message));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ValueFailureModel&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TypeFailureModel&&(identical(other.message, message) || other.message == message));
 }
 
 
@@ -41,15 +41,15 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ValueFailureModel(message: $message)';
+  return 'TypeFailureModel(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ValueFailureModelCopyWith<$Res>  {
-  factory $ValueFailureModelCopyWith(ValueFailureModel value, $Res Function(ValueFailureModel) _then) = _$ValueFailureModelCopyWithImpl;
+abstract mixin class $TypeFailureModelCopyWith<$Res>  {
+  factory $TypeFailureModelCopyWith(TypeFailureModel value, $Res Function(TypeFailureModel) _then) = _$TypeFailureModelCopyWithImpl;
 @useResult
 $Res call({
  String message
@@ -60,14 +60,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$ValueFailureModelCopyWithImpl<$Res>
-    implements $ValueFailureModelCopyWith<$Res> {
-  _$ValueFailureModelCopyWithImpl(this._self, this._then);
+class _$TypeFailureModelCopyWithImpl<$Res>
+    implements $TypeFailureModelCopyWith<$Res> {
+  _$TypeFailureModelCopyWithImpl(this._self, this._then);
 
-  final ValueFailureModel _self;
-  final $Res Function(ValueFailureModel) _then;
+  final TypeFailureModel _self;
+  final $Res Function(TypeFailureModel) _then;
 
-/// Create a copy of ValueFailureModel
+/// Create a copy of TypeFailureModel
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? message = null,}) {
   return _then(_self.copyWith(
@@ -82,29 +82,29 @@ as String,
 /// @nodoc
 
 
-class _InvalidInput extends ValueFailureModel with DiagnosticableTreeMixin {
-  const _InvalidInput(this.message): super._();
+class _InvalidType extends TypeFailureModel with DiagnosticableTreeMixin {
+  const _InvalidType(this.message): super._();
   
 
 @override final  String message;
 
-/// Create a copy of ValueFailureModel
+/// Create a copy of TypeFailureModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$InvalidInputCopyWith<_InvalidInput> get copyWith => __$InvalidInputCopyWithImpl<_InvalidInput>(this, _$identity);
+_$InvalidTypeCopyWith<_InvalidType> get copyWith => __$InvalidTypeCopyWithImpl<_InvalidType>(this, _$identity);
 
 
 @override
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
-    ..add(DiagnosticsProperty('type', 'ValueFailureModel.invalidInput'))
+    ..add(DiagnosticsProperty('type', 'TypeFailureModel.invalidType'))
     ..add(DiagnosticsProperty('message', message));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InvalidInput&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _InvalidType&&(identical(other.message, message) || other.message == message));
 }
 
 
@@ -113,15 +113,15 @@ int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ValueFailureModel.invalidInput(message: $message)';
+  return 'TypeFailureModel.invalidType(message: $message)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$InvalidInputCopyWith<$Res> implements $ValueFailureModelCopyWith<$Res> {
-  factory _$InvalidInputCopyWith(_InvalidInput value, $Res Function(_InvalidInput) _then) = __$InvalidInputCopyWithImpl;
+abstract mixin class _$InvalidTypeCopyWith<$Res> implements $TypeFailureModelCopyWith<$Res> {
+  factory _$InvalidTypeCopyWith(_InvalidType value, $Res Function(_InvalidType) _then) = __$InvalidTypeCopyWithImpl;
 @override @useResult
 $Res call({
  String message
@@ -132,17 +132,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$InvalidInputCopyWithImpl<$Res>
-    implements _$InvalidInputCopyWith<$Res> {
-  __$InvalidInputCopyWithImpl(this._self, this._then);
+class __$InvalidTypeCopyWithImpl<$Res>
+    implements _$InvalidTypeCopyWith<$Res> {
+  __$InvalidTypeCopyWithImpl(this._self, this._then);
 
-  final _InvalidInput _self;
-  final $Res Function(_InvalidInput) _then;
+  final _InvalidType _self;
+  final $Res Function(_InvalidType) _then;
 
-/// Create a copy of ValueFailureModel
+/// Create a copy of TypeFailureModel
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
-  return _then(_InvalidInput(
+  return _then(_InvalidType(
 null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));

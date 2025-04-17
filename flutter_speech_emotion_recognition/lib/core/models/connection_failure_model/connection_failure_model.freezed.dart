@@ -82,8 +82,8 @@ as String,
 /// @nodoc
 
 
-class _UnknownError with DiagnosticableTreeMixin implements ConnectionFailureModel {
-  const _UnknownError(this.message);
+class _UnknownError extends ConnectionFailureModel with DiagnosticableTreeMixin {
+  const _UnknownError(this.message): super._();
   
 
 @override final  String message;
@@ -154,8 +154,8 @@ as String,
 /// @nodoc
 
 
-class _NoConnection with DiagnosticableTreeMixin implements ConnectionFailureModel {
-  const _NoConnection(this.message);
+class _NoConnection extends ConnectionFailureModel with DiagnosticableTreeMixin {
+  const _NoConnection(this.message): super._();
   
 
 @override final  String message;
@@ -226,8 +226,8 @@ as String,
 /// @nodoc
 
 
-class _ConnectionTimedOut with DiagnosticableTreeMixin implements ConnectionFailureModel {
-  const _ConnectionTimedOut(this.message);
+class _ConnectionTimedOut extends ConnectionFailureModel with DiagnosticableTreeMixin {
+  const _ConnectionTimedOut(this.message): super._();
   
 
 @override final  String message;
@@ -298,8 +298,8 @@ as String,
 /// @nodoc
 
 
-class _ResponseError with DiagnosticableTreeMixin implements ConnectionFailureModel {
-  const _ResponseError(this.message);
+class _ResponseError extends ConnectionFailureModel with DiagnosticableTreeMixin {
+  const _ResponseError(this.message): super._();
   
 
 @override final  String message;
