@@ -73,3 +73,19 @@ class PostChallengeHistorySerializer(serializers.ModelSerializer):
             "challenge_emotions",
             "emotions",
         ]
+
+
+class ResultModelSerializer(serializers.ModelSerializer):
+    score = serializers.FloatField()
+    average_score = serializers.FloatField(source="challenge.average")
+    challenge_emotions = serializers.JSONField(source="challenge.emotions")
+    emotions = serializers.JSONField()
+
+    class Meta:
+        model = ChallengeHistory
+        fields = [
+            "score",
+            "average_score",
+            "challenge_emotions",
+            "emotions",
+        ]
