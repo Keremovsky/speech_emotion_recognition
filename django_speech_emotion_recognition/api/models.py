@@ -25,6 +25,7 @@ class Challenge(models.Model):
         upload_to="challenge_recordings/", null=True, blank=True
     )
     emotions = models.JSONField(null=True, blank=True)
+    try_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -41,6 +42,7 @@ class ChallengeHistory(models.Model):
     challenge = models.ForeignKey(
         Challenge, on_delete=models.CASCADE, related_name="history"
     )
+    challenge_date = models.DateTimeField(auto_now_add=True)
     user_recording = models.FileField(upload_to=user_recording_upload_path)
     emotions = models.JSONField(null=True, blank=True)
     score = models.FloatField()
