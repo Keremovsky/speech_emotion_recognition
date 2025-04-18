@@ -10,7 +10,6 @@ part 'challenge_history_model.g.dart';
 abstract class ChallengeHistoryModel with _$ChallengeHistoryModel {
   const factory ChallengeHistoryModel({
     required final int id,
-    required final int user,
     required final int challenge,
     required final double score,
     required final List<double> emotions,

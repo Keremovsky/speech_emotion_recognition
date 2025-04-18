@@ -10,7 +10,6 @@ _ChallengeHistoryModel _$ChallengeHistoryModelFromJson(
   Map<String, dynamic> json,
 ) => _ChallengeHistoryModel(
   id: (json['id'] as num).toInt(),
-  user: (json['user'] as num).toInt(),
   challenge: (json['challenge'] as num).toInt(),
   score: (json['score'] as num).toDouble(),
   emotions:
@@ -26,7 +25,6 @@ Map<String, dynamic> _$ChallengeHistoryModelToJson(
   _ChallengeHistoryModel instance,
 ) => <String, dynamic>{
   'id': instance.id,
-  'user': instance.user,
   'challenge': instance.challenge,
   'score': instance.score,
   'emotions': instance.emotions,

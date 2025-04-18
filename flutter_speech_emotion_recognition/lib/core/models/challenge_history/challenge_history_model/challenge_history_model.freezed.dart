@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChallengeHistoryModel implements DiagnosticableTreeMixin {
 
- int get id; int get user; int get challenge; double get score; List<double> get emotions;@Base64Uint8ListConverter() Uint8List get user_recording;
+ int get id; int get challenge; double get score; List<double> get emotions;@Base64Uint8ListConverter() Uint8List get user_recording;
 /// Create a copy of ChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -30,21 +30,21 @@ $ChallengeHistoryModelCopyWith<ChallengeHistoryModel> get copyWith => _$Challeng
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChallengeHistoryModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('user', user))..add(DiagnosticsProperty('challenge', challenge))..add(DiagnosticsProperty('score', score))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('user_recording', user_recording));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('challenge', challenge))..add(DiagnosticsProperty('score', score))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('user_recording', user_recording));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeHistoryModel&&(identical(other.id, id) || other.id == id)&&(identical(other.user, user) || other.user == user)&&(identical(other.challenge, challenge) || other.challenge == challenge)&&(identical(other.score, score) || other.score == score)&&const DeepCollectionEquality().equals(other.emotions, emotions)&&const DeepCollectionEquality().equals(other.user_recording, user_recording));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChallengeHistoryModel&&(identical(other.id, id) || other.id == id)&&(identical(other.challenge, challenge) || other.challenge == challenge)&&(identical(other.score, score) || other.score == score)&&const DeepCollectionEquality().equals(other.emotions, emotions)&&const DeepCollectionEquality().equals(other.user_recording, user_recording));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,user,challenge,score,const DeepCollectionEquality().hash(emotions),const DeepCollectionEquality().hash(user_recording));
+int get hashCode => Object.hash(runtimeType,id,challenge,score,const DeepCollectionEquality().hash(emotions),const DeepCollectionEquality().hash(user_recording));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChallengeHistoryModel(id: $id, user: $user, challenge: $challenge, score: $score, emotions: $emotions, user_recording: $user_recording)';
+  return 'ChallengeHistoryModel(id: $id, challenge: $challenge, score: $score, emotions: $emotions, user_recording: $user_recording)';
 }
 
 
@@ -55,7 +55,7 @@ abstract mixin class $ChallengeHistoryModelCopyWith<$Res>  {
   factory $ChallengeHistoryModelCopyWith(ChallengeHistoryModel value, $Res Function(ChallengeHistoryModel) _then) = _$ChallengeHistoryModelCopyWithImpl;
 @useResult
 $Res call({
- int id, int user, int challenge, double score, List<double> emotions,@Base64Uint8ListConverter() Uint8List user_recording
+ int id, int challenge, double score, List<double> emotions,@Base64Uint8ListConverter() Uint8List user_recording
 });
 
 
@@ -72,10 +72,9 @@ class _$ChallengeHistoryModelCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? user = null,Object? challenge = null,Object? score = null,Object? emotions = null,Object? user_recording = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? challenge = null,Object? score = null,Object? emotions = null,Object? user_recording = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as int,challenge: null == challenge ? _self.challenge : challenge // ignore: cast_nullable_to_non_nullable
 as int,score: null == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
 as double,emotions: null == emotions ? _self.emotions : emotions // ignore: cast_nullable_to_non_nullable
@@ -91,11 +90,10 @@ as Uint8List,
 @JsonSerializable()
 
 class _ChallengeHistoryModel with DiagnosticableTreeMixin implements ChallengeHistoryModel {
-  const _ChallengeHistoryModel({required this.id, required this.user, required this.challenge, required this.score, required final  List<double> emotions, @Base64Uint8ListConverter() required this.user_recording}): _emotions = emotions;
+  const _ChallengeHistoryModel({required this.id, required this.challenge, required this.score, required final  List<double> emotions, @Base64Uint8ListConverter() required this.user_recording}): _emotions = emotions;
   factory _ChallengeHistoryModel.fromJson(Map<String, dynamic> json) => _$ChallengeHistoryModelFromJson(json);
 
 @override final  int id;
-@override final  int user;
 @override final  int challenge;
 @override final  double score;
  final  List<double> _emotions;
@@ -121,21 +119,21 @@ Map<String, dynamic> toJson() {
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'ChallengeHistoryModel'))
-    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('user', user))..add(DiagnosticsProperty('challenge', challenge))..add(DiagnosticsProperty('score', score))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('user_recording', user_recording));
+    ..add(DiagnosticsProperty('id', id))..add(DiagnosticsProperty('challenge', challenge))..add(DiagnosticsProperty('score', score))..add(DiagnosticsProperty('emotions', emotions))..add(DiagnosticsProperty('user_recording', user_recording));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeHistoryModel&&(identical(other.id, id) || other.id == id)&&(identical(other.user, user) || other.user == user)&&(identical(other.challenge, challenge) || other.challenge == challenge)&&(identical(other.score, score) || other.score == score)&&const DeepCollectionEquality().equals(other._emotions, _emotions)&&const DeepCollectionEquality().equals(other.user_recording, user_recording));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChallengeHistoryModel&&(identical(other.id, id) || other.id == id)&&(identical(other.challenge, challenge) || other.challenge == challenge)&&(identical(other.score, score) || other.score == score)&&const DeepCollectionEquality().equals(other._emotions, _emotions)&&const DeepCollectionEquality().equals(other.user_recording, user_recording));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,user,challenge,score,const DeepCollectionEquality().hash(_emotions),const DeepCollectionEquality().hash(user_recording));
+int get hashCode => Object.hash(runtimeType,id,challenge,score,const DeepCollectionEquality().hash(_emotions),const DeepCollectionEquality().hash(user_recording));
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'ChallengeHistoryModel(id: $id, user: $user, challenge: $challenge, score: $score, emotions: $emotions, user_recording: $user_recording)';
+  return 'ChallengeHistoryModel(id: $id, challenge: $challenge, score: $score, emotions: $emotions, user_recording: $user_recording)';
 }
 
 
@@ -146,7 +144,7 @@ abstract mixin class _$ChallengeHistoryModelCopyWith<$Res> implements $Challenge
   factory _$ChallengeHistoryModelCopyWith(_ChallengeHistoryModel value, $Res Function(_ChallengeHistoryModel) _then) = __$ChallengeHistoryModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, int user, int challenge, double score, List<double> emotions,@Base64Uint8ListConverter() Uint8List user_recording
+ int id, int challenge, double score, List<double> emotions,@Base64Uint8ListConverter() Uint8List user_recording
 });
 
 
@@ -163,10 +161,9 @@ class __$ChallengeHistoryModelCopyWithImpl<$Res>
 
 /// Create a copy of ChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? user = null,Object? challenge = null,Object? score = null,Object? emotions = null,Object? user_recording = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? challenge = null,Object? score = null,Object? emotions = null,Object? user_recording = null,}) {
   return _then(_ChallengeHistoryModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
 as int,challenge: null == challenge ? _self.challenge : challenge // ignore: cast_nullable_to_non_nullable
 as int,score: null == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
 as double,emotions: null == emotions ? _self._emotions : emotions // ignore: cast_nullable_to_non_nullable
