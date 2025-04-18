@@ -55,7 +55,7 @@ class ChallengeViewSet(viewsets.ModelViewSet):
 
 class ChallengeHistoryViewSet(viewsets.ModelViewSet):
     queryset = ChallengeHistory.objects.all()
-    http_method_names = ["get", "post"]
+    http_method_names = ["get"]
 
     def get_serializer_class(self):
         if self.action == "pre":
@@ -64,10 +64,11 @@ class ChallengeHistoryViewSet(viewsets.ModelViewSet):
             return PostChallengeHistorySerializer
         return ChallengeHistorySerializer
 
-    @action(detail=True, methods=["get"])
-    def pre(self, request, pk=None):
-        challenge = self.get_object()
-        serializer = self.get_serializer(challenge)
+    @action(detail=False, methods=["get"])
+    def pre(self, request):
+        user = request.user
+        challenge_histories = ChallengeHistory.objects.filter(user=user)
+        serializer = self.get_serializer(challenge_histories, many=True)
         return Response(serializer.data)
 
     @action(detail=True, methods=["get"])
