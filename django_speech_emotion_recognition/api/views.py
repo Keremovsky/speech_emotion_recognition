@@ -1,7 +1,9 @@
-from rest_framework import viewsets
-from .models import User, Challenge, ChallengeHistory
-from rest_framework.decorators import action
+from rest_framework import viewsets, status
+from rest_framework.decorators import action, APIView
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+
+from .models import User, Challenge, ChallengeHistory
 from .serializers import (
     UserSerializer,
     ChallengeSerializer,
@@ -26,9 +28,9 @@ class ChallengeViewSet(viewsets.ModelViewSet):
     http_method_names = ["get"]
 
     def get_serializer_class(self):
-        if self.action in ["pre", "random_pre"]:
+        if self.action in ["pre", "random_pre", "popular_pre"]:
             return PreChallengeSerializer
-        elif self.action == "recording":
+        elif self.action in ["recording"]:
             return RecordingChallengeSerializer
         return ChallengeSerializer
 
@@ -46,6 +48,12 @@ class ChallengeViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
+    @action(detail=False, methods=["get"], url_path="pre/popular")
+    def popular_pre(self, request):
+        queryset = Challenge.objects.order_by("-try_count")[:10]
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
     @action(detail=True, methods=["get"])
     def recording(self, request, pk=None):
         challenge = self.get_object()
@@ -55,7 +63,7 @@ class ChallengeViewSet(viewsets.ModelViewSet):
 
 class ChallengeHistoryViewSet(viewsets.ModelViewSet):
     queryset = ChallengeHistory.objects.all()
-    http_method_names = ["get"]
+    http_method_names = ["get", "post"]
 
     def get_serializer_class(self):
         if self.action == "pre":
@@ -67,12 +75,45 @@ class ChallengeHistoryViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=["get"])
     def pre(self, request):
         user = request.user
-        challenge_histories = ChallengeHistory.objects.filter(user=user)
+        challenge_histories = ChallengeHistory.objects.filter(user=user).order_by(
+            "-challenge_date"
+        )[:20]
         serializer = self.get_serializer(challenge_histories, many=True)
         return Response(serializer.data)
 
     @action(detail=True, methods=["get"])
     def rest(self, request, pk=None):
-        challenge = self.get_object()
-        serializer = self.get_serializer(challenge)
+        challenge_history = self.get_object()
+        serializer = self.get_serializer(challenge_history)
         return Response(serializer.data)
+
+
+class TryChallengeView(APIView):
+    def post(self, request, id):
+        serializer = RecordingChallengeSerializer(data=request.data)
+
+        if serializer.is_valid():
+            user = request.user
+            challenge = get_object_or_404(Challenge, id=id)
+
+            # AI emotion will fill this
+            emotions = {}
+            # score will be calculated based on selected algorithm
+            score = 100.0
+
+            new_challenge_history = ChallengeHistory(
+                user=user,
+                challenge=challenge,
+                score=score,
+                emotions=emotions,
+                user_recording=serializer.validated_data.get("user_recording"),
+            )
+            new_challenge_history.save()
+
+            challenge.try_count += 1
+            challenge.save()
+
+            # return result: score, average_score, challenge_emotions, emotions
+            return Response(True, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
