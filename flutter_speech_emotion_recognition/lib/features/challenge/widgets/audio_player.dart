@@ -3,18 +3,17 @@ import 'dart:io';
 
 import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_speech_emotion_recognition/core/components/custom_loading_indicator.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
-import 'package:flutter_speech_emotion_recognition/core/services/file/file_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:provider/provider.dart';
 
 class AudioPlayer extends StatefulWidget {
-  final File? file;
-  final String? songId;
+  final int challengeId;
 
-  const AudioPlayer({super.key, this.file, this.songId});
+  const AudioPlayer({super.key, required this.challengeId});
 
   @override
   AudioPlayerState createState() => AudioPlayerState();
@@ -22,65 +21,62 @@ class AudioPlayer extends StatefulWidget {
 
 class AudioPlayerState extends State<AudioPlayer> {
   late PlayerController _playerController;
-  late FileService _fileService;
 
-  late File file;
+  File? file;
   bool _isExpanded = false;
   double _bottom = 50;
+  bool _isFileGenerated = false;
+  bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
-    _fileService = context.read<FileService>();
     _playerController = PlayerController();
     _playerController.onCompletion.listen((event) async {
       _toggleAnimation();
     });
-    _fileControl();
   }
 
   @override
   void dispose() {
     _playerController.dispose();
-    _fileService.removeTempFile(file);
     super.dispose();
   }
 
-  void _fileControl() async {
-    if (widget.file != null) {
-      file = widget.file!;
+  Future<void> _fileFetch() async {
+    setState(() {
+      _isLoading = true;
+    });
 
-      final bool isFileExist = await file.exists();
+    final result = await context.read<ChallengeController>().fetchChallengeRecording(
+      widget.challengeId,
+    );
 
-      if (isFileExist) {
-        final int fileLength = await file.length();
+    await result.fold(
+      (error) {
+        setState(() {
+          _isLoading = false;
+        });
+        // TODO: give error feedback
+      },
+      (file) async {
+        file = file;
 
-        if (!(fileLength > 0)) {
-          await _audioDownload();
-        } else {
-          await _playerController.preparePlayer(path: file.path);
+        await _playerController.preparePlayer(path: file.path);
+        log("audio file is written");
 
-          await _playerController.setFinishMode(finishMode: FinishMode.pause);
-        }
-      }
-    } else {
-      await _audioDownload();
-    }
-  }
+        setState(() {
+          _isLoading = false;
+          _isFileGenerated = true;
+        });
 
-  Future<void> _audioDownload() async {
-    // TODO: implement audio fetching with audioId
-    file = await _fileService.generateTempFile("mp3");
+        await _playerController.startPlayer();
 
-    final ByteData audioFile = await rootBundle.load("assets/audio/test.mp3");
+        _toggleAnimation();
 
-    await file.writeAsBytes(audioFile.buffer.asUint8List());
-
-    await _playerController.preparePlayer(path: file.path);
-
-    log("audio file is written");
-
-    await _playerController.setFinishMode(finishMode: FinishMode.pause);
+        await _playerController.setFinishMode(finishMode: FinishMode.pause);
+      },
+    );
   }
 
   void _toggleAnimation() {
@@ -91,22 +87,29 @@ class AudioPlayerState extends State<AudioPlayer> {
   }
 
   Future<void> _onPressed() async {
+    if (_isLoading) {
+      return;
+    }
+
+    if (!_isFileGenerated) {
+      await _fileFetch();
+    }
+
     if (_playerController.playerState.isPlaying) {
       // if player is playing, pause the player
       await _playerController.pausePlayer();
+      _toggleAnimation();
       return;
     }
 
     await _playerController.startPlayer();
+    _toggleAnimation();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        await _onPressed();
-        _toggleAnimation();
-      },
+      onTap: () async => await _onPressed(),
       behavior: HitTestBehavior.translucent,
       child: Stack(
         alignment: Alignment.center,
@@ -117,7 +120,7 @@ class AudioPlayerState extends State<AudioPlayer> {
             playerWaveStyle: PlayerWaveStyle(
               backgroundColor: Colors.red,
               showSeekLine: false,
-              scaleFactor: 220,
+              scaleFactor: 150,
               fixedWaveColor:
                   context.read<ThemeService>().currentTheme == ThemeMode.light
                       ? ColorConstants.blackText
@@ -137,7 +140,13 @@ class AudioPlayerState extends State<AudioPlayer> {
               curve: Curves.easeInOutCirc,
               duration: Durations.medium2,
               child:
-                  _isExpanded
+                  _isLoading
+                      ? CustomLoadingIndicator(
+                        height: 20.h,
+                        width: 20.w,
+                        strokeWidth: 2,
+                      )
+                      : _isExpanded
                       ? Icon(Icons.pause, size: 42.r)
                       : Icon(Icons.play_arrow, size: 42.r),
             ),
