@@ -53,4 +53,4 @@ class ChallengeHistory(models.Model):
     score = models.FloatField()
 
     def __str__(self):
-        return f"{self.user.name} - {self.challenge.title}"
+        return f"{self.user.email} - {self.challenge.title}"
