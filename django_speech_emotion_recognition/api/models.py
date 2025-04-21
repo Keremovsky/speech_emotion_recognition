@@ -1,18 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 import os
 from datetime import datetime
 
 
-class User(models.Model):
-    name = models.CharField(max_length=100)
-    profile_pic = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
+class User(AbstractUser):
+    username = models.CharField(max_length=100, unique=False)
     email = models.EmailField(unique=True)
+    profile_pic = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
     register_date = models.DateTimeField(auto_now_add=True)
 
+    EMAIL_FIELD = "email"
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username"]
+
     def __str__(self):
-        return self.name
+        return self.email
 
 
 class Challenge(models.Model):
