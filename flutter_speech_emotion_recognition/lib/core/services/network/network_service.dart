@@ -102,7 +102,11 @@ class NetworkService implements INetworkService {
       );
     } on DioException catch (e) {
       log(e.message ?? "");
-      return Left(ConnectionFailureModel.responseError(e.message ?? ""));
+      return Left(
+        ConnectionFailureModel.responseError(
+          "An error occurred while fetching data from server.",
+        ),
+      );
     } catch (e) {
       log(e.toString());
       return Left(ConnectionFailureModel.unknownError(e.toString()));
