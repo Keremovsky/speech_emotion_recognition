@@ -2,6 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action, APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import User, Challenge, ChallengeHistory
 from .serializers import (
@@ -13,8 +14,8 @@ from .serializers import (
     PreChallengeHistorySerializer,
     PostChallengeHistorySerializer,
     ResultModelSerializer,
+    TokenObtainPairSerializer,
 )
-
 import random
 
 
@@ -136,3 +137,7 @@ class TryChallengeView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginView(TokenObtainPairView):
+    serializer_class = TokenObtainPairSerializer
