@@ -218,7 +218,7 @@ class ChallengeController {
     );
   }
 
-  // fetch challenge history scores for result
+  // fetch challenge history scores for challenge view
   Future<Either<BaseFailureModel, List<ChallengeResultModel>>>
   fetchChallengeHistoryScores(int id) async {
     final result = await _networkService.get(

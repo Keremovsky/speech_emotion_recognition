@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
 }
 
 class _MaterialApp extends StatefulWidget {
-  const _MaterialApp({super.key});
+  const _MaterialApp();
 
   @override
   __MaterialAppState createState() => __MaterialAppState();

@@ -65,7 +65,6 @@ abstract class CustomSwitch extends StatefulWidget {
 
 class _Text extends CustomSwitch {
   const _Text({
-    super.key,
     super.initialState,
     required super.text,
     super.textStyle,
@@ -125,7 +124,6 @@ class _TextState extends State<_Text> {
 
 class _Normal extends CustomSwitch {
   const _Normal({
-    super.key,
     super.initialState,
     required super.onChanged,
     super.activeColor,
