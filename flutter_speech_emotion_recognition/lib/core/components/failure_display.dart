@@ -5,8 +5,15 @@ import 'package:flutter_speech_emotion_recognition/core/extensions/context_exten
 
 class FailureDisplay extends StatelessWidget {
   final String error;
+  final TextStyle? textStyle;
   final void Function()? refresh;
-  const FailureDisplay({super.key, required this.error, this.refresh});
+
+  const FailureDisplay({
+    super.key,
+    required this.error,
+    this.textStyle,
+    this.refresh,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,7 @@ class FailureDisplay extends StatelessWidget {
       child: Center(
         child: Column(
           children: [
-            Text(error, style: context.displayLarge),
+            Text(error, style: textStyle ?? context.displaySmall),
             refresh == null
                 ? SizedBox()
                 : IconButton(
