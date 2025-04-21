@@ -1,6 +1,7 @@
 import 'package:flutter_speech_emotion_recognition/core/services/cache/cache_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/file/file_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -16,6 +17,7 @@ class AppProvider {
     Provider(create: (_) => FileService()),
     ChangeNotifierProvider(create: (_) => AppRouter()),
     ChangeNotifierProvider(create: (_) => ThemeService()),
+    Provider(create: (_) => ChallengeController()),
   ];
 
   static Future<void> ensureInitialized() async {
