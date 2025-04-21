@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PostChallengeHistoryModel {
 
- String get challenge_description; String get challenge_sentence; int get challenge_level; double get challenge_average; List<double> get challenge_emotions; List<double> get emotions; double get score;@Base64Uint8ListConverter() Uint8List get challenge_recording;
+ String get challenge_description; String get challenge_sentence;@LevelIntToStringConverter() String get challenge_level; double get challenge_average; List<double> get challenge_emotions; List<double> get emotions; double get score;@Base64Uint8ListConverter() Uint8List get challenge_recording;
 /// Create a copy of PostChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $PostChallengeHistoryModelCopyWith<$Res>  {
   factory $PostChallengeHistoryModelCopyWith(PostChallengeHistoryModel value, $Res Function(PostChallengeHistoryModel) _then) = _$PostChallengeHistoryModelCopyWithImpl;
 @useResult
 $Res call({
- String challenge_description, String challenge_sentence, int challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score,@Base64Uint8ListConverter() Uint8List challenge_recording
+ String challenge_description, String challenge_sentence,@LevelIntToStringConverter() String challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score,@Base64Uint8ListConverter() Uint8List challenge_recording
 });
 
 
@@ -71,7 +71,7 @@ class _$PostChallengeHistoryModelCopyWithImpl<$Res>
 challenge_description: null == challenge_description ? _self.challenge_description : challenge_description // ignore: cast_nullable_to_non_nullable
 as String,challenge_sentence: null == challenge_sentence ? _self.challenge_sentence : challenge_sentence // ignore: cast_nullable_to_non_nullable
 as String,challenge_level: null == challenge_level ? _self.challenge_level : challenge_level // ignore: cast_nullable_to_non_nullable
-as int,challenge_average: null == challenge_average ? _self.challenge_average : challenge_average // ignore: cast_nullable_to_non_nullable
+as String,challenge_average: null == challenge_average ? _self.challenge_average : challenge_average // ignore: cast_nullable_to_non_nullable
 as double,challenge_emotions: null == challenge_emotions ? _self.challenge_emotions : challenge_emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,emotions: null == emotions ? _self.emotions : emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,score: null == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
@@ -87,12 +87,12 @@ as Uint8List,
 @JsonSerializable()
 
 class _PostChallengeHistoryModel implements PostChallengeHistoryModel {
-  const _PostChallengeHistoryModel({required this.challenge_description, required this.challenge_sentence, required this.challenge_level, required this.challenge_average, required final  List<double> challenge_emotions, required final  List<double> emotions, required this.score, @Base64Uint8ListConverter() required this.challenge_recording}): _challenge_emotions = challenge_emotions,_emotions = emotions;
+  const _PostChallengeHistoryModel({required this.challenge_description, required this.challenge_sentence, @LevelIntToStringConverter() required this.challenge_level, required this.challenge_average, required final  List<double> challenge_emotions, required final  List<double> emotions, required this.score, @Base64Uint8ListConverter() required this.challenge_recording}): _challenge_emotions = challenge_emotions,_emotions = emotions;
   factory _PostChallengeHistoryModel.fromJson(Map<String, dynamic> json) => _$PostChallengeHistoryModelFromJson(json);
 
 @override final  String challenge_description;
 @override final  String challenge_sentence;
-@override final  int challenge_level;
+@override@LevelIntToStringConverter() final  String challenge_level;
 @override final  double challenge_average;
  final  List<double> _challenge_emotions;
 @override List<double> get challenge_emotions {
@@ -144,7 +144,7 @@ abstract mixin class _$PostChallengeHistoryModelCopyWith<$Res> implements $PostC
   factory _$PostChallengeHistoryModelCopyWith(_PostChallengeHistoryModel value, $Res Function(_PostChallengeHistoryModel) _then) = __$PostChallengeHistoryModelCopyWithImpl;
 @override @useResult
 $Res call({
- String challenge_description, String challenge_sentence, int challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score,@Base64Uint8ListConverter() Uint8List challenge_recording
+ String challenge_description, String challenge_sentence,@LevelIntToStringConverter() String challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score,@Base64Uint8ListConverter() Uint8List challenge_recording
 });
 
 
@@ -166,7 +166,7 @@ class __$PostChallengeHistoryModelCopyWithImpl<$Res>
 challenge_description: null == challenge_description ? _self.challenge_description : challenge_description // ignore: cast_nullable_to_non_nullable
 as String,challenge_sentence: null == challenge_sentence ? _self.challenge_sentence : challenge_sentence // ignore: cast_nullable_to_non_nullable
 as String,challenge_level: null == challenge_level ? _self.challenge_level : challenge_level // ignore: cast_nullable_to_non_nullable
-as int,challenge_average: null == challenge_average ? _self.challenge_average : challenge_average // ignore: cast_nullable_to_non_nullable
+as String,challenge_average: null == challenge_average ? _self.challenge_average : challenge_average // ignore: cast_nullable_to_non_nullable
 as double,challenge_emotions: null == challenge_emotions ? _self._challenge_emotions : challenge_emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,emotions: null == emotions ? _self._emotions : emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,score: null == score ? _self.score : score // ignore: cast_nullable_to_non_nullable

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/json_converters/base64_uint8list_converter.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/json_converters/level_int_to_string_converter.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,7 +14,7 @@ abstract class ChallengeModel with _$ChallengeModel {
     required final String title,
     required final String description,
     required final String sentence,
-    required final int level,
+    @LevelIntToStringConverter() required final String level,
     required final double average,
     required final List<double> emotions,
     @Base64Uint8ListConverter() required final Uint8List recording,

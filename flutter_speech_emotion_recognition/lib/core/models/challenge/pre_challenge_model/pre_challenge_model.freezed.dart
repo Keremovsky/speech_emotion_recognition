@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PreChallengeModel {
 
- int get id; String get title; String get description; String get sentence; int get level;
+ int get id; String get title; String get description; String get sentence;@LevelIntToStringConverter() String get level;
 /// Create a copy of PreChallengeModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $PreChallengeModelCopyWith<$Res>  {
   factory $PreChallengeModelCopyWith(PreChallengeModel value, $Res Function(PreChallengeModel) _then) = _$PreChallengeModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String title, String description, String sentence, int level
+ int id, String title, String description, String sentence,@LevelIntToStringConverter() String level
 });
 
 
@@ -73,7 +73,7 @@ as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_no
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sentence: null == sentence ? _self.sentence : sentence // ignore: cast_nullable_to_non_nullable
 as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as int,
+as String,
   ));
 }
 
@@ -84,14 +84,14 @@ as int,
 @JsonSerializable()
 
 class _PreChallengeModel implements PreChallengeModel {
-  const _PreChallengeModel({required this.id, required this.title, required this.description, required this.sentence, required this.level});
+  const _PreChallengeModel({required this.id, required this.title, required this.description, required this.sentence, @LevelIntToStringConverter() required this.level});
   factory _PreChallengeModel.fromJson(Map<String, dynamic> json) => _$PreChallengeModelFromJson(json);
 
 @override final  int id;
 @override final  String title;
 @override final  String description;
 @override final  String sentence;
-@override final  int level;
+@override@LevelIntToStringConverter() final  String level;
 
 /// Create a copy of PreChallengeModel
 /// with the given fields replaced by the non-null parameter values.
@@ -126,7 +126,7 @@ abstract mixin class _$PreChallengeModelCopyWith<$Res> implements $PreChallengeM
   factory _$PreChallengeModelCopyWith(_PreChallengeModel value, $Res Function(_PreChallengeModel) _then) = __$PreChallengeModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String title, String description, String sentence, int level
+ int id, String title, String description, String sentence,@LevelIntToStringConverter() String level
 });
 
 
@@ -150,7 +150,7 @@ as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_no
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sentence: null == sentence ? _self.sentence : sentence // ignore: cast_nullable_to_non_nullable
 as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as int,
+as String,
   ));
 }
 

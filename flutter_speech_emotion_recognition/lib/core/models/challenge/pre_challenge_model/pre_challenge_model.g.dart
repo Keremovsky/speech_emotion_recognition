@@ -12,7 +12,9 @@ _PreChallengeModel _$PreChallengeModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       description: json['description'] as String,
       sentence: json['sentence'] as String,
-      level: (json['level'] as num).toInt(),
+      level: const LevelIntToStringConverter().fromJson(
+        (json['level'] as num).toInt(),
+      ),
     );
 
 Map<String, dynamic> _$PreChallengeModelToJson(_PreChallengeModel instance) =>
@@ -21,5 +23,5 @@ Map<String, dynamic> _$PreChallengeModelToJson(_PreChallengeModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'sentence': instance.sentence,
-      'level': instance.level,
+      'level': const LevelIntToStringConverter().toJson(instance.level),
     };

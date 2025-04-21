@@ -11,7 +11,9 @@ _PostChallengeHistoryModel _$PostChallengeHistoryModelFromJson(
 ) => _PostChallengeHistoryModel(
   challenge_description: json['challenge_description'] as String,
   challenge_sentence: json['challenge_sentence'] as String,
-  challenge_level: (json['challenge_level'] as num).toInt(),
+  challenge_level: const LevelIntToStringConverter().fromJson(
+    (json['challenge_level'] as num).toInt(),
+  ),
   challenge_average: (json['challenge_average'] as num).toDouble(),
   challenge_emotions:
       (json['challenge_emotions'] as List<dynamic>)
@@ -32,7 +34,9 @@ Map<String, dynamic> _$PostChallengeHistoryModelToJson(
 ) => <String, dynamic>{
   'challenge_description': instance.challenge_description,
   'challenge_sentence': instance.challenge_sentence,
-  'challenge_level': instance.challenge_level,
+  'challenge_level': const LevelIntToStringConverter().toJson(
+    instance.challenge_level,
+  ),
   'challenge_average': instance.challenge_average,
   'challenge_emotions': instance.challenge_emotions,
   'emotions': instance.emotions,

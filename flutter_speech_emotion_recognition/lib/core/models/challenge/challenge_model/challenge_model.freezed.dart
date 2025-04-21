@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ChallengeModel implements DiagnosticableTreeMixin {
 
- int get id; String get title; String get description; String get sentence; int get level; double get average; List<double> get emotions;@Base64Uint8ListConverter() Uint8List get recording;
+ int get id; String get title; String get description; String get sentence;@LevelIntToStringConverter() String get level; double get average; List<double> get emotions;@Base64Uint8ListConverter() Uint8List get recording;
 /// Create a copy of ChallengeModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -55,7 +55,7 @@ abstract mixin class $ChallengeModelCopyWith<$Res>  {
   factory $ChallengeModelCopyWith(ChallengeModel value, $Res Function(ChallengeModel) _then) = _$ChallengeModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String title, String description, String sentence, int level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List recording
+ int id, String title, String description, String sentence,@LevelIntToStringConverter() String level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List recording
 });
 
 
@@ -79,7 +79,7 @@ as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_no
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sentence: null == sentence ? _self.sentence : sentence // ignore: cast_nullable_to_non_nullable
 as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as int,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
+as String,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
 as double,emotions: null == emotions ? _self.emotions : emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,recording: null == recording ? _self.recording : recording // ignore: cast_nullable_to_non_nullable
 as Uint8List,
@@ -93,14 +93,14 @@ as Uint8List,
 @JsonSerializable()
 
 class _ChallengeModel with DiagnosticableTreeMixin implements ChallengeModel {
-  const _ChallengeModel({required this.id, required this.title, required this.description, required this.sentence, required this.level, required this.average, required final  List<double> emotions, @Base64Uint8ListConverter() required this.recording}): _emotions = emotions;
+  const _ChallengeModel({required this.id, required this.title, required this.description, required this.sentence, @LevelIntToStringConverter() required this.level, required this.average, required final  List<double> emotions, @Base64Uint8ListConverter() required this.recording}): _emotions = emotions;
   factory _ChallengeModel.fromJson(Map<String, dynamic> json) => _$ChallengeModelFromJson(json);
 
 @override final  int id;
 @override final  String title;
 @override final  String description;
 @override final  String sentence;
-@override final  int level;
+@override@LevelIntToStringConverter() final  String level;
 @override final  double average;
  final  List<double> _emotions;
 @override List<double> get emotions {
@@ -150,7 +150,7 @@ abstract mixin class _$ChallengeModelCopyWith<$Res> implements $ChallengeModelCo
   factory _$ChallengeModelCopyWith(_ChallengeModel value, $Res Function(_ChallengeModel) _then) = __$ChallengeModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String title, String description, String sentence, int level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List recording
+ int id, String title, String description, String sentence,@LevelIntToStringConverter() String level, double average, List<double> emotions,@Base64Uint8ListConverter() Uint8List recording
 });
 
 
@@ -174,7 +174,7 @@ as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_no
 as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,sentence: null == sentence ? _self.sentence : sentence // ignore: cast_nullable_to_non_nullable
 as String,level: null == level ? _self.level : level // ignore: cast_nullable_to_non_nullable
-as int,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
+as String,average: null == average ? _self.average : average // ignore: cast_nullable_to_non_nullable
 as double,emotions: null == emotions ? _self._emotions : emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,recording: null == recording ? _self.recording : recording // ignore: cast_nullable_to_non_nullable
 as Uint8List,

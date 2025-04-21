@@ -12,7 +12,9 @@ _ChallengeModel _$ChallengeModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       description: json['description'] as String,
       sentence: json['sentence'] as String,
-      level: (json['level'] as num).toInt(),
+      level: const LevelIntToStringConverter().fromJson(
+        (json['level'] as num).toInt(),
+      ),
       average: (json['average'] as num).toDouble(),
       emotions:
           (json['emotions'] as List<dynamic>)
@@ -29,7 +31,7 @@ Map<String, dynamic> _$ChallengeModelToJson(_ChallengeModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'sentence': instance.sentence,
-      'level': instance.level,
+      'level': const LevelIntToStringConverter().toJson(instance.level),
       'average': instance.average,
       'emotions': instance.emotions,
       'recording': const Base64Uint8ListConverter().toJson(instance.recording),
