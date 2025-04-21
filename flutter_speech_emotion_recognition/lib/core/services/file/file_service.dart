@@ -26,7 +26,9 @@ class FileService implements IFileService {
   }
 
   @override
-  void removeTempFile(File file) {
+  void removeTempFile(File? file) {
+    if (file == null) return;
+
     if (file.existsSync()) {
       file.deleteSync();
       dev.log("file removed: ${file.path}");
