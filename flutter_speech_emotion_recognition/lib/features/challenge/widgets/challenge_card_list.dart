@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_loading_indicator.dart';
+import 'package:flutter_speech_emotion_recognition/core/components/failure_display.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/enums/challenge_card_type.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
@@ -93,7 +94,7 @@ class ChallengeCardListState extends State<ChallengeCardList> {
               if (snapshot.hasError) {
                 final error = snapshot.error! as Exception;
 
-                return _Failure(
+                return FailureDisplay(
                   error: error.toString(),
                   refresh: () {
                     setState(() {
@@ -105,9 +106,9 @@ class ChallengeCardListState extends State<ChallengeCardList> {
                 final result = snapshot.data;
 
                 if (result != null) {
-                  return snapshot.data!.fold(
+                  return result.fold(
                     (error) {
-                      return _Failure(
+                      return FailureDisplay(
                         error: error,
                         refresh: () {
                           setState(() {
@@ -121,7 +122,7 @@ class ChallengeCardListState extends State<ChallengeCardList> {
                     },
                   );
                 } else {
-                  return _Failure(
+                  return FailureDisplay(
                     error: "Unknown error.",
                     refresh: () {
                       setState(() {
@@ -138,28 +139,6 @@ class ChallengeCardListState extends State<ChallengeCardList> {
           },
         ),
       ],
-    );
-  }
-}
-
-class _Failure extends StatelessWidget {
-  final String error;
-  final void Function() refresh;
-
-  const _Failure({required this.error, required this.refresh});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: SizeConstants.inputFieldHorizontalPadding,
-      ),
-      child: Column(
-        children: [
-          Text(error),
-          IconButton(onPressed: refresh, icon: Icon(Icons.refresh, size: 42.r)),
-        ],
-      ),
     );
   }
 }
