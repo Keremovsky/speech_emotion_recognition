@@ -16,7 +16,6 @@ from .serializers import (
     ResultModelSerializer,
     TokenObtainPairSerializer,
 )
-import random
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -34,6 +33,8 @@ class ChallengeViewSet(viewsets.ModelViewSet):
             return PreChallengeSerializer
         elif self.action == "recording":
             return RecordingChallengeSerializer
+        elif self.action == "get_history_scores":
+            return ResultModelSerializer
         return ChallengeSerializer
 
     @action(detail=True, methods=["get"])
@@ -44,9 +45,7 @@ class ChallengeViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"], url_path="pre/random")
     def random_pre(self, request):
-        count = Challenge.objects.count()
-        random_ids = random.sample(range(1, count + 1), min(20, count))
-        queryset = Challenge.objects.filter(id__in=random_ids)
+        queryset = Challenge.objects.order_by("?")[:20]
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
@@ -62,6 +61,19 @@ class ChallengeViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(challenge)
         return Response(serializer.data)
 
+    @action(detail=True, methods=["get"])
+    def get_history_scores(self, request, pk=None):
+        # user = request.user
+        challenge = self.get_object()
+
+        challenge_histories = ChallengeHistory.objects.filter(
+            challenge=challenge
+        ).order_by("-challenge_date")
+
+        serializer = self.get_serializer(challenge_histories, many=True)
+
+        return Response(serializer.data)
+
 
 class ChallengeHistoryViewSet(viewsets.ModelViewSet):
     queryset = ChallengeHistory.objects.all()
@@ -72,8 +84,6 @@ class ChallengeHistoryViewSet(viewsets.ModelViewSet):
             return PreChallengeHistorySerializer
         elif self.action == "rest":
             return PostChallengeHistorySerializer
-        elif self.action == "get_history_score":
-            return ResultModelSerializer
         return ChallengeHistorySerializer
 
     @action(detail=False, methods=["get"])
@@ -89,21 +99,6 @@ class ChallengeHistoryViewSet(viewsets.ModelViewSet):
     def rest(self, request, pk=None):
         challenge_history = self.get_object()
         serializer = self.get_serializer(challenge_history)
-        return Response(serializer.data)
-
-    @action(detail=True, methods=["get"])
-    def get_history_scores(self, request, pk=None):
-        user = request.user
-        challenge_history = self.get_object()
-
-        challenge = challenge_history.challenge
-
-        challenge_histories = ChallengeHistory.objects.filter(
-            user=user, challenge=challenge
-        ).order_by("-challenge_date")
-
-        serializer = self.get_serializer(challenge_histories, many=True)
-
         return Response(serializer.data)
 
 
