@@ -6,7 +6,9 @@ class CustomLoadingIndicator extends StatelessWidget {
   final Color? color;
   final Color? backgroundColor;
   final Animation<Color?>? valueColor;
+  final EdgeInsets? padding;
   final double? strokeWidth;
+  final StrokeCap? strokeCap;
 
   const CustomLoadingIndicator({
     super.key,
@@ -15,20 +17,26 @@ class CustomLoadingIndicator extends StatelessWidget {
     this.color,
     this.backgroundColor,
     this.valueColor,
+    this.padding,
     this.strokeWidth,
+    this.strokeCap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
-        height: height,
-        width: width,
-        child: CircularProgressIndicator(
-          color: color,
-          backgroundColor: backgroundColor,
-          valueColor: valueColor,
-          strokeWidth: strokeWidth,
+      child: Padding(
+        padding: padding ?? EdgeInsets.zero,
+        child: SizedBox(
+          height: height,
+          width: width,
+          child: CircularProgressIndicator(
+            color: color,
+            backgroundColor: backgroundColor,
+            valueColor: valueColor,
+            strokeWidth: strokeWidth,
+            strokeCap: strokeCap,
+          ),
         ),
       ),
     );
