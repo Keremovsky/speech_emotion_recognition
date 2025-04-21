@@ -13,36 +13,37 @@ part of 'router.dart';
 /// generated route for
 /// [ChallengeView]
 class ChallengeViewRoute extends PageRouteInfo<ChallengeViewRouteArgs> {
-  ChallengeViewRoute({Key? key, File? file, List<PageRouteInfo>? children})
-    : super(
-        ChallengeViewRoute.name,
-        args: ChallengeViewRouteArgs(key: key, file: file),
-        initialChildren: children,
-      );
+  ChallengeViewRoute({
+    Key? key,
+    required PreChallengeModel data,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ChallengeViewRoute.name,
+         args: ChallengeViewRouteArgs(key: key, data: data),
+         initialChildren: children,
+       );
 
   static const String name = 'ChallengeViewRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ChallengeViewRouteArgs>(
-        orElse: () => const ChallengeViewRouteArgs(),
-      );
-      return ChallengeView(key: args.key, file: args.file);
+      final args = data.argsAs<ChallengeViewRouteArgs>();
+      return ChallengeView(key: args.key, data: args.data);
     },
   );
 }
 
 class ChallengeViewRouteArgs {
-  const ChallengeViewRouteArgs({this.key, this.file});
+  const ChallengeViewRouteArgs({this.key, required this.data});
 
   final Key? key;
 
-  final File? file;
+  final PreChallengeModel data;
 
   @override
   String toString() {
-    return 'ChallengeViewRouteArgs{key: $key, file: $file}';
+    return 'ChallengeViewRouteArgs{key: $key, data: $data}';
   }
 }
 

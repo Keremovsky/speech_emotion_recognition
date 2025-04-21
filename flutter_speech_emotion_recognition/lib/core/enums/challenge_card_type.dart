@@ -1,0 +1,1 @@
+enum ChallengeCardType { random, popular }

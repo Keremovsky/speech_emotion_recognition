@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/challenge/pre_challenge_model/pre_challenge_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/audio_player.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
@@ -14,21 +15,17 @@ import 'package:flutter_speech_emotion_recognition/router/router.dart';
 /// but for more control over player `onPressed` function can be used.
 /// Be careful that `onPressed` will be executed at the end of the function.
 class ChallengeCard extends StatefulWidget {
-  final String title;
-  final String level;
-  final String audioFilePath;
   final Function(PlayerController)? onPressed;
   final double? height;
   final double? width;
+  final PreChallengeModel data;
 
   const ChallengeCard({
     super.key,
-    required this.title,
-    required this.level,
-    required this.audioFilePath,
     this.onPressed,
     this.height,
     this.width,
+    required this.data,
   });
 
   @override
@@ -52,7 +49,7 @@ class _ChallengeCardState extends State<ChallengeCard> {
         children: [
           GestureDetector(
             onTap: () async {
-              await context.pushRoute(ChallengeViewRoute());
+              await context.pushRoute(ChallengeViewRoute(data: widget.data));
             },
             behavior: HitTestBehavior.translucent,
             child: SizedBox(
@@ -72,7 +69,7 @@ class _ChallengeCardState extends State<ChallengeCard> {
               ),
             ),
           ),
-          Flexible(child: AudioPlayer()),
+          Flexible(child: AudioPlayer(challengeId: widget.data.id)),
         ],
       ),
     );
@@ -91,7 +88,7 @@ class _ContentText extends StatelessWidget {
         SizedBox(
           width: widget.width == null ? 95.w : widget.width! / 2 - 15,
           child: Text(
-            widget.level,
+            widget.data.level,
             style: context.displaySmall,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -114,7 +111,7 @@ class _TitleText extends StatelessWidget {
         SizedBox(
           width: widget.width == null ? 95.w : widget.width! / 2 - 15,
           child: Text(
-            widget.title,
+            widget.data.title,
             style: context.displayMedium,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,

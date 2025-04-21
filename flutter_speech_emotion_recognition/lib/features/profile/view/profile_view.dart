@@ -5,8 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
+import 'package:flutter_speech_emotion_recognition/core/enums/challenge_card_type.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
-import 'package:flutter_speech_emotion_recognition/features/home/widgets/challenge_card.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_card_list.dart';
 import 'package:flutter_speech_emotion_recognition/features/profile/state/profile_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
@@ -85,31 +86,9 @@ class _ProfileViewState extends ProfileViewState {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: SizeConstants.screenPadding,
-                  ),
-                  child: Text(LocaleKeys.history.tr(), style: context.titleMedium),
-                ),
-                SizedBox(
-                  height: 125.h,
-                  child: ListView.separated(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: SizeConstants.screenPadding,
-                    ),
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return ChallengeCard(
-                        title: titleList[index],
-                        level: levelList[index],
-                        audioFilePath: "assets/audio/test.mp3",
-                        onPressed: (controller) {},
-                        width: 230.w,
-                      );
-                    },
-                    separatorBuilder: (context, index) => SizedBox(width: 15.w),
-                    scrollDirection: Axis.horizontal,
-                  ),
+                ChallengeCardList(
+                  title: LocaleKeys.history.tr(),
+                  type: ChallengeCardType.popular,
                 ),
               ],
             ),

@@ -1,31 +1,23 @@
-import 'dart:io';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
-import 'package:flutter_speech_emotion_recognition/core/services/file/file_service.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/view/challenge_view.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_action_bottom_sheet.dart';
 
 abstract class ChallengeViewState extends State<ChallengeView> {
-  late File file;
-  late Future<void> value;
-
-  @override
-  void initState() {
-    super.initState();
-    value = _getData();
+  void onStartTheChallengePressed() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ChallengeActionBottomSheet(
+          title: widget.data.title,
+          sentence: widget.data.sentence,
+        );
+      },
+    );
   }
 
-  Future<void> _getData() async {
-    if (widget.file == null) {
-      file = await context.read<FileService>().generateTempFile("mp3");
-
-      // TODO: implement audio fetching from the backend
-      final ByteData audioFile = await rootBundle.load("assets/audio/test.mp3");
-
-      await file.writeAsBytes(audioFile.buffer.asUint8List());
-    } else {
-      file = widget.file!;
-    }
+  void onChallengeHistoryBoxPressed() {
+    log("AAAAAAAAAAAAAAA");
   }
 }
