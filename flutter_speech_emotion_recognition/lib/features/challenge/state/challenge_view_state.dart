@@ -3,6 +3,7 @@ import 'package:flutter_speech_emotion_recognition/core/models/challenge/challen
 import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/view/challenge_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_action_bottom_sheet.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_history_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 
@@ -41,6 +42,7 @@ abstract class ChallengeViewState extends State<ChallengeView> {
       context: context,
       builder: (context) {
         return ChallengeActionBottomSheet(
+          id: widget.data.id,
           title: widget.data.title,
           sentence: widget.data.sentence,
         );
@@ -49,6 +51,11 @@ abstract class ChallengeViewState extends State<ChallengeView> {
   }
 
   void onChallengeHistoryBoxPressed(ChallengeResultModel history) {
-    // TODO: show result bottom sheet
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ChallengeHistoryBottomSheet(title: widget.data.title, model: history);
+      },
+    );
   }
 }

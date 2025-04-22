@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:audio_waveforms/audio_waveforms.dart';
@@ -12,7 +13,7 @@ import 'package:provider/provider.dart';
 class AudioRecorder extends StatefulWidget {
   final double? height;
   final double? width;
-  final VoidCallback? onFinished;
+  final Future<void> Function(File file)? onFinished;
 
   const AudioRecorder({super.key, this.height, this.width, this.onFinished});
 
@@ -59,9 +60,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
             CustomButton(
               onPressed: () async {
                 await _recorderController.stop(false);
+                log("recording finished");
                 // TODO: implement challenge upload and analysis logic
                 if (widget.onFinished != null) {
-                  widget.onFinished!();
+                  await widget.onFinished!(_file);
                 }
               },
               child: Text(LocaleKeys.stop.tr()),

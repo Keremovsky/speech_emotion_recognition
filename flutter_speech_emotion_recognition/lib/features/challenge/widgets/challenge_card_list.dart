@@ -121,16 +121,15 @@ class ChallengeCardListState extends State<ChallengeCardList> {
                       return _Success(data: data);
                     },
                   );
-                } else {
-                  return FailureDisplay(
-                    error: "Unknown error.",
-                    refresh: () {
-                      setState(() {
-                        value = _getData();
-                      });
-                    },
-                  );
                 }
+                return FailureDisplay(
+                  error: "Unknown error.",
+                  refresh: () {
+                    setState(() {
+                      value = _getData();
+                    });
+                  },
+                );
               }
             }
             return CustomLoadingIndicator(
