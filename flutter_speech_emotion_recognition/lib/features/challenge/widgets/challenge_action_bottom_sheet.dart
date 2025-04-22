@@ -60,7 +60,7 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: SizeConstants.screenPadding),
       child: SizedBox(
-        height: 360.h,
+        height: 380.h,
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +101,7 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
                           return FailureDisplay(error: error);
                         },
                         (data) {
-                          return ResultChart();
+                          return ResultChart(model: data);
                         },
                       );
                     }

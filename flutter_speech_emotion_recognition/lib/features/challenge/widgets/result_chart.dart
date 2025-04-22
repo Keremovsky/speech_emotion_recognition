@@ -6,27 +6,21 @@ import 'package:flutter_speech_emotion_recognition/core/constants/colors_constan
 import 'package:flutter_speech_emotion_recognition/core/constants/font_size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/color_extension.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/challenge/challenge_result_model/challenge_result_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/custom_math.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
 class ResultChart extends StatefulWidget {
-  const ResultChart({super.key});
+  final ChallengeResultModel model;
+
+  const ResultChart({super.key, required this.model});
 
   @override
   State<ResultChart> createState() => _ResultChartState();
 }
 
 class _ResultChartState extends State<ResultChart> {
-  final List<Color> _emotionColor = [
-    ColorConstants.userPerformanceHappyColor,
-    ColorConstants.userPerformanceAngryColor,
-    ColorConstants.userPerformanceSadColor,
-    ColorConstants.userPerformanceNeutralColor,
-    ColorConstants.userPerformanceFearColor,
-    ColorConstants.userPerformanceDisgustColor,
-    ColorConstants.userPerformanceSurpriseColor,
-  ];
-
   Widget _bottomTitles(double value, TitleMeta meta) {
     String text;
     switch (value.toInt()) {
@@ -91,7 +85,7 @@ class _ResultChartState extends State<ResultChart> {
           return BarTooltipItem(
             rod.toY.round().toString(),
             TextStyle(
-              color: _emotionColor[groupIndex],
+              color: ColorConstants.emotionColors[groupIndex],
               fontWeight: FontWeight.bold,
               fontSize: FontSizeConstants.fontSize16,
             ),
@@ -107,21 +101,22 @@ class _ResultChartState extends State<ResultChart> {
       children: [
         Center(
           child: Text(
-            "${LocaleKeys.yourScoreIs.tr()} 87.25 ${LocaleKeys.andAverageIs.tr()} 71.09",
+            "${LocaleKeys.yourScoreIs.tr()} ${widget.model.score} ${LocaleKeys.andAverageIs.tr()} ${widget.model.average_score}",
             style: context.displayLarge,
           ),
         ),
-        SizedBox(height: 12.h),
+        SizedBox(height: 22.h),
         LayoutBuilder(
           builder: (context, constraints) {
             final barsSpace = 4.0 * constraints.maxWidth / 180;
             final barsWidth = 8.0 * constraints.maxWidth / 90;
 
             return SizedBox(
-              height: 200.h,
+              height: 275.h,
               child: BarChart(
                 BarChartData(
                   maxY: 101,
+                  minY: -10,
                   alignment: BarChartAlignment.center,
                   barTouchData: _getBarTouchData(),
                   titlesData: FlTitlesData(
@@ -163,7 +158,12 @@ class _ResultChartState extends State<ResultChart> {
                   ),
                   borderData: FlBorderData(show: false),
                   groupsSpace: barsSpace,
-                  barGroups: _getBarGroups(barsWidth, barsSpace),
+                  barGroups: _getBarGroups(
+                    barsWidth,
+                    barsSpace,
+                    widget.model.challenge_emotions,
+                    widget.model.emotions,
+                  ),
                 ),
               ),
             );
@@ -179,160 +179,57 @@ class _ResultChartState extends State<ResultChart> {
     );
   }
 
-  List<BarChartGroupData> _getBarGroups(double barsWidth, double barsSpace) {
-    // ! stack item with lower value must be at the bottom
+  List<BarChartGroupData> _getBarGroups(
+    double barsWidth,
+    double barsSpace,
+    List<double> challengeEmotions,
+    List<double> emotions,
+  ) {
+    List<BarChartGroupData> barGroups = [];
 
-    final BorderRadius borderRadius = BorderRadius.only(
-      topLeft: Radius.circular(6.r),
-      topRight: Radius.circular(6.r),
-    );
+    for (int i = 0; i < challengeEmotions.length; i++) {
+      final emotionValues = CustomMath().bigLittle(
+        challengeEmotions[i],
+        emotions[i],
+      );
 
-    return [
-      BarChartGroupData(
-        x: 0,
-        barsSpace: barsSpace,
-        barRods: [
-          BarChartRodData(
-            toY: 80,
-            rodStackItems: [
-              BarChartRodStackItem(
-                0,
-                80,
-                ColorConstants.userPerformanceHappyColor.darken(25),
-              ),
-              BarChartRodStackItem(0, 1.5, ColorConstants.userPerformanceHappyColor),
-            ],
-            borderRadius: borderRadius,
-            width: barsWidth,
-          ),
-        ],
-      ),
-      BarChartGroupData(
-        x: 1,
-        barsSpace: barsSpace,
-        barRods: [
-          BarChartRodData(
-            toY: 80,
-            rodStackItems: [
-              BarChartRodStackItem(
-                0,
-                80,
-                ColorConstants.userPerformanceAngryColor.darken(25),
-              ),
-              BarChartRodStackItem(0, 1.5, ColorConstants.userPerformanceAngryColor),
-            ],
-            borderRadius: borderRadius,
-            width: barsWidth,
-          ),
-        ],
-      ),
-      BarChartGroupData(
-        x: 2,
-        barsSpace: barsSpace,
-        barRods: [
-          BarChartRodData(
-            toY: 80,
-            rodStackItems: [
-              BarChartRodStackItem(
-                0,
-                80,
-                ColorConstants.userPerformanceSadColor.darken(25),
-              ),
-              BarChartRodStackItem(0, 55, ColorConstants.userPerformanceSadColor),
-            ],
-            borderRadius: borderRadius,
-            width: barsWidth,
-          ),
-        ],
-      ),
-      BarChartGroupData(
-        x: 3,
-        barsSpace: barsSpace,
-        barRods: [
-          BarChartRodData(
-            toY: 80,
-            rodStackItems: [
-              BarChartRodStackItem(
-                0,
-                80,
-                ColorConstants.userPerformanceNeutralColor.darken(25),
-              ),
-              BarChartRodStackItem(
-                0,
-                1.5,
-                ColorConstants.userPerformanceNeutralColor,
-              ),
-            ],
-            borderRadius: borderRadius,
-            width: barsWidth,
-          ),
-        ],
-      ),
-      BarChartGroupData(
-        x: 4,
-        barsSpace: barsSpace,
-        barRods: [
-          BarChartRodData(
-            toY: 80,
-            rodStackItems: [
-              BarChartRodStackItem(
-                0,
-                80,
-                ColorConstants.userPerformanceFearColor.darken(25),
-              ),
-              BarChartRodStackItem(0, 37, ColorConstants.userPerformanceFearColor),
-            ],
-            borderRadius: borderRadius,
-            width: barsWidth,
-          ),
-        ],
-      ),
-      BarChartGroupData(
-        x: 5,
-        barsSpace: barsSpace,
-        barRods: [
-          BarChartRodData(
-            toY: 80,
-            rodStackItems: [
-              BarChartRodStackItem(
-                0,
-                80,
-                ColorConstants.userPerformanceDisgustColor.darken(25),
-              ),
-              BarChartRodStackItem(
-                0,
-                15,
-                ColorConstants.userPerformanceDisgustColor,
-              ),
-            ],
-            borderRadius: borderRadius,
-            width: barsWidth,
-          ),
-        ],
-      ),
-      BarChartGroupData(
-        x: 6,
-        barsSpace: barsSpace,
-        barRods: [
-          BarChartRodData(
-            toY: 80,
-            rodStackItems: [
-              BarChartRodStackItem(
-                0,
-                80,
-                ColorConstants.userPerformanceSurpriseColor.darken(25),
-              ),
-              BarChartRodStackItem(
-                0,
-                69,
-                ColorConstants.userPerformanceSurpriseColor,
-              ),
-            ],
-            borderRadius: borderRadius,
-            width: barsWidth,
-          ),
-        ],
-      ),
-    ];
+      final BorderRadius borderRadius = BorderRadius.only(
+        topLeft: Radius.circular(6.r),
+        topRight: Radius.circular(6.r),
+      );
+
+      barGroups.add(
+        BarChartGroupData(
+          x: i,
+          barsSpace: barsSpace,
+          barRods: [
+            BarChartRodData(
+              toY: emotionValues[0],
+              fromY: -10,
+              rodStackItems: [
+                BarChartRodStackItem(
+                  emotionValues[1],
+                  emotionValues[0],
+                  emotionValues[0] == challengeEmotions[i]
+                      ? ColorConstants.emotionColors[i].darken(25)
+                      : ColorConstants.emotionColors[i],
+                ),
+                BarChartRodStackItem(
+                  -10,
+                  emotionValues[1],
+                  emotionValues[0] == challengeEmotions[i]
+                      ? ColorConstants.emotionColors[i].darken(25)
+                      : ColorConstants.emotionColors[i],
+                ),
+              ],
+              borderRadius: borderRadius,
+              width: barsWidth,
+            ),
+          ],
+        ),
+      );
+    }
+
+    return barGroups;
   }
 }
