@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_loading_indicator.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/feedback_snackbar.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,7 @@ class AudioPlayer extends StatefulWidget {
 
 class AudioPlayerState extends State<AudioPlayer> {
   late PlayerController _playerController;
+  late FeedbackUtil _feedbackUtil;
 
   File? file;
   bool _isExpanded = false;
@@ -31,6 +33,7 @@ class AudioPlayerState extends State<AudioPlayer> {
   @override
   void initState() {
     super.initState();
+    _feedbackUtil = FeedbackUtil();
     _playerController = PlayerController();
     _playerController.onCompletion.listen((event) async {
       _toggleAnimation();
@@ -57,7 +60,7 @@ class AudioPlayerState extends State<AudioPlayer> {
         setState(() {
           _isLoading = false;
         });
-        // TODO: give error feedback
+        _feedbackUtil.showSnackBar(context, error.message);
       },
       (file) async {
         file = file;
@@ -93,6 +96,9 @@ class AudioPlayerState extends State<AudioPlayer> {
 
     if (!_isFileGenerated) {
       await _fileFetch();
+      if (file == null) {
+        return;
+      }
     }
 
     if (_playerController.playerState.isPlaying) {

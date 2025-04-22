@@ -60,8 +60,9 @@ class _AudioRecorderState extends State<AudioRecorder> {
             CustomButton(
               onPressed: () async {
                 await _recorderController.stop(false);
+
                 log("recording finished");
-                // TODO: implement challenge upload and analysis logic
+
                 if (widget.onFinished != null) {
                   await widget.onFinished!(_file);
                 }
