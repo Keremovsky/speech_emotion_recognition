@@ -148,7 +148,7 @@ class ChallengeController {
   // fetch last challenge histories
   Future<Either<BaseFailureModel, List<PreChallengeHistoryModel>>>
   fetchPreChallengeHistories() async {
-    final result = await _networkService.get("challenge-history/pre/");
+    final result = await _networkService.get("challenge-histories/pre/");
 
     return result.fold(
       (error) {
@@ -178,7 +178,7 @@ class ChallengeController {
   // fetch rest of the challenge history after pre-fetch
   Future<Either<BaseFailureModel, PostChallengeHistoryModel>>
   fetchPostChallengeHistory(int id) async {
-    final result = await _networkService.get("challenge-history/$id/rest/");
+    final result = await _networkService.get("challenge-histories/$id/rest/");
 
     return result.fold(
       (error) {
@@ -199,7 +199,7 @@ class ChallengeController {
 
   // remove the challenge history with given id
   Future<Option<BaseFailureModel>> removeChallengeHistory(int id) async {
-    final result = await _networkService.delete("challenge-history/$id/");
+    final result = await _networkService.delete("challenge-histories/$id/");
 
     return result.fold(
       (error) {
