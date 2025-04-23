@@ -2,26 +2,14 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action, APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from rest_framework_simplejwt.views import TokenObtainPairView
 
-from .models import User, Challenge, ChallengeHistory
-from .serializers import (
-    UserSerializer,
+from ..models import Challenge, ChallengeHistory
+from ..serializers import (
     ChallengeSerializer,
     PreChallengeSerializer,
     RecordingChallengeSerializer,
-    ChallengeHistorySerializer,
-    PreChallengeHistorySerializer,
-    PostChallengeHistorySerializer,
     ResultModelSerializer,
-    TokenObtainPairSerializer,
 )
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    http_method_names = ["get", "post", "update", "delete"]
 
 
 class ChallengeViewSet(viewsets.ModelViewSet):
@@ -75,33 +63,6 @@ class ChallengeViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 
-class ChallengeHistoryViewSet(viewsets.ModelViewSet):
-    queryset = ChallengeHistory.objects.all()
-    http_method_names = ["get", "post", "delete"]
-
-    def get_serializer_class(self):
-        if self.action == "pre":
-            return PreChallengeHistorySerializer
-        elif self.action == "rest":
-            return PostChallengeHistorySerializer
-        return ChallengeHistorySerializer
-
-    @action(detail=False, methods=["get"])
-    def pre(self, request):
-        user = request.user
-        challenge_histories = ChallengeHistory.objects.filter(user=user).order_by(
-            "-challenge_date"
-        )[:20]
-        serializer = self.get_serializer(challenge_histories, many=True)
-        return Response(serializer.data)
-
-    @action(detail=True, methods=["get"])
-    def rest(self, request, pk=None):
-        challenge_history = self.get_object()
-        serializer = self.get_serializer(challenge_history)
-        return Response(serializer.data)
-
-
 class TryChallengeView(APIView):
     def post(self, request, id):
         serializer = RecordingChallengeSerializer(data=request.data)
@@ -132,7 +93,3 @@ class TryChallengeView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class LoginView(TokenObtainPairView):
-    serializer_class = TokenObtainPairSerializer

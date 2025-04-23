@@ -2,13 +2,15 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from .views import (
+from .views.auth import (
     UserViewSet,
-    ChallengeViewSet,
-    ChallengeHistoryViewSet,
-    TryChallengeView,
     LoginView,
 )
+from .views.challenge import (
+    ChallengeViewSet,
+    TryChallengeView,
+)
+from .views.challenge_history import ChallengeHistoryViewSet
 
 router = DefaultRouter()
 router.register("users", UserViewSet)
