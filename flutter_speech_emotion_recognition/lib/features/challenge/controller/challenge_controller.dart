@@ -139,8 +139,10 @@ class ChallengeController {
         return Left(error);
       },
       (result) {
-        final data = ChallengeResultModel.fromJson(result.data);
-        return Right(data);
+        if (result is Map<String, dynamic>) {
+          return Right(ChallengeResultModel.fromJson(result.data));
+        }
+        return Left(TypeFailureModel.invalidType("Type of fetched data was wrong."));
       },
     );
   }
