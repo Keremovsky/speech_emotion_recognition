@@ -23,8 +23,8 @@ class ChallengeHistoryViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"])
     def pre(self, request):
-        user = request.user
-        challenge_histories = ChallengeHistory.objects.filter(user=user).order_by(
+        # user = request.user
+        challenge_histories = ChallengeHistory.objects.filter().order_by(
             "-challenge_date"
         )[:20]
         serializer = self.get_serializer(challenge_histories, many=True)

@@ -67,10 +67,7 @@ class PostChallengeHistorySerializer(serializers.ModelSerializer):
     challenge_average = serializers.FloatField(
         source="challenge.average", read_only=True
     )
-    challenge_recording = serializers.FileField(
-        source="challenge.recording", read_only=True
-    )
-    challenge_emotions = serializers.FileField(
+    challenge_emotions = serializers.ListField(
         source="challenge.emotions", read_only=True
     )
 
@@ -81,9 +78,9 @@ class PostChallengeHistorySerializer(serializers.ModelSerializer):
             "challenge_sentence",
             "challenge_level",
             "challenge_average",
-            "challenge_recording",
             "challenge_emotions",
             "emotions",
+            "score",
         ]
 
 
