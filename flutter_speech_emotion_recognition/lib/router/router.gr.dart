@@ -134,43 +134,6 @@ class LoginViewRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [OnBoardingView]
-class OnBoardingViewRoute extends PageRouteInfo<OnBoardingViewRouteArgs> {
-  OnBoardingViewRoute({
-    Key? key,
-    required VoidCallback onFinished,
-    List<PageRouteInfo>? children,
-  }) : super(
-         OnBoardingViewRoute.name,
-         args: OnBoardingViewRouteArgs(key: key, onFinished: onFinished),
-         initialChildren: children,
-       );
-
-  static const String name = 'OnBoardingViewRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<OnBoardingViewRouteArgs>();
-      return OnBoardingView(key: args.key, onFinished: args.onFinished);
-    },
-  );
-}
-
-class OnBoardingViewRouteArgs {
-  const OnBoardingViewRouteArgs({this.key, required this.onFinished});
-
-  final Key? key;
-
-  final VoidCallback onFinished;
-
-  @override
-  String toString() {
-    return 'OnBoardingViewRouteArgs{key: $key, onFinished: $onFinished}';
-  }
-}
-
-/// generated route for
 /// [ProfileView]
 class ProfileViewRoute extends PageRouteInfo<void> {
   const ProfileViewRoute({List<PageRouteInfo>? children})
