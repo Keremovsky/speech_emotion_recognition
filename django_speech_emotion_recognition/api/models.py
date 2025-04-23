@@ -10,7 +10,6 @@ class User(AbstractUser):
     username = models.CharField(max_length=100, unique=False)
     email = models.EmailField(unique=True)
     profile_pic = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
-    register_date = models.DateTimeField(auto_now_add=True)
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"

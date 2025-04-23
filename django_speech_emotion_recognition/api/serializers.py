@@ -130,6 +130,5 @@ class TokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token["email"] = user.email
         token["username"] = user.username
-        token["profile_pic"] = user.profile_pic
-        token["register_date"] = user.register_date
+        # token["profile_pic"] = user.profile_pic
         return token

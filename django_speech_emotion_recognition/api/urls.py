@@ -20,6 +20,6 @@ router.register("challenge-histories", ChallengeHistoryViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path("try-challenge/<str:id>/", TryChallengeView.as_view(), name="try-challenge"),
-    path("api/login/", LoginView.as_view(), name="login"),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("auth/login/", LoginView.as_view(), name="login"),
+    path("auth/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
