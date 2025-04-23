@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PostChallengeHistoryModel {
 
- String get challenge_description; String get challenge_sentence;@LevelIntToStringConverter() String get challenge_level; double get challenge_average; List<double> get challenge_emotions; List<double> get emotions; double get score;@Base64Uint8ListConverter() Uint8List get challenge_recording;
+ String get challenge_description; String get challenge_sentence;@LevelIntToStringConverter() String get challenge_level; double get challenge_average; List<double> get challenge_emotions; List<double> get emotions; double get score;
 /// Create a copy of PostChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $PostChallengeHistoryModelCopyWith<PostChallengeHistoryModel> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PostChallengeHistoryModel&&(identical(other.challenge_description, challenge_description) || other.challenge_description == challenge_description)&&(identical(other.challenge_sentence, challenge_sentence) || other.challenge_sentence == challenge_sentence)&&(identical(other.challenge_level, challenge_level) || other.challenge_level == challenge_level)&&(identical(other.challenge_average, challenge_average) || other.challenge_average == challenge_average)&&const DeepCollectionEquality().equals(other.challenge_emotions, challenge_emotions)&&const DeepCollectionEquality().equals(other.emotions, emotions)&&(identical(other.score, score) || other.score == score)&&const DeepCollectionEquality().equals(other.challenge_recording, challenge_recording));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PostChallengeHistoryModel&&(identical(other.challenge_description, challenge_description) || other.challenge_description == challenge_description)&&(identical(other.challenge_sentence, challenge_sentence) || other.challenge_sentence == challenge_sentence)&&(identical(other.challenge_level, challenge_level) || other.challenge_level == challenge_level)&&(identical(other.challenge_average, challenge_average) || other.challenge_average == challenge_average)&&const DeepCollectionEquality().equals(other.challenge_emotions, challenge_emotions)&&const DeepCollectionEquality().equals(other.emotions, emotions)&&(identical(other.score, score) || other.score == score));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,challenge_description,challenge_sentence,challenge_level,challenge_average,const DeepCollectionEquality().hash(challenge_emotions),const DeepCollectionEquality().hash(emotions),score,const DeepCollectionEquality().hash(challenge_recording));
+int get hashCode => Object.hash(runtimeType,challenge_description,challenge_sentence,challenge_level,challenge_average,const DeepCollectionEquality().hash(challenge_emotions),const DeepCollectionEquality().hash(emotions),score);
 
 @override
 String toString() {
-  return 'PostChallengeHistoryModel(challenge_description: $challenge_description, challenge_sentence: $challenge_sentence, challenge_level: $challenge_level, challenge_average: $challenge_average, challenge_emotions: $challenge_emotions, emotions: $emotions, score: $score, challenge_recording: $challenge_recording)';
+  return 'PostChallengeHistoryModel(challenge_description: $challenge_description, challenge_sentence: $challenge_sentence, challenge_level: $challenge_level, challenge_average: $challenge_average, challenge_emotions: $challenge_emotions, emotions: $emotions, score: $score)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $PostChallengeHistoryModelCopyWith<$Res>  {
   factory $PostChallengeHistoryModelCopyWith(PostChallengeHistoryModel value, $Res Function(PostChallengeHistoryModel) _then) = _$PostChallengeHistoryModelCopyWithImpl;
 @useResult
 $Res call({
- String challenge_description, String challenge_sentence,@LevelIntToStringConverter() String challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score,@Base64Uint8ListConverter() Uint8List challenge_recording
+ String challenge_description, String challenge_sentence,@LevelIntToStringConverter() String challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score
 });
 
 
@@ -66,7 +66,7 @@ class _$PostChallengeHistoryModelCopyWithImpl<$Res>
 
 /// Create a copy of PostChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? challenge_description = null,Object? challenge_sentence = null,Object? challenge_level = null,Object? challenge_average = null,Object? challenge_emotions = null,Object? emotions = null,Object? score = null,Object? challenge_recording = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? challenge_description = null,Object? challenge_sentence = null,Object? challenge_level = null,Object? challenge_average = null,Object? challenge_emotions = null,Object? emotions = null,Object? score = null,}) {
   return _then(_self.copyWith(
 challenge_description: null == challenge_description ? _self.challenge_description : challenge_description // ignore: cast_nullable_to_non_nullable
 as String,challenge_sentence: null == challenge_sentence ? _self.challenge_sentence : challenge_sentence // ignore: cast_nullable_to_non_nullable
@@ -75,8 +75,7 @@ as String,challenge_average: null == challenge_average ? _self.challenge_average
 as double,challenge_emotions: null == challenge_emotions ? _self.challenge_emotions : challenge_emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,emotions: null == emotions ? _self.emotions : emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,score: null == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
-as double,challenge_recording: null == challenge_recording ? _self.challenge_recording : challenge_recording // ignore: cast_nullable_to_non_nullable
-as Uint8List,
+as double,
   ));
 }
 
@@ -87,7 +86,7 @@ as Uint8List,
 @JsonSerializable()
 
 class _PostChallengeHistoryModel implements PostChallengeHistoryModel {
-  const _PostChallengeHistoryModel({required this.challenge_description, required this.challenge_sentence, @LevelIntToStringConverter() required this.challenge_level, required this.challenge_average, required final  List<double> challenge_emotions, required final  List<double> emotions, required this.score, @Base64Uint8ListConverter() required this.challenge_recording}): _challenge_emotions = challenge_emotions,_emotions = emotions;
+  const _PostChallengeHistoryModel({required this.challenge_description, required this.challenge_sentence, @LevelIntToStringConverter() required this.challenge_level, required this.challenge_average, required final  List<double> challenge_emotions, required final  List<double> emotions, required this.score}): _challenge_emotions = challenge_emotions,_emotions = emotions;
   factory _PostChallengeHistoryModel.fromJson(Map<String, dynamic> json) => _$PostChallengeHistoryModelFromJson(json);
 
 @override final  String challenge_description;
@@ -109,7 +108,6 @@ class _PostChallengeHistoryModel implements PostChallengeHistoryModel {
 }
 
 @override final  double score;
-@override@Base64Uint8ListConverter() final  Uint8List challenge_recording;
 
 /// Create a copy of PostChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
@@ -124,16 +122,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PostChallengeHistoryModel&&(identical(other.challenge_description, challenge_description) || other.challenge_description == challenge_description)&&(identical(other.challenge_sentence, challenge_sentence) || other.challenge_sentence == challenge_sentence)&&(identical(other.challenge_level, challenge_level) || other.challenge_level == challenge_level)&&(identical(other.challenge_average, challenge_average) || other.challenge_average == challenge_average)&&const DeepCollectionEquality().equals(other._challenge_emotions, _challenge_emotions)&&const DeepCollectionEquality().equals(other._emotions, _emotions)&&(identical(other.score, score) || other.score == score)&&const DeepCollectionEquality().equals(other.challenge_recording, challenge_recording));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PostChallengeHistoryModel&&(identical(other.challenge_description, challenge_description) || other.challenge_description == challenge_description)&&(identical(other.challenge_sentence, challenge_sentence) || other.challenge_sentence == challenge_sentence)&&(identical(other.challenge_level, challenge_level) || other.challenge_level == challenge_level)&&(identical(other.challenge_average, challenge_average) || other.challenge_average == challenge_average)&&const DeepCollectionEquality().equals(other._challenge_emotions, _challenge_emotions)&&const DeepCollectionEquality().equals(other._emotions, _emotions)&&(identical(other.score, score) || other.score == score));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,challenge_description,challenge_sentence,challenge_level,challenge_average,const DeepCollectionEquality().hash(_challenge_emotions),const DeepCollectionEquality().hash(_emotions),score,const DeepCollectionEquality().hash(challenge_recording));
+int get hashCode => Object.hash(runtimeType,challenge_description,challenge_sentence,challenge_level,challenge_average,const DeepCollectionEquality().hash(_challenge_emotions),const DeepCollectionEquality().hash(_emotions),score);
 
 @override
 String toString() {
-  return 'PostChallengeHistoryModel(challenge_description: $challenge_description, challenge_sentence: $challenge_sentence, challenge_level: $challenge_level, challenge_average: $challenge_average, challenge_emotions: $challenge_emotions, emotions: $emotions, score: $score, challenge_recording: $challenge_recording)';
+  return 'PostChallengeHistoryModel(challenge_description: $challenge_description, challenge_sentence: $challenge_sentence, challenge_level: $challenge_level, challenge_average: $challenge_average, challenge_emotions: $challenge_emotions, emotions: $emotions, score: $score)';
 }
 
 
@@ -144,7 +142,7 @@ abstract mixin class _$PostChallengeHistoryModelCopyWith<$Res> implements $PostC
   factory _$PostChallengeHistoryModelCopyWith(_PostChallengeHistoryModel value, $Res Function(_PostChallengeHistoryModel) _then) = __$PostChallengeHistoryModelCopyWithImpl;
 @override @useResult
 $Res call({
- String challenge_description, String challenge_sentence,@LevelIntToStringConverter() String challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score,@Base64Uint8ListConverter() Uint8List challenge_recording
+ String challenge_description, String challenge_sentence,@LevelIntToStringConverter() String challenge_level, double challenge_average, List<double> challenge_emotions, List<double> emotions, double score
 });
 
 
@@ -161,7 +159,7 @@ class __$PostChallengeHistoryModelCopyWithImpl<$Res>
 
 /// Create a copy of PostChallengeHistoryModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? challenge_description = null,Object? challenge_sentence = null,Object? challenge_level = null,Object? challenge_average = null,Object? challenge_emotions = null,Object? emotions = null,Object? score = null,Object? challenge_recording = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? challenge_description = null,Object? challenge_sentence = null,Object? challenge_level = null,Object? challenge_average = null,Object? challenge_emotions = null,Object? emotions = null,Object? score = null,}) {
   return _then(_PostChallengeHistoryModel(
 challenge_description: null == challenge_description ? _self.challenge_description : challenge_description // ignore: cast_nullable_to_non_nullable
 as String,challenge_sentence: null == challenge_sentence ? _self.challenge_sentence : challenge_sentence // ignore: cast_nullable_to_non_nullable
@@ -170,8 +168,7 @@ as String,challenge_average: null == challenge_average ? _self.challenge_average
 as double,challenge_emotions: null == challenge_emotions ? _self._challenge_emotions : challenge_emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,emotions: null == emotions ? _self._emotions : emotions // ignore: cast_nullable_to_non_nullable
 as List<double>,score: null == score ? _self.score : score // ignore: cast_nullable_to_non_nullable
-as double,challenge_recording: null == challenge_recording ? _self.challenge_recording : challenge_recording // ignore: cast_nullable_to_non_nullable
-as Uint8List,
+as double,
   ));
 }
 

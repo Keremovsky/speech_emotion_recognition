@@ -24,9 +24,6 @@ _PostChallengeHistoryModel _$PostChallengeHistoryModelFromJson(
           .map((e) => (e as num).toDouble())
           .toList(),
   score: (json['score'] as num).toDouble(),
-  challenge_recording: const Base64Uint8ListConverter().fromJson(
-    json['challenge_recording'] as String,
-  ),
 );
 
 Map<String, dynamic> _$PostChallengeHistoryModelToJson(
@@ -41,7 +38,4 @@ Map<String, dynamic> _$PostChallengeHistoryModelToJson(
   'challenge_emotions': instance.challenge_emotions,
   'emotions': instance.emotions,
   'score': instance.score,
-  'challenge_recording': const Base64Uint8ListConverter().toJson(
-    instance.challenge_recording,
-  ),
 };

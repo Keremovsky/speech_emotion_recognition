@@ -1,6 +1,3 @@
-import 'dart:typed_data';
-
-import 'package:flutter_speech_emotion_recognition/core/utils/json_converters/base64_uint8list_converter.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/json_converters/level_int_to_string_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -17,7 +14,6 @@ abstract class PostChallengeHistoryModel with _$PostChallengeHistoryModel {
     required final List<double> challenge_emotions,
     required final List<double> emotions,
     required final double score,
-    @Base64Uint8ListConverter() required final Uint8List challenge_recording,
   }) = _PostChallengeHistoryModel;
 
   factory PostChallengeHistoryModel.fromJson(Map<String, Object?> json) =>
