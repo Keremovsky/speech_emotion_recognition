@@ -3,32 +3,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_loading_indicator.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/failure_display.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
-import 'package:flutter_speech_emotion_recognition/core/enums/challenge_card_type.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/base_failure_model/base_failure_model.dart';
-import 'package:flutter_speech_emotion_recognition/core/models/challenge/pre_challenge_model/pre_challenge_model.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/challenge_history/pre_challenge_history/pre_challenge_history_model.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
-import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_card.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_history_card.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 
-class ChallengeCardList extends StatefulWidget {
+class ChallengeHistoryCardList extends StatefulWidget {
   final String? title;
   final bool activateRefreshButton;
-  final ChallengeCardType type;
 
-  const ChallengeCardList({
+  const ChallengeHistoryCardList({
     super.key,
     this.title,
     this.activateRefreshButton = false,
-    required this.type,
   });
 
   @override
-  ChallengeCardListState createState() => ChallengeCardListState();
+  ChallengeHistoryCardListState createState() => ChallengeHistoryCardListState();
 }
 
-class ChallengeCardListState extends State<ChallengeCardList> {
-  late Future<fp.Either<String, List<PreChallengeModel>>> value;
+class ChallengeHistoryCardListState extends State<ChallengeHistoryCardList> {
+  late Future<fp.Either<String, List<dynamic>>> value;
 
   @override
   void initState() {
@@ -36,19 +33,10 @@ class ChallengeCardListState extends State<ChallengeCardList> {
     value = _getData();
   }
 
-  Future<fp.Either<String, List<PreChallengeModel>>> _getData() async {
-    late fp.Either<BaseFailureModel, List<PreChallengeModel>> result;
+  Future<fp.Either<String, List<PreChallengeHistoryModel>>> _getData() async {
+    late fp.Either<BaseFailureModel, List<PreChallengeHistoryModel>> result;
 
-    switch (widget.type) {
-      case ChallengeCardType.random:
-        result =
-            await context.read<ChallengeController>().fetchPreChallengesRandom();
-        break;
-      case ChallengeCardType.popular:
-        result =
-            await context.read<ChallengeController>().fetchPreChallengesPopular();
-        break;
-    }
+    result = await context.read<ChallengeController>().fetchPreChallengeHistories();
 
     return result.fold(
       (error) {
@@ -143,7 +131,7 @@ class ChallengeCardListState extends State<ChallengeCardList> {
 }
 
 class _Success extends StatelessWidget {
-  final List<PreChallengeModel> data;
+  final List<PreChallengeHistoryModel> data;
 
   const _Success({required this.data});
 
@@ -166,7 +154,7 @@ class _Success extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: SizeConstants.screenPadding),
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return ChallengeCard(
+          return ChallengeHistoryCard(
             onPressed: (controller) {},
             width: 230.w,
             data: data[index],

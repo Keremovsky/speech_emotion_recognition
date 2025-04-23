@@ -11,6 +11,44 @@
 part of 'router.dart';
 
 /// generated route for
+/// [ChallengeHistoryView]
+class ChallengeHistoryViewRoute
+    extends PageRouteInfo<ChallengeHistoryViewRouteArgs> {
+  ChallengeHistoryViewRoute({
+    Key? key,
+    required PreChallengeHistoryModel data,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ChallengeHistoryViewRoute.name,
+         args: ChallengeHistoryViewRouteArgs(key: key, data: data),
+         initialChildren: children,
+       );
+
+  static const String name = 'ChallengeHistoryViewRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ChallengeHistoryViewRouteArgs>();
+      return ChallengeHistoryView(key: args.key, data: args.data);
+    },
+  );
+}
+
+class ChallengeHistoryViewRouteArgs {
+  const ChallengeHistoryViewRouteArgs({this.key, required this.data});
+
+  final Key? key;
+
+  final PreChallengeHistoryModel data;
+
+  @override
+  String toString() {
+    return 'ChallengeHistoryViewRouteArgs{key: $key, data: $data}';
+  }
+}
+
+/// generated route for
 /// [ChallengeView]
 class ChallengeViewRoute extends PageRouteInfo<ChallengeViewRouteArgs> {
   ChallengeViewRoute({

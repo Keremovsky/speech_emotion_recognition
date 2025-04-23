@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/challenge/pre_challenge_model/pre_challenge_model.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/challenge_history/pre_challenge_history/pre_challenge_history_model.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/login_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/register_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_pin_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_mail_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_view.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/view/challenge_history_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/view/challenge_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/home/view/home_view.dart';
 import 'package:flutter_speech_emotion_recognition/features/on_boarding/view/on_boarding_view.dart';
@@ -35,5 +37,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: ProfileViewRoute.page),
     AutoRoute(page: EditProfileViewRoute.page),
     AutoRoute(page: ChallengeViewRoute.page),
+    AutoRoute(page: ChallengeHistoryViewRoute.page),
   ];
 }

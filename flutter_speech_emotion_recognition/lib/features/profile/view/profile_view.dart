@@ -5,9 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
-import 'package:flutter_speech_emotion_recognition/core/enums/challenge_card_type.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
-import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_card_list.dart';
+import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_history_card_list.dart';
 import 'package:flutter_speech_emotion_recognition/features/profile/state/profile_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
@@ -85,12 +84,7 @@ class _ProfileViewState extends ProfileViewState {
             SizedBox(height: 15.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ChallengeCardList(
-                  title: LocaleKeys.history.tr(),
-                  type: ChallengeCardType.popular,
-                ),
-              ],
+              children: [ChallengeHistoryCardList(title: LocaleKeys.history.tr())],
             ),
           ],
         ),
