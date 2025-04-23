@@ -217,7 +217,7 @@ class _ResultChartState extends State<ResultChart> {
                 BarChartRodStackItem(
                   -10,
                   emotionValues[1],
-                  emotionValues[0] == challengeEmotions[i]
+                  emotionValues[1] == challengeEmotions[i]
                       ? ColorConstants.emotionColors[i].darken(25)
                       : ColorConstants.emotionColors[i],
                 ),
