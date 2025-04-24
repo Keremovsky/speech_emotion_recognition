@@ -1,6 +1,10 @@
 from rest_framework import serializers
 from .models import User, Challenge, ChallengeHistory
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.serializers import (
+    TokenObtainPairSerializer,
+    TokenRefreshSerializer,
+)
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
 
 import base64
@@ -120,12 +124,27 @@ class TokenObtainPairSerializer(TokenObtainPairSerializer):
 
         data = super().validate({"email": email, "password": password})
         data["username"] = user.username
+        data["email"] = user.email
+        data["profile_pic"] = user.profile_pic.url
+        data["register_day"] = user.date_joined
         return data
 
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
         token["email"] = user.email
-        token["username"] = user.username
-        # token["profile_pic"] = user.profile_pic
         return token
+
+
+class CustomTokenRefreshSerializer(TokenRefreshSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        refresh = RefreshToken(attrs["refresh"])
+        user = User.objects.get(id=refresh["user_id"])
+
+        data["username"] = user.username
+        data["email"] = user.email
+        data["profile_pic"] = user.profile_pic.url
+        data["register_day"] = user.date_joined
+
+        return data
