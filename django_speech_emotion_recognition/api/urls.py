@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
 
-from .views.auth import UserViewSet, LoginView, CustomTokenRefreshView
+from .views.auth import UserViewSet, LoginView, CustomTokenRefreshView, RegisterView
 from .views.challenge import (
     ChallengeViewSet,
     TryChallengeView,
@@ -17,5 +17,6 @@ urlpatterns = [
     path("", include(router.urls)),
     path("try-challenge/<str:id>/", TryChallengeView.as_view(), name="try-challenge"),
     path("auth/login/", LoginView.as_view(), name="login"),
+    path("auth/register/", RegisterView.as_view(), name="register"),
     path("auth/token/refresh/", CustomTokenRefreshView.as_view(), name="token_refresh"),
 ]
