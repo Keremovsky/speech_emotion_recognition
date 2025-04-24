@@ -9,7 +9,9 @@ from datetime import datetime
 class User(AbstractUser):
     username = models.CharField(max_length=100, unique=False)
     email = models.EmailField(unique=True)
-    profile_pic = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
+    profile_pic = models.ImageField(
+        upload_to="profile_pics/", default="profile_pics/default.jpg"
+    )
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
