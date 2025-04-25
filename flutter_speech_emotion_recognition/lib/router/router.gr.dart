@@ -119,18 +119,39 @@ class HomeViewRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [LoginView]
-class LoginViewRoute extends PageRouteInfo<void> {
-  const LoginViewRoute({List<PageRouteInfo>? children})
-    : super(LoginViewRoute.name, initialChildren: children);
+class LoginViewRoute extends PageRouteInfo<LoginViewRouteArgs> {
+  LoginViewRoute({
+    Key? key,
+    required void Function() onSuccess,
+    List<PageRouteInfo>? children,
+  }) : super(
+         LoginViewRoute.name,
+         args: LoginViewRouteArgs(key: key, onSuccess: onSuccess),
+         initialChildren: children,
+       );
 
   static const String name = 'LoginViewRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const LoginView();
+      final args = data.argsAs<LoginViewRouteArgs>();
+      return LoginView(key: args.key, onSuccess: args.onSuccess);
     },
   );
+}
+
+class LoginViewRouteArgs {
+  const LoginViewRouteArgs({this.key, required this.onSuccess});
+
+  final Key? key;
+
+  final void Function() onSuccess;
+
+  @override
+  String toString() {
+    return 'LoginViewRouteArgs{key: $key, onSuccess: $onSuccess}';
+  }
 }
 
 /// generated route for
@@ -183,34 +204,77 @@ class ResetPasswordMailViewRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ResetPasswordPinView]
-class ResetPasswordPinViewRoute extends PageRouteInfo<void> {
-  const ResetPasswordPinViewRoute({List<PageRouteInfo>? children})
-    : super(ResetPasswordPinViewRoute.name, initialChildren: children);
+class ResetPasswordPinViewRoute
+    extends PageRouteInfo<ResetPasswordPinViewRouteArgs> {
+  ResetPasswordPinViewRoute({
+    Key? key,
+    required EmailModel emailModel,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ResetPasswordPinViewRoute.name,
+         args: ResetPasswordPinViewRouteArgs(key: key, emailModel: emailModel),
+         initialChildren: children,
+       );
 
   static const String name = 'ResetPasswordPinViewRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ResetPasswordPinView();
+      final args = data.argsAs<ResetPasswordPinViewRouteArgs>();
+      return ResetPasswordPinView(key: args.key, emailModel: args.emailModel);
     },
   );
 }
 
+class ResetPasswordPinViewRouteArgs {
+  const ResetPasswordPinViewRouteArgs({this.key, required this.emailModel});
+
+  final Key? key;
+
+  final EmailModel emailModel;
+
+  @override
+  String toString() {
+    return 'ResetPasswordPinViewRouteArgs{key: $key, emailModel: $emailModel}';
+  }
+}
+
 /// generated route for
 /// [ResetPasswordView]
-class ResetPasswordViewRoute extends PageRouteInfo<void> {
-  const ResetPasswordViewRoute({List<PageRouteInfo>? children})
-    : super(ResetPasswordViewRoute.name, initialChildren: children);
+class ResetPasswordViewRoute extends PageRouteInfo<ResetPasswordViewRouteArgs> {
+  ResetPasswordViewRoute({
+    Key? key,
+    required PinModel pinModel,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ResetPasswordViewRoute.name,
+         args: ResetPasswordViewRouteArgs(key: key, pinModel: pinModel),
+         initialChildren: children,
+       );
 
   static const String name = 'ResetPasswordViewRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ResetPasswordView();
+      final args = data.argsAs<ResetPasswordViewRouteArgs>();
+      return ResetPasswordView(key: args.key, pinModel: args.pinModel);
     },
   );
+}
+
+class ResetPasswordViewRouteArgs {
+  const ResetPasswordViewRouteArgs({this.key, required this.pinModel});
+
+  final Key? key;
+
+  final PinModel pinModel;
+
+  @override
+  String toString() {
+    return 'ResetPasswordViewRouteArgs{key: $key, pinModel: $pinModel}';
+  }
 }
 
 /// generated route for

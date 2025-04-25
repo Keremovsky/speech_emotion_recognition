@@ -1,6 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/auth/login_model/login_model.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/feedback_snackbar.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/login_view.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 
@@ -36,11 +40,21 @@ abstract class LoginViewState extends State<LoginView> {
     context.pushRoute(ResetPasswordMailViewRoute());
   }
 
-  void onLoginButtonPressed() {
+  Future<void> onLoginButtonPressed() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      // TODO: implement user authentication
-      context.pushRoute(HomeViewRoute());
+      final result = await context.read<AuthController>().login(
+        LoginModel(email: email, password: password),
+      );
+
+      result.fold(
+        () {
+          widget.onSuccess();
+        },
+        (error) {
+          context.read<FeedbackUtil>().showSnackBar(context, error.message);
+        },
+      );
     }
   }
 

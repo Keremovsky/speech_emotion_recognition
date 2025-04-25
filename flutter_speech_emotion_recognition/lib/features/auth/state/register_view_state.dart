@@ -1,7 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/auth/register_model/register_model.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/feedback_snackbar.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/register_view.dart';
+import 'package:provider/provider.dart';
 
 abstract class RegisterViewState extends State<RegisterView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -58,11 +62,25 @@ abstract class RegisterViewState extends State<RegisterView> {
     return control.toNullable()?.message;
   }
 
-  void onRegisterButtonPressed() {
+  Future<void> onRegisterButtonPressed() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
-      // TODO: implement user registration
-      context.back();
+      final result = await context.read<AuthController>().register(
+        RegisterModel(email: email, username: username, password: password),
+      );
+
+      result.fold(
+        () {
+          context.read<FeedbackUtil>().showSnackBar(
+            context,
+            "Registration is successful.",
+          );
+          context.back();
+        },
+        (error) {
+          context.read<FeedbackUtil>().showSnackBar(context, error.message);
+        },
+      );
     }
   }
 

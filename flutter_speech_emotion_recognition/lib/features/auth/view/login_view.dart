@@ -15,7 +15,9 @@ import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
 @RoutePage()
 class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+  final void Function() onSuccess;
+
+  const LoginView({super.key, required this.onSuccess});
 
   @override
   LoginViewState createState() => _LoginViewState();

@@ -8,13 +8,16 @@ import 'package:flutter_speech_emotion_recognition/core/components/custom_pinput
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/auth/email_model/email_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/state/reset_password_pin_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
 @RoutePage()
 class ResetPasswordPinView extends StatefulWidget {
-  const ResetPasswordPinView({super.key});
+  final EmailModel emailModel;
+
+  const ResetPasswordPinView({super.key, required this.emailModel});
 
   @override
   ResetPasswordPinViewState createState() => _ResetPasswordPinViewState();

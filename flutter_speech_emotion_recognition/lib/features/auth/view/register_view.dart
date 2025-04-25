@@ -18,10 +18,10 @@ class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
 
   @override
-  RegisterViewState createState() => _LoginViewState();
+  RegisterViewState createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends RegisterViewState {
+class _RegisterViewState extends RegisterViewState {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

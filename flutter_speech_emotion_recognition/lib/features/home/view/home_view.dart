@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/enums/challenge_card_type.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_card_list.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
@@ -62,7 +63,7 @@ class _UserRow extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${LocaleKeys.welcome.tr()} Kerem",
+                      "${LocaleKeys.welcome.tr()} ${context.read<AuthController>().user.username}",
                       style: context.titleMedium,
                     ),
                     Text(LocaleKeys.goToProfile.tr(), style: context.displaySmall),
