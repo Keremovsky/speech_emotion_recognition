@@ -10,6 +10,7 @@ import 'package:flutter_speech_emotion_recognition/core/models/auth/reset_passwo
 import 'package:flutter_speech_emotion_recognition/core/models/auth/user_model/user_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/auth_failure_model/auth_failure_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/base_failure_model/base_failure_model.dart';
+import 'package:flutter_speech_emotion_recognition/core/models/edit_profile_model/edit_profile_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/type_failure_model/type_failure_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/network/network_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/secure_storage/secure_storage_service.dart';
@@ -144,6 +145,31 @@ class AuthController extends ChangeNotifier {
       (result) {
         final data = result.data;
         if (data is Map<String, dynamic>) {
+          return none();
+        }
+        return some(TypeFailureModel.invalidType("Type of fetched data was wrong."));
+      },
+    );
+  }
+
+  Future<Option<BaseFailureModel>> editProfile(EditProfileModel data) async {
+    final result = await _networkService.post("edit-profile/", data: data.toJson());
+
+    return result.fold(
+      (error) {
+        return some(error);
+      },
+      (result) {
+        final data = result.data;
+        if (data is Map<String, dynamic>) {
+          final editProfileData = EditProfileModel.fromJson(data);
+
+          _user = _user.copyWith(
+            username: editProfileData.username,
+            profile_pic: editProfileData.profile_pic ?? _user.profile_pic,
+          );
+          notifyListeners();
+
           return none();
         }
         return some(TypeFailureModel.invalidType("Type of fetched data was wrong."));
