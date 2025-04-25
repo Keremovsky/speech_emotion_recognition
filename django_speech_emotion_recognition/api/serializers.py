@@ -167,6 +167,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class EditProfileSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(required=False)
     profile_pic = serializers.ImageField(required=False)
 
     class Meta:
