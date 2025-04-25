@@ -16,8 +16,15 @@ class EditProfileView(APIView):
         serializer = EditProfileSerializer(user, data=request.data)
 
         if serializer.is_valid():
-            serializer.save()
+            updated_user = serializer.save()
+
             return Response(
+                {
+                    "username": updated_user.username,
+                    "profile_pic": updated_user.profile_pic.url
+                    if updated_user.profile_pic
+                    else None,
+                },
                 status=status.HTTP_201_CREATED,
             )
 
