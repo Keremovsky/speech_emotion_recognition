@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils import timezone
 
 import os
 from datetime import datetime
@@ -55,3 +56,12 @@ class ChallengeHistory(models.Model):
 
     def __str__(self):
         return f"{self.user.email} - {self.challenge.title}"
+
+
+class PasswordResetCode(models.Model):
+    email = models.EmailField()
+    pin = models.CharField(max_length=4)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def is_valid(self):
+        return (timezone.now() - self.created_at).seconds < 600

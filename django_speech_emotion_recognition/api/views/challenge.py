@@ -2,6 +2,8 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action, APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from ..models import Challenge, ChallengeHistory
 from ..serializers import (
@@ -13,6 +15,9 @@ from ..serializers import (
 
 
 class ChallengeViewSet(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     queryset = Challenge.objects.all()
     http_method_names = ["get"]
 
@@ -51,11 +56,11 @@ class ChallengeViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["get"])
     def get_history_scores(self, request, pk=None):
-        # user = request.user
+        user = request.user
         challenge = self.get_object()
 
         challenge_histories = ChallengeHistory.objects.filter(
-            challenge=challenge
+            user=user, challenge=challenge
         ).order_by("-challenge_date")
 
         serializer = self.get_serializer(challenge_histories, many=True)
@@ -64,6 +69,9 @@ class ChallengeViewSet(viewsets.ModelViewSet):
 
 
 class TryChallengeView(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def post(self, request, id):
         serializer = RecordingChallengeSerializer(data=request.data)
 

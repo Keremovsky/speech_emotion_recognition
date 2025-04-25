@@ -1,6 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from ..models import ChallengeHistory
 from ..serializers import (
@@ -11,6 +13,9 @@ from ..serializers import (
 
 
 class ChallengeHistoryViewSet(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     queryset = ChallengeHistory.objects.all()
     http_method_names = ["get", "post", "delete"]
 
@@ -23,8 +28,8 @@ class ChallengeHistoryViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=["get"])
     def pre(self, request):
-        # user = request.user
-        challenge_histories = ChallengeHistory.objects.filter().order_by(
+        user = request.user
+        challenge_histories = ChallengeHistory.objects.filter(user=user).order_by(
             "-challenge_date"
         )[:20]
         serializer = self.get_serializer(challenge_histories, many=True)
