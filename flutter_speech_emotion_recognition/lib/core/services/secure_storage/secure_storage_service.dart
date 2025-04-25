@@ -24,4 +24,9 @@ class SecureStorageService implements ISecureStorageService {
   Future<String?> get(String key) async {
     return await _secureStorage.read(key: key);
   }
+
+  @override
+  Future<void> remove(String key) async {
+    await _secureStorage.delete(key: key);
+  }
 }
