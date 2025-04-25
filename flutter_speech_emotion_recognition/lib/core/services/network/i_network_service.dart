@@ -1,6 +1,7 @@
 part of 'network_service.dart';
 
 abstract interface class INetworkService {
+  void registerAppRouter(AppRouter router);
   void setBaseUrl(String baseUrl);
   void setHeaders(Map<NetworkHeaderKeys, String> headers);
   void setHeader(NetworkHeaderKeys key, String value);
