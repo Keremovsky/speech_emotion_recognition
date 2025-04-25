@@ -8,7 +8,7 @@ part of 'edit_profile_model.dart';
 
 _EditProfileModel _$EditProfileModelFromJson(Map<String, dynamic> json) =>
     _EditProfileModel(
-      username: json['username'] as String,
+      username: json['username'] as String?,
       profile_pic: json['profile_pic'] as String?,
     );
 

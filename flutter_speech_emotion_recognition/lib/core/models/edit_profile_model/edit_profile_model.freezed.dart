@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EditProfileModel {
 
- String get username; String? get profile_pic;
+ String? get username; set username(String? value); String? get profile_pic; set profile_pic(String? value);
 /// Create a copy of EditProfileModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,14 +27,7 @@ $EditProfileModelCopyWith<EditProfileModel> get copyWith => _$EditProfileModelCo
   Map<String, dynamic> toJson();
 
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EditProfileModel&&(identical(other.username, username) || other.username == username)&&(identical(other.profile_pic, profile_pic) || other.profile_pic == profile_pic));
-}
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,username,profile_pic);
 
 @override
 String toString() {
@@ -49,7 +42,7 @@ abstract mixin class $EditProfileModelCopyWith<$Res>  {
   factory $EditProfileModelCopyWith(EditProfileModel value, $Res Function(EditProfileModel) _then) = _$EditProfileModelCopyWithImpl;
 @useResult
 $Res call({
- String username, String? profile_pic
+ String? username, String? profile_pic
 });
 
 
@@ -66,10 +59,10 @@ class _$EditProfileModelCopyWithImpl<$Res>
 
 /// Create a copy of EditProfileModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? username = null,Object? profile_pic = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? username = freezed,Object? profile_pic = freezed,}) {
   return _then(_self.copyWith(
-username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
-as String,profile_pic: freezed == profile_pic ? _self.profile_pic : profile_pic // ignore: cast_nullable_to_non_nullable
+username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String?,profile_pic: freezed == profile_pic ? _self.profile_pic : profile_pic // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -81,11 +74,11 @@ as String?,
 @JsonSerializable()
 
 class _EditProfileModel implements EditProfileModel {
-  const _EditProfileModel({required this.username, required this.profile_pic});
+   _EditProfileModel({this.username, this.profile_pic});
   factory _EditProfileModel.fromJson(Map<String, dynamic> json) => _$EditProfileModelFromJson(json);
 
-@override final  String username;
-@override final  String? profile_pic;
+@override  String? username;
+@override  String? profile_pic;
 
 /// Create a copy of EditProfileModel
 /// with the given fields replaced by the non-null parameter values.
@@ -98,14 +91,7 @@ Map<String, dynamic> toJson() {
   return _$EditProfileModelToJson(this, );
 }
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EditProfileModel&&(identical(other.username, username) || other.username == username)&&(identical(other.profile_pic, profile_pic) || other.profile_pic == profile_pic));
-}
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,username,profile_pic);
 
 @override
 String toString() {
@@ -120,7 +106,7 @@ abstract mixin class _$EditProfileModelCopyWith<$Res> implements $EditProfileMod
   factory _$EditProfileModelCopyWith(_EditProfileModel value, $Res Function(_EditProfileModel) _then) = __$EditProfileModelCopyWithImpl;
 @override @useResult
 $Res call({
- String username, String? profile_pic
+ String? username, String? profile_pic
 });
 
 
@@ -137,10 +123,10 @@ class __$EditProfileModelCopyWithImpl<$Res>
 
 /// Create a copy of EditProfileModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? username = null,Object? profile_pic = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? username = freezed,Object? profile_pic = freezed,}) {
   return _then(_EditProfileModel(
-username: null == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
-as String,profile_pic: freezed == profile_pic ? _self.profile_pic : profile_pic // ignore: cast_nullable_to_non_nullable
+username: freezed == username ? _self.username : username // ignore: cast_nullable_to_non_nullable
+as String?,profile_pic: freezed == profile_pic ? _self.profile_pic : profile_pic // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

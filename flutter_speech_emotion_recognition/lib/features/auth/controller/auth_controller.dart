@@ -165,7 +165,7 @@ class AuthController extends ChangeNotifier {
           final editProfileData = EditProfileModel.fromJson(data);
 
           _user = _user.copyWith(
-            username: editProfileData.username,
+            username: editProfileData.username ?? _user.username,
             profile_pic: editProfileData.profile_pic ?? _user.profile_pic,
           );
           notifyListeners();
