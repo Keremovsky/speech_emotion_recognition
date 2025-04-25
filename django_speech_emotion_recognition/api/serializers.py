@@ -164,3 +164,11 @@ class RegisterSerializer(serializers.ModelSerializer):
             password=validated_data["password"],
         )
         return user
+
+
+class EditProfileSerializer(serializers.ModelSerializer):
+    profile_pic = serializers.ImageField(required=False)
+
+    class Meta:
+        model = User
+        fields = ("username", "profile_pic")
