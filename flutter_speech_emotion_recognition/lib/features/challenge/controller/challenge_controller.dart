@@ -10,7 +10,6 @@ import 'package:flutter_speech_emotion_recognition/core/models/challenge_history
 import 'package:flutter_speech_emotion_recognition/core/models/type_failure_model/type_failure_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/network/network_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/recording_cache/recording_cache_service.dart';
-import 'package:flutter_speech_emotion_recognition/secrets.dart';
 import 'package:fpdart/fpdart.dart';
 
 // TODO: add error messages to json
@@ -19,14 +18,12 @@ class ChallengeController {
   late NetworkService _networkService;
   late RecordingCacheService _recordingCacheService;
 
-  static final ChallengeController _instance = ChallengeController._init();
   factory ChallengeController() => _instance;
+  static final ChallengeController _instance = ChallengeController._init();
 
   ChallengeController._init() {
     _recordingCacheService = RecordingCacheService();
-
     _networkService = NetworkService();
-    _networkService.setBaseUrl(baseUrl);
   }
 
   // fetch initial info about challenges randomly

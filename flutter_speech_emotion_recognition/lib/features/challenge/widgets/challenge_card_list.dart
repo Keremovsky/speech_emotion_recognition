@@ -92,7 +92,7 @@ class ChallengeCardListState extends State<ChallengeCardList> {
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasError) {
-                final error = snapshot.error! as Exception;
+                final error = snapshot.error!;
 
                 return FailureDisplay(
                   error: error.toString(),
