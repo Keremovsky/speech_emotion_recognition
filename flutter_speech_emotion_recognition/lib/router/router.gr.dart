@@ -122,7 +122,7 @@ class HomeViewRoute extends PageRouteInfo<void> {
 class LoginViewRoute extends PageRouteInfo<LoginViewRouteArgs> {
   LoginViewRoute({
     Key? key,
-    required void Function() onSuccess,
+    void Function()? onSuccess,
     List<PageRouteInfo>? children,
   }) : super(
          LoginViewRoute.name,
@@ -135,18 +135,20 @@ class LoginViewRoute extends PageRouteInfo<LoginViewRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<LoginViewRouteArgs>();
+      final args = data.argsAs<LoginViewRouteArgs>(
+        orElse: () => const LoginViewRouteArgs(),
+      );
       return LoginView(key: args.key, onSuccess: args.onSuccess);
     },
   );
 }
 
 class LoginViewRouteArgs {
-  const LoginViewRouteArgs({this.key, required this.onSuccess});
+  const LoginViewRouteArgs({this.key, this.onSuccess});
 
   final Key? key;
 
-  final void Function() onSuccess;
+  final void Function()? onSuccess;
 
   @override
   String toString() {

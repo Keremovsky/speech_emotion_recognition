@@ -2,7 +2,7 @@ import 'package:flutter_speech_emotion_recognition/core/services/cache/cache_ser
 import 'package:flutter_speech_emotion_recognition/core/services/file/file_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/secure_storage/secure_storage_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
-import 'package:flutter_speech_emotion_recognition/core/utils/feedback_snackbar.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/feedback_util.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';

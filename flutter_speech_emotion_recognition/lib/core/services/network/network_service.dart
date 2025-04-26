@@ -47,7 +47,7 @@ class NetworkService implements INetworkService {
             final refreshResult = await _secureStorage.get(refreshTokenKey);
 
             if (refreshResult == null || refreshResult.isEmpty) {
-              _router.replaceAll([LoginViewRoute(onSuccess: () {})]);
+              _router.replaceAll([LoginViewRoute()]);
               return handler.reject(
                 DioException(
                   requestOptions: options,

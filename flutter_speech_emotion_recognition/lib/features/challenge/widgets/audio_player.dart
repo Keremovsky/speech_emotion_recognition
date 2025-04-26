@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_loading_indicator.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_service.dart';
-import 'package:flutter_speech_emotion_recognition/core/utils/feedback_snackbar.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/feedback_util.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:provider/provider.dart';
 

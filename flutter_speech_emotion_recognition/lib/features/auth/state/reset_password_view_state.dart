@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/auth/reset_password_model/reset_password_model.dart';
-import 'package:flutter_speech_emotion_recognition/core/utils/feedback_snackbar.dart';
+import 'package:flutter_speech_emotion_recognition/core/utils/feedback_util.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_view.dart';
