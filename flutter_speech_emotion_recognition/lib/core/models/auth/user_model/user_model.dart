@@ -15,5 +15,14 @@ abstract class UserModel with _$UserModel {
     @RegisterDateConverter() required final String register_day,
   }) = _UserModel;
 
+  factory UserModel.empty() => const UserModel(
+    access: "",
+    refresh: "",
+    username: "",
+    email: "",
+    profile_pic: "",
+    register_day: "",
+  );
+
   factory UserModel.fromJson(Map<String, Object?> json) => _$UserModelFromJson(json);
 }
