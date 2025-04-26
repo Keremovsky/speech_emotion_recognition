@@ -26,6 +26,7 @@ class NetworkService implements INetworkService {
     "challenge-histories/",
     "try-challenge/",
     "edit-profile/",
+    "delete-account/",
   ];
 
   factory NetworkService() => _instance;
