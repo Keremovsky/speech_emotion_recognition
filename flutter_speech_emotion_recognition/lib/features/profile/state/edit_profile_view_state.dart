@@ -114,17 +114,19 @@ abstract class EditProfileViewState extends State<EditProfileView> {
 
     if (areYouSure == null || !areYouSure) return;
 
-    final result = await context.read<AuthController>().deleteAccount();
+    if (mounted) {
+      final result = await context.read<AuthController>().deleteAccount();
 
-    result.fold(
-      () {
-        context.router.replaceAll([LoginViewRoute()]);
-        context.read<FeedbackUtil>().showSnackBar(context, "removed");
-      },
-      (error) {
-        // TODO: add message
-        context.read<FeedbackUtil>().showSnackBar(context, "error");
-      },
-    );
+      result.fold(
+        () {
+          context.router.replaceAll([LoginViewRoute()]);
+          context.read<FeedbackUtil>().showSnackBar(context, "removed");
+        },
+        (error) {
+          // TODO: add message
+          context.read<FeedbackUtil>().showSnackBar(context, "error");
+        },
+      );
+    }
   }
 }
