@@ -8,7 +8,9 @@ import 'package:flutter_speech_emotion_recognition/core/components/custom_button
 import 'package:flutter_speech_emotion_recognition/core/components/custom_text_field.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
+import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/input_formatters.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/profile/state/edit_profile_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
@@ -52,7 +54,12 @@ class _EditProfileViewState extends EditProfileViewState {
                                     fit: BoxFit.cover,
                                   )
                                   : DecorationImage(
-                                    image: AssetImage("assets/image/pp.jpg"),
+                                    image: NetworkImage(
+                                      context
+                                          .watch<AuthController>()
+                                          .user
+                                          .profile_pic,
+                                    ),
                                     fit: BoxFit.cover,
                                   ),
                           shape: BoxShape.circle,
@@ -89,11 +96,12 @@ class _EditProfileViewState extends EditProfileViewState {
               Form(
                 key: formKey,
                 child: CustomTextField(
-                  onSaved: onUsernameSaved,
                   validator: onUsernameValidate,
+                  controller: controller,
                   hintText: LocaleKeys.username.tr(),
                   autovalidateMode: AutovalidateMode.onUnfocus,
                   inputFormatters: InputFormatters.usernameFormatter,
+                  textInputAction: TextInputAction.done,
                 ),
               ),
               SizedBox(height: 12.h),

@@ -6,6 +6,7 @@ import 'package:flutter_speech_emotion_recognition/core/components/custom_button
 import 'package:flutter_speech_emotion_recognition/core/constants/colors_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/constants/size_constants.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_history_card_list.dart';
 import 'package:flutter_speech_emotion_recognition/features/profile/state/profile_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
@@ -38,11 +39,13 @@ class _ProfileViewState extends ProfileViewState {
                           left: 0,
                           bottom: 0,
                           child: Container(
-                            height: 100,
-                            width: 100,
+                            height: 100.h,
+                            width: 100.w,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage("assets/image/pp.jpg"),
+                                image: NetworkImage(
+                                  context.watch<AuthController>().user.profile_pic,
+                                ),
                                 fit: BoxFit.cover,
                               ),
                               shape: BoxShape.circle,
@@ -65,7 +68,14 @@ class _ProfileViewState extends ProfileViewState {
                       ],
                     ),
                   ),
-                  Row(children: [Text("Kerem", style: context.displayLarge)]),
+                  Row(
+                    children: [
+                      Text(
+                        context.watch<AuthController>().user.username,
+                        style: context.displayLarge,
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 5.h),
                   Row(
                     children: [
@@ -74,8 +84,12 @@ class _ProfileViewState extends ProfileViewState {
                         color: ColorConstants.darkGreyTextColor,
                         size: 15,
                       ),
-                      const SizedBox(width: 5),
-                      Text("Joined February 2025", style: context.displaySmall),
+                      SizedBox(width: 5.w),
+                      Text(
+                        // TODO: add it to json
+                        "Joined ${context.watch<AuthController>().user.register_day}",
+                        style: context.displaySmall,
+                      ),
                     ],
                   ),
                 ],

@@ -47,6 +47,7 @@ class AuthController extends ChangeNotifier {
         if (data is Map<String, dynamic>) {
           final userData = UserModel.fromJson(data);
           await _secureStorageService.store(refreshTokenKey, userData.refresh);
+          await _secureStorageService.store(accessTokenKey, userData.access);
 
           _networkService.setHeader(
             NetworkHeaderKeys.Authorization,
@@ -76,7 +77,7 @@ class AuthController extends ChangeNotifier {
       return some(AuthFailureModel.refreshTokenExpired(""));
     }
 
-    return await _refreshAuth(refreshToken);
+    return await refreshAuth(refreshToken);
   }
 
   Future<Option<BaseFailureModel>> register(RegisterModel data) async {
@@ -153,7 +154,7 @@ class AuthController extends ChangeNotifier {
   }
 
   Future<Option<BaseFailureModel>> editProfile(EditProfileModel data) async {
-    final result = await _networkService.post("edit-profile/", data: data.toJson());
+    final result = await _networkService.put("edit-profile/", data: data.toJson());
 
     return result.fold(
       (error) {
@@ -166,7 +167,7 @@ class AuthController extends ChangeNotifier {
 
           _user = _user.copyWith(
             username: editProfileData.username ?? _user.username,
-            profile_pic: editProfileData.profile_pic ?? _user.profile_pic,
+            profile_pic: baseUrl + editProfileData.profile_pic!,
           );
           notifyListeners();
 
@@ -193,7 +194,7 @@ class AuthController extends ChangeNotifier {
     );
   }
 
-  Future<Option<BaseFailureModel>> _refreshAuth(String refreshToken) async {
+  Future<Option<BaseFailureModel>> refreshAuth(String refreshToken) async {
     final result = await _networkService.post(
       "auth/token/refresh/",
       data: {"refresh": refreshToken},
@@ -214,6 +215,8 @@ class AuthController extends ChangeNotifier {
             NetworkHeaderKeys.Authorization,
             "Bearer ${userData.access}",
           );
+
+          await _secureStorageService.store(accessTokenKey, userData.access);
 
           _user = userData;
           notifyListeners();

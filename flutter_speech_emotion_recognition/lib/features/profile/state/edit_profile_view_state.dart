@@ -13,20 +13,26 @@ import 'package:flutter_speech_emotion_recognition/router/router.dart';
 import 'package:provider/provider.dart';
 
 abstract class EditProfileViewState extends State<EditProfileView> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController controller = TextEditingController();
 
   String? newProfilePicPath;
-  late String username;
 
   @override
   void initState() {
     super.initState();
-    username = context.read<AuthController>().user.username;
+    controller.text = context.read<AuthController>().user.username;
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   Future<String?> _getFilePath() async {
     final filePicker = await FilePicker.platform.pickFiles(
-      type: FileType.image,
+      type: FileType.custom,
       allowedExtensions: ['jpg', 'png', "jpeg"],
     );
 
@@ -47,12 +53,6 @@ abstract class EditProfileViewState extends State<EditProfileView> {
     }
   }
 
-  void onUsernameSaved(String? value) {
-    setState(() {
-      username = value!;
-    });
-  }
-
   String? onUsernameValidate(String? value) {
     final control = InputFieldValidator.validateUsername(value);
     return control.toNullable()?.message;
@@ -64,8 +64,6 @@ abstract class EditProfileViewState extends State<EditProfileView> {
 
   void onSavePressed() async {
     if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-
       EditProfileModel editProfileModel = EditProfileModel();
 
       String? base64String;
@@ -75,8 +73,9 @@ abstract class EditProfileViewState extends State<EditProfileView> {
         base64String = base64Encode(bytes);
       }
 
-      if (mounted && username != context.read<AuthController>().user.username) {
-        editProfileModel.username = username;
+      if (mounted &&
+          controller.text != context.read<AuthController>().user.username) {
+        editProfileModel.username = controller.text;
       }
       if (base64String != null) {
         editProfileModel.profile_pic = base64String;
@@ -85,6 +84,7 @@ abstract class EditProfileViewState extends State<EditProfileView> {
       if (editProfileModel.username != null ||
           editProfileModel.profile_pic != null) {
         if (mounted) {
+          print(editProfileModel.toJson());
           final result = await context.read<AuthController>().editProfile(
             editProfileModel,
           );
@@ -100,9 +100,9 @@ abstract class EditProfileViewState extends State<EditProfileView> {
             },
           );
         }
-      }
 
-      if (mounted) context.back();
+        if (mounted) context.back();
+      }
     }
   }
 

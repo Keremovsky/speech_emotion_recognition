@@ -52,22 +52,35 @@ class _UserRow extends StatelessWidget {
             },
             child: Row(
               children: [
-                SizedBox(
+                Container(
                   height: 60.h,
                   width: 60.w,
-                  child: Image.asset("assets/image/pp.jpg"),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        context.watch<AuthController>().user.profile_pic,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
                 ),
                 SizedBox(width: 10.w),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${LocaleKeys.welcome.tr()} ${context.read<AuthController>().user.username}",
-                      style: context.titleMedium,
-                    ),
-                    Text(LocaleKeys.goToProfile.tr(), style: context.displaySmall),
-                  ],
+                SizedBox(
+                  height: 60.h,
+                  width: 200.w,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${LocaleKeys.welcome.tr()} ${context.read<AuthController>().user.username}",
+                        style: context.titleMedium,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(LocaleKeys.goToProfile.tr(), style: context.displaySmall),
+                    ],
+                  ),
                 ),
               ],
             ),
