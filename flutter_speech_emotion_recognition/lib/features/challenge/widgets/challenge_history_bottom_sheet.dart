@@ -19,7 +19,7 @@ class ChallengeHistoryBottomSheet extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: SizeConstants.screenPadding),
       child: SizedBox(
-        height: 380.h,
+        height: 400.h,
         width: double.infinity,
         child: ResultChart(model: model),
       ),

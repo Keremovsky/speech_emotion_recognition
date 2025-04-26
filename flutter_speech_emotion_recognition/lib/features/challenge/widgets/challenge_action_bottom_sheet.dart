@@ -60,10 +60,9 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: SizeConstants.screenPadding),
       child: SizedBox(
-        height: 380.h,
+        height: 400.h,
         width: double.infinity,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(widget.title, style: context.titleMedium),
             SizedBox(height: 12.h),
@@ -81,6 +80,7 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
                         final recordingData = await file.readAsBytes();
 
                         setState(() {
+                          isFinished = true;
                           value = _getResult(recordingData);
                         });
                       },
@@ -96,7 +96,7 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
 
                     final result = snapshot.data;
                     if (result != null) {
-                      result.fold(
+                      return result.fold(
                         (error) {
                           return FailureDisplay(error: error);
                         },
@@ -105,6 +105,7 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
                         },
                       );
                     }
+                    // TODO: add to json
                     return FailureDisplay(error: "Unknown error.");
                   }
                   return CustomLoadingIndicator();
