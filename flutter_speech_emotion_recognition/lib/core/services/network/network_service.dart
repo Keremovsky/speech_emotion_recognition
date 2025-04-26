@@ -121,6 +121,14 @@ class NetworkService implements INetworkService {
     return await _doRequest(() => _dio.delete(url));
   }
 
+  @override
+  Future<Either<ConnectionFailureModel, Response<dynamic>>> put(
+    String url, {
+    required dynamic data,
+  }) async {
+    return await _doRequest(() => _dio.put(url, data: data));
+  }
+
   Future<Either<ConnectionFailureModel, Response<dynamic>>> _doRequest(
     AsyncValueGetter<Response<dynamic>> operation,
   ) async {

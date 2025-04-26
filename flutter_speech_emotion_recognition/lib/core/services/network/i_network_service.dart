@@ -14,4 +14,8 @@ abstract interface class INetworkService {
     required dynamic data,
   });
   Future<Either<ConnectionFailureModel, Response<dynamic>>> delete(String url);
+  Future<Either<ConnectionFailureModel, Response<dynamic>>> put(
+    String url, {
+    required dynamic data,
+  });
 }
