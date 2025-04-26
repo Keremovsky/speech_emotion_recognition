@@ -11,9 +11,17 @@ class EditProfileView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
-    def post(self, request):
+    def put(self, request):
+        data = request.data.copy()
+
+        if data.get("username") is None:
+            data.pop("username")
+
+        if data.get("profile_pic") is None:
+            data.pop("profile_pic")
+
         user = request.user
-        serializer = EditProfileSerializer(user, data=request.data)
+        serializer = EditProfileSerializer(user, data=data, partial=True)
 
         if serializer.is_valid():
             updated_user = serializer.save()

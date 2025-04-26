@@ -6,6 +6,7 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
+from drf_extra_fields.fields import Base64ImageField
 
 import base64
 
@@ -168,7 +169,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class EditProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False)
-    profile_pic = serializers.ImageField(required=False)
+    profile_pic = Base64ImageField(required=False)
 
     class Meta:
         model = User
