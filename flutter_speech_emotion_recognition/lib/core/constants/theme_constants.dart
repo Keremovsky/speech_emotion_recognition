@@ -243,4 +243,13 @@ class ThemeConstants {
   static final darkBottomSheetTheme = lightBottomSheetTheme.copyWith(
     backgroundColor: ColorConstants.darkScaffoldBackground,
   );
+
+  static final lightDialogTheme = DialogThemeData(
+    backgroundColor: ColorConstants.lightScaffoldBackground,
+    elevation: 0,
+  );
+
+  static final darkDialogTheme = lightDialogTheme.copyWith(
+    backgroundColor: ColorConstants.darkScaffoldBackground,
+  );
 }

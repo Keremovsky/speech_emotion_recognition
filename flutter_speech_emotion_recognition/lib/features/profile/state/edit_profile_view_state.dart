@@ -106,10 +106,12 @@ abstract class EditProfileViewState extends State<EditProfileView> {
   }
 
   Future<void> onDeleteAccountPressed() async {
+    // TODO: add to json
+
     final areYouSure = await context.read<FeedbackUtil>().showMessageBox(
       context,
-      "",
-      "",
+      "Are you sure?",
+      "This action can't be returned. All of your data will be deleted with your account informations.",
     );
 
     if (areYouSure == null || !areYouSure) return;

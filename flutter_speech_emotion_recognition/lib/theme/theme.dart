@@ -15,6 +15,7 @@ final lightTheme = ThemeData(
   switchTheme: ThemeConstants.lightSwitchThemeData,
   progressIndicatorTheme: ThemeConstants.lightProgressIndicatorThemeData,
   bottomSheetTheme: ThemeConstants.lightBottomSheetTheme,
+  dialogTheme: ThemeConstants.lightDialogTheme,
 );
 
 final darkTheme = ThemeData(
@@ -30,4 +31,5 @@ final darkTheme = ThemeData(
   switchTheme: ThemeConstants.darkSwitchThemeData,
   progressIndicatorTheme: ThemeConstants.darkProgressIndicatorThemeData,
   bottomSheetTheme: ThemeConstants.darkBottomSheetTheme,
+  dialogTheme: ThemeConstants.darkDialogTheme,
 );

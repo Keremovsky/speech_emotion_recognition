@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 
 class FeedbackUtil {
@@ -56,17 +57,18 @@ class FeedbackUtil {
             ),
           ),
           actions: <Widget>[
-            TextButton(
+            // TODO: add to json
+            CustomButton(
               onPressed: () {
                 context.pop(true);
               },
-              child: Text("Approve", style: context.displayMedium),
+              child: Text("Approve"),
             ),
-            TextButton(
+            CustomButton(
               onPressed: () {
                 context.pop(false);
               },
-              child: Text("Refuse", style: context.displayMedium),
+              child: Text("Refuse"),
             ),
           ],
         );
