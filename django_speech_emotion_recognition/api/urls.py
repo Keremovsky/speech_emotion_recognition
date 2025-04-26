@@ -15,7 +15,7 @@ from .views.challenge import (
     TryChallengeView,
 )
 from .views.challenge_history import ChallengeHistoryViewSet
-from .views.profile import EditProfileView
+from .views.profile import EditProfileView, DeleteAccountView
 
 router = DefaultRouter()
 router.register("users", UserViewSet)
@@ -32,4 +32,5 @@ urlpatterns = [
     path("auth/reset-pin/", VerifyResetPINView.as_view(), name="reset-pin"),
     path("auth/reset-password/", ResetPasswordView.as_view(), name="reset-password"),
     path("edit-profile/", EditProfileView.as_view(), name="edit-profile"),
+    path("delete-account/", DeleteAccountView.as_view(), name="delete-account"),
 ]
