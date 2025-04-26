@@ -9,9 +9,11 @@ import 'package:flutter_speech_emotion_recognition/core/extensions/network_exten
 import 'package:flutter_speech_emotion_recognition/core/models/connection_failure_model/connection_failure_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/connectivity/connectivity_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/secure_storage/secure_storage_service.dart';
+import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 import 'package:flutter_speech_emotion_recognition/secrets.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 part 'i_network_service.dart';
 
@@ -42,9 +44,9 @@ class NetworkService implements INetworkService {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           if (_protectedPathList.any((path) => options.path.contains(path))) {
-            final result = await _secureStorage.get(refreshTokenKey);
+            final refreshResult = await _secureStorage.get(refreshTokenKey);
 
-            if (result == null || result.isEmpty) {
+            if (refreshResult == null || refreshResult.isEmpty) {
               _router.replaceAll([LoginViewRoute(onSuccess: () {})]);
               return handler.reject(
                 DioException(
@@ -52,6 +54,28 @@ class NetworkService implements INetworkService {
                   type: DioExceptionType.cancel,
                   error: 'Unauthenticated',
                 ),
+              );
+            }
+
+            final accessResult = await _secureStorage.get(accessTokenKey);
+
+            if (accessResult == null ||
+                accessResult.isEmpty ||
+                JwtDecoder.isExpired(accessResult)) {
+              final result = await AuthController().refreshAuth(refreshResult);
+              result.fold(
+                () {
+                  log("access token update success");
+                },
+                (error) {
+                  return handler.reject(
+                    DioException(
+                      requestOptions: options,
+                      type: DioExceptionType.cancel,
+                      error: 'Unauthenticated',
+                    ),
+                  );
+                },
               );
             }
           }
