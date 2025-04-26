@@ -43,7 +43,7 @@ class DeleteAccountView(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
-    def post(self, request):
+    def delete(self, request):
         user = request.user
 
         user.delete()
