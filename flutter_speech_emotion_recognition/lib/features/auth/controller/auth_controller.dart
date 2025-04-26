@@ -177,6 +177,22 @@ class AuthController extends ChangeNotifier {
     );
   }
 
+  Future<Option<BaseFailureModel>> deleteAccount() async {
+    final result = await _networkService.delete("delete-account/");
+
+    return result.fold(
+      (error) {
+        return some(error);
+      },
+      (result) {
+        _user = UserModel.empty();
+        notifyListeners();
+
+        return none();
+      },
+    );
+  }
+
   Future<Option<BaseFailureModel>> _refreshAuth(String refreshToken) async {
     final result = await _networkService.post(
       "auth/token/refresh/",

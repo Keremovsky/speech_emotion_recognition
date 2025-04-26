@@ -37,7 +37,7 @@ class NetworkService implements INetworkService {
     _connectivityService = ConnectivityService();
     _secureStorage = SecureStorageService();
 
-    setBaseUrl(baseUrl);
+    setBaseUrl(baseAppUrl);
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
