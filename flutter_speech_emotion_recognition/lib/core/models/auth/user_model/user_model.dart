@@ -1,3 +1,4 @@
+import 'package:flutter_speech_emotion_recognition/core/utils/json_converters/profile_pic_converter.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/json_converters/register_date_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +12,7 @@ abstract class UserModel with _$UserModel {
     required final String refresh,
     required final String username,
     required final String email,
-    required final String profile_pic,
+    @ProfilePicConverter() required final String profile_pic,
     @RegisterDateConverter() required final String register_day,
   }) = _UserModel;
 

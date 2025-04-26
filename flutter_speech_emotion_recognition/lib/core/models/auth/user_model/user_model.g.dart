@@ -11,7 +11,9 @@ _UserModel _$UserModelFromJson(Map<String, dynamic> json) => _UserModel(
   refresh: json['refresh'] as String,
   username: json['username'] as String,
   email: json['email'] as String,
-  profile_pic: json['profile_pic'] as String,
+  profile_pic: const ProfilePicConverter().fromJson(
+    json['profile_pic'] as String,
+  ),
   register_day: const RegisterDateConverter().fromJson(
     json['register_day'] as String,
   ),
@@ -24,6 +26,6 @@ Map<String, dynamic> _$UserModelToJson(
   'refresh': instance.refresh,
   'username': instance.username,
   'email': instance.email,
-  'profile_pic': instance.profile_pic,
+  'profile_pic': const ProfilePicConverter().toJson(instance.profile_pic),
   'register_day': const RegisterDateConverter().toJson(instance.register_day),
 };

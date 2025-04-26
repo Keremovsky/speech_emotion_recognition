@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserModel {
 
- String get access; String get refresh; String get username; String get email; String get profile_pic;@RegisterDateConverter() String get register_day;
+ String get access; String get refresh; String get username; String get email;@ProfilePicConverter() String get profile_pic;@RegisterDateConverter() String get register_day;
 /// Create a copy of UserModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $UserModelCopyWith<$Res>  {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) _then) = _$UserModelCopyWithImpl;
 @useResult
 $Res call({
- String access, String refresh, String username, String email, String profile_pic,@RegisterDateConverter() String register_day
+ String access, String refresh, String username, String email,@ProfilePicConverter() String profile_pic,@RegisterDateConverter() String register_day
 });
 
 
@@ -85,14 +85,14 @@ as String,
 @JsonSerializable()
 
 class _UserModel implements UserModel {
-  const _UserModel({required this.access, required this.refresh, required this.username, required this.email, required this.profile_pic, @RegisterDateConverter() required this.register_day});
+  const _UserModel({required this.access, required this.refresh, required this.username, required this.email, @ProfilePicConverter() required this.profile_pic, @RegisterDateConverter() required this.register_day});
   factory _UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
 
 @override final  String access;
 @override final  String refresh;
 @override final  String username;
 @override final  String email;
-@override final  String profile_pic;
+@override@ProfilePicConverter() final  String profile_pic;
 @override@RegisterDateConverter() final  String register_day;
 
 /// Create a copy of UserModel
@@ -128,7 +128,7 @@ abstract mixin class _$UserModelCopyWith<$Res> implements $UserModelCopyWith<$Re
   factory _$UserModelCopyWith(_UserModel value, $Res Function(_UserModel) _then) = __$UserModelCopyWithImpl;
 @override @useResult
 $Res call({
- String access, String refresh, String username, String email, String profile_pic,@RegisterDateConverter() String register_day
+ String access, String refresh, String username, String email,@ProfilePicConverter() String profile_pic,@RegisterDateConverter() String register_day
 });
 
 
