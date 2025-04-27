@@ -9,11 +9,6 @@ import 'package:flutter_speech_emotion_recognition/core/services/theme/theme_ser
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/audio_player.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 
-/// Card widget that shows given challenge title and level, and able to play audio.
-///
-/// The audio loading, playing and pausing are handled in the widget
-/// but for more control over player `onPressed` function can be used.
-/// Be careful that `onPressed` will be executed at the end of the function.
 class ChallengeHistoryCard extends StatefulWidget {
   final Function(PlayerController)? onPressed;
   final double? height;
@@ -29,10 +24,10 @@ class ChallengeHistoryCard extends StatefulWidget {
   });
 
   @override
-  State<ChallengeHistoryCard> createState() => _ChallengeCardState();
+  State<ChallengeHistoryCard> createState() => _ChallengeHistoryCardState();
 }
 
-class _ChallengeCardState extends State<ChallengeHistoryCard> {
+class _ChallengeHistoryCardState extends State<ChallengeHistoryCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,7 +64,7 @@ class _ChallengeCardState extends State<ChallengeHistoryCard> {
               ),
             ),
           ),
-          Flexible(child: AudioPlayer(challengeId: widget.data.id)),
+          Flexible(child: AudioPlayer(challengeId: widget.data.challenge_id)),
         ],
       ),
     );

@@ -206,14 +206,7 @@ class ChallengeController {
         return some(error);
       },
       (result) {
-        final data = result.data;
-        if (data is Map<String, dynamic>) {
-          return none();
-        } else {
-          return some(
-            TypeFailureModel.invalidType("Type of fetched data was wrong."),
-          );
-        }
+        return none();
       },
     );
   }

@@ -43,6 +43,7 @@ abstract class LoginViewState extends State<LoginView> {
   Future<void> onLoginButtonPressed() async {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
+
       final result = await context.read<AuthController>().login(
         LoginModel(email: email, password: password),
       );
@@ -51,7 +52,7 @@ abstract class LoginViewState extends State<LoginView> {
         () {
           widget.onSuccess != null
               ? widget.onSuccess!()
-              : context.router.replaceAll([LoginViewRoute()]);
+              : context.router.replaceAll([HomeViewRoute()]);
         },
         (error) {
           context.read<FeedbackUtil>().showSnackBar(context, error.message);

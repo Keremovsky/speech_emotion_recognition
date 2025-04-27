@@ -10,6 +10,7 @@ _PreChallengeHistoryModel _$PreChallengeHistoryModelFromJson(
   Map<String, dynamic> json,
 ) => _PreChallengeHistoryModel(
   id: (json['id'] as num).toInt(),
+  challenge_id: (json['challenge_id'] as num).toInt(),
   challenge_title: json['challenge_title'] as String,
   score: (json['score'] as num).toDouble(),
 );
@@ -18,6 +19,7 @@ Map<String, dynamic> _$PreChallengeHistoryModelToJson(
   _PreChallengeHistoryModel instance,
 ) => <String, dynamic>{
   'id': instance.id,
+  'challenge_id': instance.challenge_id,
   'challenge_title': instance.challenge_title,
   'score': instance.score,
 };

@@ -7,6 +7,7 @@ part 'pre_challenge_history_model.g.dart';
 abstract class PreChallengeHistoryModel with _$PreChallengeHistoryModel {
   const factory PreChallengeHistoryModel({
     required final int id,
+    required final int challenge_id,
     required final String challenge_title,
     required final double score,
   }) = _PreChallengeHistoryModel;
