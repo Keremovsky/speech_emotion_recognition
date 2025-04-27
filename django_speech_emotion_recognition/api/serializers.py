@@ -50,12 +50,14 @@ class ChallengeHistorySerializer(serializers.ModelSerializer):
 
 
 class PreChallengeHistorySerializer(serializers.ModelSerializer):
+    challenge_id = serializers.IntegerField(source="challenge.id", read_only=True)
     challenge_title = serializers.CharField(source="challenge.title", read_only=True)
 
     class Meta:
         model = ChallengeHistory
         fields = [
             "id",
+            "challenge_id",
             "challenge_title",
             "score",
         ]
