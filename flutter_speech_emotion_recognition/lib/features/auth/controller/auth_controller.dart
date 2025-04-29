@@ -194,6 +194,17 @@ class AuthController extends ChangeNotifier {
     );
   }
 
+  Future<Option<BaseFailureModel>> exitFromAccount() async {
+    try {
+      await _secureStorageService.remove(refreshTokenKey);
+      await _secureStorageService.remove(accessTokenKey);
+      _user = UserModel.empty();
+      return none();
+    } catch (e) {
+      return some(AuthFailureModel.exitError("An error occurred while exiting."));
+    }
+  }
+
   Future<Option<BaseFailureModel>> refreshAuth(String refreshToken) async {
     final result = await _networkService.post(
       "auth/token/refresh/",

@@ -11,4 +11,5 @@ sealed class AuthFailureModel extends BaseFailureModel with _$AuthFailureModel {
       _RefreshTokenNull;
   const factory AuthFailureModel.refreshTokenExpired(String message) =
       _RefreshTokenExpired;
+  const factory AuthFailureModel.exitError(String message) = _ExitError;
 }

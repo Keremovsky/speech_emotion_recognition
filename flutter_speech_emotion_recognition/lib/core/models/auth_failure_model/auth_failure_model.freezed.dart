@@ -223,4 +223,76 @@ as String,
 
 }
 
+/// @nodoc
+
+
+class _ExitError extends AuthFailureModel with DiagnosticableTreeMixin {
+  const _ExitError(this.message): super._();
+  
+
+@override final  String message;
+
+/// Create a copy of AuthFailureModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ExitErrorCopyWith<_ExitError> get copyWith => __$ExitErrorCopyWithImpl<_ExitError>(this, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'AuthFailureModel.exitError'))
+    ..add(DiagnosticsProperty('message', message));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExitError&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'AuthFailureModel.exitError(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ExitErrorCopyWith<$Res> implements $AuthFailureModelCopyWith<$Res> {
+  factory _$ExitErrorCopyWith(_ExitError value, $Res Function(_ExitError) _then) = __$ExitErrorCopyWithImpl;
+@override @useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class __$ExitErrorCopyWithImpl<$Res>
+    implements _$ExitErrorCopyWith<$Res> {
+  __$ExitErrorCopyWithImpl(this._self, this._then);
+
+  final _ExitError _self;
+  final $Res Function(_ExitError) _then;
+
+/// Create a copy of AuthFailureModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(_ExitError(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 // dart format on

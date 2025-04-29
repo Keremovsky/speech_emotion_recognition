@@ -8,7 +8,7 @@ abstract class ResetPasswordModel with _$ResetPasswordModel {
   const factory ResetPasswordModel({
     required final String email,
     required final String pin,
-    required final String password,
+    required final String new_password,
   }) = _ResetPasswordModel;
 
   factory ResetPasswordModel.fromJson(Map<String, Object?> json) =>

@@ -78,6 +78,22 @@ class _SettingsViewState extends SettingsViewState {
                   ),
                 ],
               ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CustomButton(
+                    onPressed: exitFromAccount,
+                    child: Row(
+                      children: [
+                        Text("Exit from Account"),
+                        SizedBox(width: 12.w),
+                        Icon(Icons.exit_to_app, size: 20.r),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

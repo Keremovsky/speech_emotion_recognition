@@ -45,7 +45,7 @@ abstract class ResetPasswordViewState extends State<ResetPasswordView> {
       final model = ResetPasswordModel(
         email: widget.pinModel.email,
         pin: widget.pinModel.pin,
-        password: password,
+        new_password: password,
       );
 
       final result = await context.read<AuthController>().sendResetPassword(model);

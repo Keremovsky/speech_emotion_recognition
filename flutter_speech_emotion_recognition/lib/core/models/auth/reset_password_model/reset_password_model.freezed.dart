@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ResetPasswordModel {
 
- String get email; String get pin; String get password;
+ String get email; String get pin; String get new_password;
 /// Create a copy of ResetPasswordModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $ResetPasswordModelCopyWith<ResetPasswordModel> get copyWith => _$ResetPasswordM
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPasswordModel&&(identical(other.email, email) || other.email == email)&&(identical(other.pin, pin) || other.pin == pin)&&(identical(other.password, password) || other.password == password));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResetPasswordModel&&(identical(other.email, email) || other.email == email)&&(identical(other.pin, pin) || other.pin == pin)&&(identical(other.new_password, new_password) || other.new_password == new_password));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,pin,password);
+int get hashCode => Object.hash(runtimeType,email,pin,new_password);
 
 @override
 String toString() {
-  return 'ResetPasswordModel(email: $email, pin: $pin, password: $password)';
+  return 'ResetPasswordModel(email: $email, pin: $pin, new_password: $new_password)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $ResetPasswordModelCopyWith<$Res>  {
   factory $ResetPasswordModelCopyWith(ResetPasswordModel value, $Res Function(ResetPasswordModel) _then) = _$ResetPasswordModelCopyWithImpl;
 @useResult
 $Res call({
- String email, String pin, String password
+ String email, String pin, String new_password
 });
 
 
@@ -66,11 +66,11 @@ class _$ResetPasswordModelCopyWithImpl<$Res>
 
 /// Create a copy of ResetPasswordModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? pin = null,Object? password = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? pin = null,Object? new_password = null,}) {
   return _then(_self.copyWith(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,pin: null == pin ? _self.pin : pin // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String,new_password: null == new_password ? _self.new_password : new_password // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -82,12 +82,12 @@ as String,
 @JsonSerializable()
 
 class _ResetPasswordModel implements ResetPasswordModel {
-  const _ResetPasswordModel({required this.email, required this.pin, required this.password});
+  const _ResetPasswordModel({required this.email, required this.pin, required this.new_password});
   factory _ResetPasswordModel.fromJson(Map<String, dynamic> json) => _$ResetPasswordModelFromJson(json);
 
 @override final  String email;
 @override final  String pin;
-@override final  String password;
+@override final  String new_password;
 
 /// Create a copy of ResetPasswordModel
 /// with the given fields replaced by the non-null parameter values.
@@ -102,16 +102,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ResetPasswordModel&&(identical(other.email, email) || other.email == email)&&(identical(other.pin, pin) || other.pin == pin)&&(identical(other.password, password) || other.password == password));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ResetPasswordModel&&(identical(other.email, email) || other.email == email)&&(identical(other.pin, pin) || other.pin == pin)&&(identical(other.new_password, new_password) || other.new_password == new_password));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,pin,password);
+int get hashCode => Object.hash(runtimeType,email,pin,new_password);
 
 @override
 String toString() {
-  return 'ResetPasswordModel(email: $email, pin: $pin, password: $password)';
+  return 'ResetPasswordModel(email: $email, pin: $pin, new_password: $new_password)';
 }
 
 
@@ -122,7 +122,7 @@ abstract mixin class _$ResetPasswordModelCopyWith<$Res> implements $ResetPasswor
   factory _$ResetPasswordModelCopyWith(_ResetPasswordModel value, $Res Function(_ResetPasswordModel) _then) = __$ResetPasswordModelCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String pin, String password
+ String email, String pin, String new_password
 });
 
 
@@ -139,11 +139,11 @@ class __$ResetPasswordModelCopyWithImpl<$Res>
 
 /// Create a copy of ResetPasswordModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? pin = null,Object? password = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? pin = null,Object? new_password = null,}) {
   return _then(_ResetPasswordModel(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,pin: null == pin ? _self.pin : pin // ignore: cast_nullable_to_non_nullable
-as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String,new_password: null == new_password ? _self.new_password : new_password // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

@@ -10,12 +10,12 @@ _ResetPasswordModel _$ResetPasswordModelFromJson(Map<String, dynamic> json) =>
     _ResetPasswordModel(
       email: json['email'] as String,
       pin: json['pin'] as String,
-      password: json['password'] as String,
+      new_password: json['new_password'] as String,
     );
 
 Map<String, dynamic> _$ResetPasswordModelToJson(_ResetPasswordModel instance) =>
     <String, dynamic>{
       'email': instance.email,
       'pin': instance.pin,
-      'password': instance.password,
+      'new_password': instance.new_password,
     };
