@@ -4,7 +4,6 @@ from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from django.core.mail import send_mail
 from django.conf import settings
-from django.contrib.auth.hashers import make_password
 
 from ..models import User, PasswordResetCode
 from ..serializers import (
@@ -97,6 +96,9 @@ class ResetPasswordView(APIView):
         pin = request.data.get("pin")
         new_password = request.data.get("new_password")
 
+        if not (email and pin and new_password):
+            return Response({"error": "Missing data"}, status=400)
+
         try:
             reset_obj = PasswordResetCode.objects.filter(email=email, pin=pin).latest(
                 "created_at"
@@ -108,10 +110,9 @@ class ResetPasswordView(APIView):
 
         try:
             user = User.objects.get(email=email)
-            user.password = make_password(new_password)
+            user.set_password(new_password)
             user.save()
-            return Response({"message": "Password reset successful"}, status=200)
         except User.DoesNotExist:
-            return Response(
-                {"error": "User with this email does not exist"}, status=400
-            )
+            return Response({"error": "User not found"}, status=400)
+
+        return Response({"message": "Password reset successful"}, status=200)
