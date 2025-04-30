@@ -8,8 +8,6 @@ import 'package:flutter_speech_emotion_recognition/core/constants/size_constants
 import 'package:flutter_speech_emotion_recognition/core/extensions/context_extensions.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/challenge/challenge_result_model/challenge_result_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/challenge_history/pre_challenge_history/pre_challenge_history_model.dart';
-import 'package:flutter_speech_emotion_recognition/core/utils/feedback_util.dart';
-import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/state/challenge_history_view_state.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/audio_player.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/level_box.dart';
@@ -32,38 +30,7 @@ class _ChallengeHistoryView extends ChallengeHistoryViewState {
       appBar: AppBar(
         title: Text(widget.data.challenge_title),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () async {
-              // TODO: add to json
-              final areYouSure = await context.read<FeedbackUtil>().showMessageBox(
-                context,
-                "Are you sure?",
-                "This challenge history will be removed. This action can't be removed.",
-              );
-
-              if (areYouSure == null || !areYouSure) return;
-
-              if (mounted) {
-                final result = await context
-                    .read<ChallengeController>()
-                    .removeChallengeHistory(widget.data.id);
-
-                result.fold(
-                  () {
-                    context.back();
-                    context.read<FeedbackUtil>().showSnackBar(context, "removed");
-                  },
-                  (error) {
-                    // TODO: add message
-                    context.read<FeedbackUtil>().showSnackBar(context, "error");
-                  },
-                );
-              }
-            },
-            icon: Icon(Icons.remove),
-          ),
-        ],
+        actions: [IconButton(onPressed: onRemovePressed, icon: Icon(Icons.remove))],
       ),
       body: SafeArea(
         child: Padding(
@@ -130,8 +97,10 @@ class _ChallengeHistoryView extends ChallengeHistoryViewState {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 CustomButton(
-                                  onPressed: () {
-                                    onTryAgainButtonPressed(data.challenge_sentence);
+                                  onPressed: () async {
+                                    await onTryAgainButtonPressed(
+                                      data.challenge_sentence,
+                                    );
                                   },
                                   child: Text("Try Again"),
                                 ),
