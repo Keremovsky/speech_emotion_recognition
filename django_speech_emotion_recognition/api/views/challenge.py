@@ -80,7 +80,7 @@ class TryChallengeView(APIView):
             challenge = get_object_or_404(Challenge, id=id)
 
             # AI emotion detection will fill this
-            emotions = [0, 87.0, 5.0, 1.0, 0, 15.0, 0]
+            emotions = [13, 0, 1, 0, 85, 0, 1, 0]
             # score will be calculated based on selected algorithm
             score = 100.0
 

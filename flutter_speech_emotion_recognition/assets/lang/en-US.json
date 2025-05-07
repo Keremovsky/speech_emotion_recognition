@@ -70,7 +70,8 @@
         "neutral":"Neut",
         "fear":"Fear",
         "disgust":"Disg",
-        "surprise":"Surp"
+        "surprise":"Surp",
+        "calm": "Calm"
     },
 
     "emptyFieldMessage": "Field can't be empty.",

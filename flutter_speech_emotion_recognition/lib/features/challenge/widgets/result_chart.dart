@@ -24,25 +24,29 @@ class _ResultChartState extends State<ResultChart> {
   Widget _bottomTitles(double value, TitleMeta meta) {
     String text;
     switch (value.toInt()) {
+      // ['neutral', 'calm', 'happy', 'sad', 'angry', 'fearful', 'disgust', 'surprised']
       case 0:
-        text = LocaleKeys.emotionShort_happy.tr();
-        break;
-      case 1:
-        text = LocaleKeys.emotionShort_angry.tr();
-        break;
-      case 2:
-        text = LocaleKeys.emotionShort_sad.tr();
-        break;
-      case 3:
         text = LocaleKeys.emotionShort_neutral.tr();
         break;
+      case 1:
+        text = LocaleKeys.emotionShort_calm.tr();
+        break;
+      case 2:
+        text = LocaleKeys.emotionShort_happy.tr();
+        break;
+      case 3:
+        text = LocaleKeys.emotionShort_sad.tr();
+        break;
       case 4:
-        text = LocaleKeys.emotionShort_fear.tr();
+        text = LocaleKeys.emotionShort_angry.tr();
         break;
       case 5:
-        text = LocaleKeys.emotionShort_disgust.tr();
+        text = LocaleKeys.emotionShort_fear.tr();
         break;
       case 6:
+        text = LocaleKeys.emotionShort_disgust.tr();
+        break;
+      case 7:
         text = LocaleKeys.emotionShort_surprise.tr();
         break;
       default:

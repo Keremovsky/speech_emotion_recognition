@@ -48,12 +48,14 @@ class ColorConstants {
   static const userPerformanceFearColor = Color.fromRGBO(239, 232, 22, 1);
   static const userPerformanceDisgustColor = Color.fromRGBO(26, 212, 32, 1);
   static const userPerformanceSurpriseColor = Color.fromRGBO(158, 24, 235, 1);
+  static const userPerformanceCalmColor = Color.fromRGBO(0, 255, 242, 1);
 
   static const List<Color> emotionColors = [
-    userPerformanceHappyColor,
-    userPerformanceAngryColor,
-    userPerformanceSadColor,
     userPerformanceNeutralColor,
+    userPerformanceCalmColor,
+    userPerformanceHappyColor,
+    userPerformanceSadColor,
+    userPerformanceAngryColor,
     userPerformanceFearColor,
     userPerformanceDisgustColor,
     userPerformanceSurpriseColor,

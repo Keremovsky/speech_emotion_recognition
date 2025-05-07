@@ -71,7 +71,8 @@
         "neutral":"Norm",
         "fear":"Kork",
         "disgust":"İğren",
-        "surprise":"Süpr"
+        "surprise":"Süpr",
+        "calm": "Sak"
     },
 
     "emptyFieldMessage": "Alan boş bırakılamaz.",

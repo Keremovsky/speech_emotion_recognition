@@ -61,6 +61,7 @@ abstract class  LocaleKeys {
   static const emotionShort_fear = 'emotionShort.fear';
   static const emotionShort_disgust = 'emotionShort.disgust';
   static const emotionShort_surprise = 'emotionShort.surprise';
+  static const emotionShort_calm = 'emotionShort.calm';
   static const emotionShort = 'emotionShort';
   static const emptyFieldMessage = 'emptyFieldMessage';
   static const invalidEmailMessage = 'invalidEmailMessage';
