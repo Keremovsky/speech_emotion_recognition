@@ -19,8 +19,10 @@ from .views.profile import EditProfileView, DeleteAccountView
 
 router = DefaultRouter()
 router.register("users", UserViewSet)
-router.register("challenges", ChallengeViewSet)
-router.register("challenge-histories", ChallengeHistoryViewSet)
+router.register("challenges", ChallengeViewSet, basename="challenges")
+router.register(
+    "challenge-histories", ChallengeHistoryViewSet, basename="challenge-histories"
+)
 
 urlpatterns = [
     path("", include(router.urls)),
