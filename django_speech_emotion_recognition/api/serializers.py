@@ -43,6 +43,10 @@ class RecordingChallengeSerializer(serializers.ModelSerializer):
         return None
 
 
+class UploadedRecordingChallengeSerializer(serializers.Serializer):
+    recording = serializers.CharField()
+
+
 class ChallengeHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ChallengeHistory

@@ -4,12 +4,20 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.core.files import File
+from django.core.files.base import ContentFile
+
+from pydub import AudioSegment
+import tempfile
+import os
+import base64
 
 from ..models import Challenge, ChallengeHistory
 from ..serializers import (
     ChallengeSerializer,
     PreChallengeSerializer,
     RecordingChallengeSerializer,
+    UploadedRecordingChallengeSerializer,
     ResultModelSerializer,
 )
 
@@ -73,7 +81,7 @@ class TryChallengeView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, id):
-        serializer = RecordingChallengeSerializer(data=request.data)
+        serializer = UploadedRecordingChallengeSerializer(data=request.data)
 
         if serializer.is_valid():
             user = request.user
@@ -84,14 +92,31 @@ class TryChallengeView(APIView):
             # score will be calculated based on selected algorithm
             score = 100.0
 
-            new_challenge_history = ChallengeHistory(
-                user=user,
-                challenge=challenge,
-                score=score,
-                emotions=emotions,
-                user_recording=serializer.validated_data.get("user_recording"),
-            )
-            new_challenge_history.save()
+            base64_audio = serializer.validated_data.get("recording")
+            audio_data = base64.b64decode(base64_audio)
+
+            m4a_file = ContentFile(audio_data, name="input.m4a")
+            audio = AudioSegment.from_file(m4a_file, format="m4a")
+
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_wav:
+                audio.export(tmp_wav.name, format="wav")
+                tmp_wav.seek(0)
+                wav_django_file = File(tmp_wav, name=os.path.basename(tmp_wav.name))
+
+                # Save ChallengeHistory with converted .wav file
+                emotions = [13, 0, 1, 0, 85, 0, 1, 0]
+                score = 100.0
+
+                new_challenge_history = ChallengeHistory(
+                    user=user,
+                    challenge=challenge,
+                    score=score,
+                    emotions=emotions,
+                    user_recording=wav_django_file,  # save as wav
+                )
+                new_challenge_history.save()
+
+                os.unlink(tmp_wav.name)
 
             challenge.try_count += 1
             challenge.save()
