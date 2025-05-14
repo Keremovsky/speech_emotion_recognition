@@ -12,6 +12,7 @@ import tempfile
 import os
 import base64
 
+from ..util.similarity_calculation import balanced_js_similarity
 from ..models import Challenge, ChallengeHistory
 from ..serializers import (
     ChallengeSerializer,
@@ -87,15 +88,10 @@ class TryChallengeView(APIView):
             user = request.user
             challenge = get_object_or_404(Challenge, id=id)
 
-            # AI emotion detection will fill this
-            emotions = [13, 0, 1, 0, 85, 0, 1, 0]
-            # score will be calculated based on selected algorithm
-            score = 100.0
-
             base64_audio = serializer.validated_data.get("recording")
             audio_data = base64.b64decode(base64_audio)
-
             m4a_file = ContentFile(audio_data, name="input.m4a")
+
             audio = AudioSegment.from_file(m4a_file, format="m4a")
 
             with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_wav:
@@ -104,15 +100,17 @@ class TryChallengeView(APIView):
                 wav_django_file = File(tmp_wav, name=os.path.basename(tmp_wav.name))
 
                 # Save ChallengeHistory with converted .wav file
-                emotions = [13, 0, 1, 0, 85, 0, 1, 0]
-                score = 100.0
+                # emotions = predict_emotions_from_wav(tmp_wav.name)
+                emotions = [0.07, 0.0, 0.0, 0.0, 0.91, 0.0, 0.01, 0.0]
+                # score = calculate_score(emotions)
+                score = balanced_js_similarity(challenge.emotions, emotions)
 
                 new_challenge_history = ChallengeHistory(
                     user=user,
                     challenge=challenge,
                     score=score,
                     emotions=emotions,
-                    user_recording=wav_django_file,  # save as wav
+                    user_recording=wav_django_file,
                 )
                 new_challenge_history.save()
 
