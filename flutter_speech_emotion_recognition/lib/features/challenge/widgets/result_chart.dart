@@ -105,7 +105,7 @@ class _ResultChartState extends State<ResultChart> {
       children: [
         Center(
           child: Text(
-            "${LocaleKeys.yourScoreIs.tr()} ${widget.model.score} ${LocaleKeys.andAverageIs.tr()} ${widget.model.average_score}",
+            "${LocaleKeys.yourScoreIs.tr()} ${widget.model.score.toStringAsFixed(2)} ${LocaleKeys.andAverageIs.tr()} ${widget.model.average_score.toStringAsFixed(2)}",
             style: context.displayLarge,
           ),
         ),
@@ -190,6 +190,9 @@ class _ResultChartState extends State<ResultChart> {
     List<double> emotions,
   ) {
     List<BarChartGroupData> barGroups = [];
+
+    challengeEmotions = challengeEmotions.map((value) => value * 100).toList();
+    emotions = emotions.map((value) => value * 100).toList();
 
     for (int i = 0; i < challengeEmotions.length; i++) {
       final emotionValues = CustomMath().bigLittle(

@@ -83,7 +83,7 @@ class _ContentText extends StatelessWidget {
         SizedBox(
           width: widget.width == null ? 95.w : widget.width! / 2 - 15,
           child: Text(
-            widget.data.score.toString(),
+            widget.data.score.toStringAsFixed(2),
             style: context.displaySmall,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
