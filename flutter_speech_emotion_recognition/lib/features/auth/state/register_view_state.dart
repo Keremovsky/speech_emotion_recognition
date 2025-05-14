@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/auth/register_model/register_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/feedback_util.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/register_view.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:provider/provider.dart';
 
 abstract class RegisterViewState extends State<RegisterView> {
@@ -73,7 +75,7 @@ abstract class RegisterViewState extends State<RegisterView> {
         () {
           context.read<FeedbackUtil>().showSnackBar(
             context,
-            "Registration is successful.",
+            LocaleKeys.registrationSuccess.tr(),
           );
           context.back();
         },

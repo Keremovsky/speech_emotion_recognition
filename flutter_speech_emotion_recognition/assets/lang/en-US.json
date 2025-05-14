@@ -17,19 +17,24 @@
     "register": "Register",
     "alreadyHaveAccount": "Already have account?",
     "loginRightNow": "Login right now!",
+    "registrationSuccess": "Registration is successful.",
 
     "sendMailToReset": "Send Mail To Reset",
     "sendMail":"Send Mail",
+    "sendMailFailure": "An error occurred while sending email.",
 
     "verification": "Verification",
     "confirm": "Confirm",
     "didntReceiveCode": "Didn't receive code?",
     "resendMail": "Resend mail!",
+    "resetPasswordSendMailFailure": "An error occurred while confirming the code.",
 
     "resetYour": "Reset Your",
     "newPassword": "New Password",
     "newPasswordAgain":"New Password Again",
     "reset": "Reset",
+    "resetPasswordSuccess": "Password successfully updated.",
+    "resetPasswordFailure": "An unknown error occurred while resetting password.",
     
     "home": "Home",
     "welcome": "Welcome",
@@ -42,26 +47,40 @@
     "english": "English",
     "turkish": "Turkish",
     "shareData": "Share Data",
+    "exitFromAccount": "Exit from Account",
 
     "profile": "Profile",
     "editProfile": "Edit Profile",
     "history": "History",
-
+    "joined": "Joined",
+    "deleteAccountBoxSentence": "This action cannot be undone. All of your data will be deleted with your account information.",
+    
     "cancel": "Cancel",
     "Save": "Save",
     "deleteAccount": "Delete Account",
-
+    
     "startTheChallenge": "Start the Challenge",
     "bestScore": "Best Score",
     "previousScores": "Previous Scores",
     "details": "Details",
-
+    
     "stop": "Stop",
     "abort": "Abort",
-
+    
     "lightColorIsYourResult": "Light color your result, dark color what it should be.",
     "yourScoreIs": "Your score is",
     "andAverageIs": "and average is",
+
+    "deleteChallengeHistoryBoxSentence": "This challenge history will be removed. This action cannot be undone.",
+    "tryAgain": "Try Again",
+
+    "historyEmpty": "History is empty",
+
+    "fetchedDataIsEmpty": "Fetched data is empty.",
+    
+    "areYouSure": "Are you sure?",
+    "approve": "Approve",
+    "refuse": "Refuse",
 
     "emotionShort": {
         "happy":"Happ",
@@ -74,6 +93,14 @@
         "calm": "Calm"
     },
 
+    "editProfileSuccess": "Profile updated successfully.",
+    "editProfileFailure": "An error occurred while updating profile.",
+    "deleteAccountSuccess": "Account successfully deleted.",
+    "deleteAccountFailure": "An error occurred while deleting account.",
+    "deleteChallengeHistorySuccess": "Challenge history successfully deleted.",
+    "deleteChallengeHistoryFailure": "An error occurred while deleting challenge history.",
+    "unknownError": "An unknown error occurred.",
+
     "emptyFieldMessage": "Field can't be empty.",
     "invalidEmailMessage": "E-mail format is not suitable.",
     "invalidEmailDomainMessage": "E-mail domain is not valid.",
@@ -84,5 +111,6 @@
     "invalidUsernameLongLength": "Username can't be longer than 20 characters.",
     "invalidPasswordConfirmMatch": "Make sure both password fields are the same.",
     "invalidPinLength": "Pin must be 4 characters long.",
-    "invalidPinType": "Pin characters must be integer."
+    "invalidPinType": "Pin characters must be integer.",
+    "invalidType": "Type of fetched data was wrong."
 }

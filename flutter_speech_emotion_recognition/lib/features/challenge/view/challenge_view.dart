@@ -85,7 +85,9 @@ class _ChallengeViewState extends ChallengeViewState {
                           },
                           (data) {
                             if (data.isEmpty) {
-                              return FailureDisplay(error: "History is empty");
+                              return FailureDisplay(
+                                error: LocaleKeys.historyEmpty.tr(),
+                              );
                             }
 
                             ChallengeResultModel bestScoreModel = data[0];
@@ -152,7 +154,7 @@ class _ChallengeViewState extends ChallengeViewState {
                         );
                       } else {
                         return FailureDisplay(
-                          error: "Unknown error.",
+                          error: LocaleKeys.unknownError.tr(),
                           refresh: onRefreshPressed,
                         );
                       }

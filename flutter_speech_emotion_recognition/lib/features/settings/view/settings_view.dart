@@ -86,7 +86,7 @@ class _SettingsViewState extends SettingsViewState {
                     onPressed: exitFromAccount,
                     child: Row(
                       children: [
-                        Text("Exit from Account"),
+                        Text(LocaleKeys.exitFromAccount.tr()),
                         SizedBox(width: 12.w),
                         Icon(Icons.exit_to_app, size: 20.r),
                       ],

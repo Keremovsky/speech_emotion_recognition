@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/edit_profile_model/edit_profile_model.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_speech_emotion_recognition/core/utils/feedback_util.dart
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/profile/view/edit_profile_view.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 import 'package:provider/provider.dart';
 
@@ -90,12 +92,16 @@ abstract class EditProfileViewState extends State<EditProfileView> {
 
           result.fold(
             () {
-              // TODO: add message
-              context.read<FeedbackUtil>().showSnackBar(context, "success");
+              context.read<FeedbackUtil>().showSnackBar(
+                context,
+                LocaleKeys.editProfileSuccess.tr(),
+              );
             },
             (error) {
-              // TODO: add message
-              context.read<FeedbackUtil>().showSnackBar(context, "error");
+              context.read<FeedbackUtil>().showSnackBar(
+                context,
+                LocaleKeys.editProfileFailure.tr(),
+              );
             },
           );
         }
@@ -106,12 +112,10 @@ abstract class EditProfileViewState extends State<EditProfileView> {
   }
 
   Future<void> onDeleteAccountPressed() async {
-    // TODO: add to json
-
     final areYouSure = await context.read<FeedbackUtil>().showMessageBox(
       context,
-      "Are you sure?",
-      "This action can't be returned. All of your data will be deleted with your account informations.",
+      LocaleKeys.areYouSure.tr(),
+      LocaleKeys.deleteAccountBoxSentence.tr(),
     );
 
     if (areYouSure == null || !areYouSure) return;
@@ -122,11 +126,16 @@ abstract class EditProfileViewState extends State<EditProfileView> {
       result.fold(
         () {
           context.router.replaceAll([LoginViewRoute()]);
-          context.read<FeedbackUtil>().showSnackBar(context, "removed");
+          context.read<FeedbackUtil>().showSnackBar(
+            context,
+            LocaleKeys.deleteAccountSuccess.tr(),
+          );
         },
         (error) {
-          // TODO: add message
-          context.read<FeedbackUtil>().showSnackBar(context, "error");
+          context.read<FeedbackUtil>().showSnackBar(
+            context,
+            LocaleKeys.deleteAccountFailure.tr(),
+          );
         },
       );
     }

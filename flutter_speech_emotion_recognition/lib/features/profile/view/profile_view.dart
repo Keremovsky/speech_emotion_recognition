@@ -86,8 +86,7 @@ class _ProfileViewState extends ProfileViewState {
                       ),
                       SizedBox(width: 5.w),
                       Text(
-                        // TODO: add it to json
-                        "Joined ${context.watch<AuthController>().user.register_day}",
+                        "${LocaleKeys.joined.tr()} ${context.watch<AuthController>().user.register_day}",
                         style: context.displaySmall,
                       ),
                     ],

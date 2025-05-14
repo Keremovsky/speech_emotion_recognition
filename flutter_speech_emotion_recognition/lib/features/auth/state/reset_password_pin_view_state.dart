@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/auth/pin_model/pin_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/feedback_util.dart';
 import 'package:flutter_speech_emotion_recognition/core/utils/validators.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/controller/auth_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/auth/view/reset_password_pin_view.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 import 'package:provider/provider.dart';
 
@@ -45,8 +47,10 @@ abstract class ResetPasswordPinViewState extends State<ResetPasswordPinView> {
           );
         },
         (error) {
-          //TODO: add message
-          context.read<FeedbackUtil>().showSnackBar(context, "");
+          context.read<FeedbackUtil>().showSnackBar(
+            context,
+            LocaleKeys.resetPasswordSendMailFailure.tr(),
+          );
         },
       );
     }

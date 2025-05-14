@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_button.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_speech_emotion_recognition/features/challenge/state/chal
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/audio_player.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/level_box.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/result_chart.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 
 @RoutePage()
 class ChallengeHistoryView extends StatefulWidget {
@@ -102,7 +104,7 @@ class _ChallengeHistoryView extends ChallengeHistoryViewState {
                                       data.challenge_sentence,
                                     );
                                   },
-                                  child: Text("Try Again"),
+                                  child: Text(LocaleKeys.tryAgain.tr()),
                                 ),
                               ],
                             ),
@@ -112,7 +114,7 @@ class _ChallengeHistoryView extends ChallengeHistoryViewState {
                     );
                   } else {
                     return FailureDisplay(
-                      error: "Unknown error.",
+                      error: LocaleKeys.unknownError.tr(),
                       refresh: onRefreshPressed,
                     );
                   }

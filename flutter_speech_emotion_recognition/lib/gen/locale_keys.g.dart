@@ -19,16 +19,21 @@ abstract class  LocaleKeys {
   static const register = 'register';
   static const alreadyHaveAccount = 'alreadyHaveAccount';
   static const loginRightNow = 'loginRightNow';
+  static const registrationSuccess = 'registrationSuccess';
   static const sendMailToReset = 'sendMailToReset';
   static const sendMail = 'sendMail';
+  static const sendMailFailure = 'sendMailFailure';
   static const verification = 'verification';
   static const confirm = 'confirm';
   static const didntReceiveCode = 'didntReceiveCode';
   static const resendMail = 'resendMail';
+  static const resetPasswordSendMailFailure = 'resetPasswordSendMailFailure';
   static const resetYour = 'resetYour';
   static const newPassword = 'newPassword';
   static const newPasswordAgain = 'newPasswordAgain';
   static const reset = 'reset';
+  static const resetPasswordSuccess = 'resetPasswordSuccess';
+  static const resetPasswordFailure = 'resetPasswordFailure';
   static const home = 'home';
   static const welcome = 'welcome';
   static const goToProfile = 'goToProfile';
@@ -39,9 +44,12 @@ abstract class  LocaleKeys {
   static const english = 'english';
   static const turkish = 'turkish';
   static const shareData = 'shareData';
+  static const exitFromAccount = 'exitFromAccount';
   static const profile = 'profile';
   static const editProfile = 'editProfile';
   static const history = 'history';
+  static const joined = 'joined';
+  static const deleteAccountBoxSentence = 'deleteAccountBoxSentence';
   static const cancel = 'cancel';
   static const Save = 'Save';
   static const deleteAccount = 'deleteAccount';
@@ -54,6 +62,13 @@ abstract class  LocaleKeys {
   static const lightColorIsYourResult = 'lightColorIsYourResult';
   static const yourScoreIs = 'yourScoreIs';
   static const andAverageIs = 'andAverageIs';
+  static const deleteChallengeHistoryBoxSentence = 'deleteChallengeHistoryBoxSentence';
+  static const tryAgain = 'tryAgain';
+  static const historyEmpty = 'historyEmpty';
+  static const fetchedDataIsEmpty = 'fetchedDataIsEmpty';
+  static const areYouSure = 'areYouSure';
+  static const approve = 'approve';
+  static const refuse = 'refuse';
   static const emotionShort_happy = 'emotionShort.happy';
   static const emotionShort_angry = 'emotionShort.angry';
   static const emotionShort_sad = 'emotionShort.sad';
@@ -63,6 +78,13 @@ abstract class  LocaleKeys {
   static const emotionShort_surprise = 'emotionShort.surprise';
   static const emotionShort_calm = 'emotionShort.calm';
   static const emotionShort = 'emotionShort';
+  static const editProfileSuccess = 'editProfileSuccess';
+  static const editProfileFailure = 'editProfileFailure';
+  static const deleteAccountSuccess = 'deleteAccountSuccess';
+  static const deleteAccountFailure = 'deleteAccountFailure';
+  static const deleteChallengeHistorySuccess = 'deleteChallengeHistorySuccess';
+  static const deleteChallengeHistoryFailure = 'deleteChallengeHistoryFailure';
+  static const unknownError = 'unknownError';
   static const emptyFieldMessage = 'emptyFieldMessage';
   static const invalidEmailMessage = 'invalidEmailMessage';
   static const invalidEmailDomainMessage = 'invalidEmailDomainMessage';
@@ -74,5 +96,6 @@ abstract class  LocaleKeys {
   static const invalidPasswordConfirmMatch = 'invalidPasswordConfirmMatch';
   static const invalidPinLength = 'invalidPinLength';
   static const invalidPinType = 'invalidPinType';
+  static const invalidType = 'invalidType';
 
 }

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/base_failure_model/base_failure_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/challenge/challenge_result_model/challenge_result_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/models/challenge/pre_challenge_model/pre_challenge_model.dart';
@@ -10,9 +11,8 @@ import 'package:flutter_speech_emotion_recognition/core/models/challenge_history
 import 'package:flutter_speech_emotion_recognition/core/models/type_failure_model/type_failure_model.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/network/network_service.dart';
 import 'package:flutter_speech_emotion_recognition/core/services/recording_cache/recording_cache_service.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:fpdart/fpdart.dart';
-
-// TODO: add error messages to json
 
 class ChallengeController {
   late NetworkService _networkService;
@@ -46,9 +46,7 @@ class ChallengeController {
                 .toList(),
           );
         } else {
-          return Left(
-            TypeFailureModel.invalidType("Type of fetched data was wrong."),
-          );
+          return Left(TypeFailureModel.invalidType(LocaleKeys.invalidType.tr()));
         }
       },
     );
@@ -74,9 +72,7 @@ class ChallengeController {
                 .toList(),
           );
         } else {
-          return Left(
-            TypeFailureModel.invalidType("Type of fetched data was wrong."),
-          );
+          return Left(TypeFailureModel.invalidType(LocaleKeys.invalidType.tr()));
         }
       },
     );
@@ -108,9 +104,7 @@ class ChallengeController {
 
               return Right(file);
             } else {
-              return Left(
-                TypeFailureModel.invalidType("Type of fetched data was wrong."),
-              );
+              return Left(TypeFailureModel.invalidType(LocaleKeys.invalidType.tr()));
             }
           },
         );
@@ -140,7 +134,7 @@ class ChallengeController {
         if (data is Map<String, dynamic>) {
           return Right(ChallengeResultModel.fromJson(data));
         }
-        return Left(TypeFailureModel.invalidType("Type of fetched data was wrong."));
+        return Left(TypeFailureModel.invalidType(LocaleKeys.invalidType.tr()));
       },
     );
   }
@@ -167,9 +161,7 @@ class ChallengeController {
                 .toList(),
           );
         } else {
-          return Left(
-            TypeFailureModel.invalidType("Type of fetched data was wrong."),
-          );
+          return Left(TypeFailureModel.invalidType(LocaleKeys.invalidType.tr()));
         }
       },
     );
@@ -189,9 +181,7 @@ class ChallengeController {
         if (data is Map<String, dynamic>) {
           return Right(PostChallengeHistoryModel.fromJson(data));
         } else {
-          return Left(
-            TypeFailureModel.invalidType("Type of fetched data was wrong."),
-          );
+          return Left(TypeFailureModel.invalidType(LocaleKeys.invalidType.tr()));
         }
       },
     );
@@ -232,9 +222,7 @@ class ChallengeController {
                 .toList(),
           );
         } else {
-          return Left(
-            TypeFailureModel.invalidType("Type of fetched data was wrong."),
-          );
+          return Left(TypeFailureModel.invalidType(LocaleKeys.invalidType.tr()));
         }
       },
     );

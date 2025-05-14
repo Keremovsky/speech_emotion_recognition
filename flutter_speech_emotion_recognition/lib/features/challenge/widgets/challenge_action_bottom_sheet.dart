@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_loading_indicator.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_speech_emotion_recognition/features/challenge/controller
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/audio_recorder.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/count_down_timer.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/result_chart.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 
 class ChallengeActionBottomSheet extends StatefulWidget {
@@ -105,8 +107,7 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
                         },
                       );
                     }
-                    // TODO: add to json
-                    return FailureDisplay(error: "Unknown error.");
+                    return FailureDisplay(error: LocaleKeys.unknownError.tr());
                   }
                   return CustomLoadingIndicator();
                 },

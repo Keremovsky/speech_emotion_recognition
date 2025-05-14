@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_speech_emotion_recognition/core/components/custom_loading_indicator.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_speech_emotion_recognition/core/models/base_failure_mode
 import 'package:flutter_speech_emotion_recognition/core/models/challenge_history/pre_challenge_history/pre_challenge_history_model.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/controller/challenge_controller.dart';
 import 'package:flutter_speech_emotion_recognition/features/challenge/widgets/challenge_history_card.dart';
+import 'package:flutter_speech_emotion_recognition/gen/locale_keys.g.dart';
 import 'package:fpdart/fpdart.dart' as fp;
 
 class ChallengeHistoryCardList extends StatefulWidget {
@@ -142,7 +144,10 @@ class _Success extends StatelessWidget {
         child: SizedBox(
           height: 125.h,
           child: Center(
-            child: Text("Fetched data is empty.", style: context.displayLarge),
+            child: Text(
+              LocaleKeys.fetchedDataIsEmpty.tr(),
+              style: context.displayLarge,
+            ),
           ),
         ),
       );
