@@ -101,8 +101,7 @@ class TryChallengeView(APIView):
 
                 # Save ChallengeHistory with converted .wav file
                 # emotions = predict_emotions_from_wav(tmp_wav.name)
-                emotions = [0.07, 0.0, 0.0, 0.0, 0.91, 0.0, 0.01, 0.0]
-                # score = calculate_score(emotions)
+                emotions = [0.13, 0, 0.01, 0, 0.85, 0, 0.1, 0]
                 score = balanced_js_similarity(challenge.emotions, emotions)
 
                 new_challenge_history = ChallengeHistory(
@@ -114,10 +113,14 @@ class TryChallengeView(APIView):
                 )
                 new_challenge_history.save()
 
-                os.unlink(tmp_wav.name)
+                challenge.average = (
+                    challenge.average * challenge.try_count + score
+                ) / (challenge.try_count + 1)
+                challenge.try_count += 1
 
-            challenge.try_count += 1
-            challenge.save()
+                challenge.save()
+
+                os.unlink(tmp_wav.name)
 
             serializer = ResultModelSerializer(new_challenge_history)
 
