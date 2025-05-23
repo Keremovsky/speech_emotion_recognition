@@ -7,7 +7,7 @@ import 'package:flutter_speech_emotion_recognition/my_app.dart';
 import 'package:flutter_speech_emotion_recognition/router/router.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await EasyLocalization.ensureInitialized();
@@ -17,7 +17,7 @@ void main() async {
   final router = AppRouter();
   NetworkService().registerAppRouter(router);
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   final dependItems = AppProvider().dependItems(router);
 

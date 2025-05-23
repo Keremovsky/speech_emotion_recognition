@@ -52,7 +52,9 @@ abstract class LoginViewState extends State<LoginView> {
         () {
           widget.onSuccess != null
               ? widget.onSuccess!()
-              : context.router.replaceAll([HomeViewRoute()]);
+              : mounted
+              ? context.router.replaceAll([HomeViewRoute()])
+              : null;
         },
         (error) {
           context.read<FeedbackUtil>().showSnackBar(context, error.message);

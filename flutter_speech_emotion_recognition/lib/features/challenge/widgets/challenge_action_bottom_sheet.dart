@@ -63,7 +63,6 @@ class _ChallengeActionBottomSheetState extends State<ChallengeActionBottomSheet>
       padding: EdgeInsets.symmetric(horizontal: SizeConstants.screenPadding),
       child: SizedBox(
         height: 400.h,
-        width: double.infinity,
         child: Column(
           children: [
             Text(widget.title, style: context.titleMedium),

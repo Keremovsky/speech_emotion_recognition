@@ -36,7 +36,7 @@ class _ChallengeCardState extends State<ChallengeCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.height ?? 150.h,
+      height: widget.height ?? 125.h,
       width: widget.width ?? 190.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
@@ -52,20 +52,14 @@ class _ChallengeCardState extends State<ChallengeCard> {
               await context.pushRoute(ChallengeViewRoute(data: widget.data));
             },
             behavior: HitTestBehavior.translucent,
-            child: SizedBox(
-              width:
-                  widget.width == null
-                      ? 110.w
-                      : widget.width! / 2 + widget.width! / 20,
-              child: Padding(
-                padding: EdgeInsets.only(top: 10.h, bottom: 10.h, left: 10.w),
-                child: Column(
-                  children: [
-                    _TitleText(widget: widget),
-                    Spacer(),
-                    _ContentText(widget: widget),
-                  ],
-                ),
+            child: Padding(
+              padding: EdgeInsets.only(top: 10.h, bottom: 10.h, left: 10.w),
+              child: Column(
+                children: [
+                  _TitleText(widget: widget),
+                  Spacer(),
+                  _ContentText(widget: widget),
+                ],
               ),
             ),
           ),
