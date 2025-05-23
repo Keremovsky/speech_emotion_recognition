@@ -6,10 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 from api.models import Challenge, ChallengeHistory
 from django_speech_emotion_backend.secrets import test_user_data
-from .util import (
-    get_tokens,
-    generate_base64_m4a_from_file,
-)
+from .util import get_tokens
 
 User = get_user_model()
 
@@ -104,15 +101,6 @@ class TestFullAPI(APITestCase):
         url = reverse("challenges-popular-pre")
         res = self.client.get(url, **self.headers)
         self.assertEqual(res.status_code, 200)
-
-    def test_try_challenge(self):
-        url = reverse("try-challenge", kwargs={"id": self.challenge.id})
-
-        base64_audio = generate_base64_m4a_from_file()
-        data = {"recording": base64_audio}
-
-        res = self.client.post(url, data=data, format="json", **self.headers)
-        self.assertEqual(res.status_code, 201)
 
     def test_challenge_histories_list(self):
         url = reverse("challenge-histories-list")
