@@ -142,3 +142,4 @@ profile_pics/
 challenge_recordings/
 user_recordings/
 secrets.py
+best_model_RAVDESS_hubert.pt

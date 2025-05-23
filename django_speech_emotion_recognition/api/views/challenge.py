@@ -21,6 +21,9 @@ from ..serializers import (
     UploadedRecordingChallengeSerializer,
     ResultModelSerializer,
 )
+from ..util.ai_model import EmotionModel
+
+model = EmotionModel()
 
 
 class ChallengeViewSet(viewsets.ModelViewSet):
@@ -99,9 +102,7 @@ class TryChallengeView(APIView):
                 tmp_wav.seek(0)
                 wav_django_file = File(tmp_wav, name=os.path.basename(tmp_wav.name))
 
-                # Save ChallengeHistory with converted .wav file
-                # emotions = predict_emotions_from_wav(tmp_wav.name)
-                emotions = [0.13, 0, 0.01, 0, 0.85, 0, 0.1, 0]
+                emotions = model.predict(tmp_wav.name)
                 score = balanced_js_similarity(challenge.emotions, emotions)
 
                 new_challenge_history = ChallengeHistory(
