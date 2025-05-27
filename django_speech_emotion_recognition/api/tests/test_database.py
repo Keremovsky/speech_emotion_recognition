@@ -30,7 +30,6 @@ class TestDatabase(APITestCase):
             level=0,
         )
 
-        # create 25 ChallengeHistory entries
         for i in range(25):
             ChallengeHistory.objects.create(
                 user=self.user,
@@ -40,7 +39,6 @@ class TestDatabase(APITestCase):
                 challenge_date=timezone.now() - timedelta(days=i),
             )
 
-        # one history for testing by id
         self.dummy_history = ChallengeHistory.objects.create(
             user=self.user,
             challenge=self.dummy_challenge,
@@ -53,17 +51,13 @@ class TestDatabase(APITestCase):
         self.token = get_tokens(self.user)["access"]
         self.auth_headers = {"HTTP_AUTHORIZATION": f"Bearer {self.token}"}
 
-    # test READ from challenge history
     def test_challenge_history_pre_read(self):
         url = reverse("challenge-histories-pre")
         res = self.client.get(url, **self.auth_headers)
 
-        # check if request is successful
         self.assertEqual(res.status_code, 200)
-        # control total number of challenge histories fetched
         self.assertEqual(len(res.data), 20)
 
-    # test WRITE from challenge history
     def test_challenge_history_write(self):
         url = reverse("try-challenge", kwargs={"id": self.dummy_challenge.id})
 
@@ -72,39 +66,29 @@ class TestDatabase(APITestCase):
 
         res = self.client.post(url, data=data, format="json", **self.auth_headers)
 
-        # check if request is successful
         self.assertEqual(res.status_code, 201)
-        # control if total count of challenge history object is increased by one
         self.assertEqual(
             ChallengeHistory.objects.count(), self.challenge_history_count + 1
         )
 
         history = ChallengeHistory.objects.first()
 
-        # make sure that the one user who requested and history's user is same
         self.assertEqual(history.user, self.user)
-        # same, check challenge
         self.assertEqual(history.challenge, self.dummy_challenge)
-        # control if user recording is saved
         self.assertIsNotNone(history.user_recording)
-        # control if score saved correctly
         self.assertGreaterEqual(history.score, 0.0)
 
-    # test DELETE from challenge history
     def test_challenge_history_delete(self):
         url = reverse(
             "challenge-histories-detail", kwargs={"pk": self.dummy_history.id}
         )
         res = self.client.delete(url, **self.auth_headers)
 
-        # check if request is successful
         self.assertEqual(res.status_code, 204)
-        # control if challenge history deleted
         self.assertFalse(
             ChallengeHistory.objects.filter(pk=self.dummy_history.id).exists()
         )
 
-    # test UPDATE from user
     def test_profile_update(self):
         url = reverse("edit-profile")
 
@@ -116,11 +100,8 @@ class TestDatabase(APITestCase):
 
         res = self.client.put(url, data=data, format="json", **self.auth_headers)
 
-        # check if request is successful
         self.assertEqual(res.status_code, 201)
 
         self.user.refresh_from_db()
-        # control if username changed
         self.assertEqual(self.user.username, "new_username")
-        # control if profile pic uploaded without any problem
         self.assertIn("profile_pics/", self.user.profile_pic.name)
