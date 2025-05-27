@@ -27,6 +27,7 @@ abstract class  LocaleKeys {
   static const confirm = 'confirm';
   static const didntReceiveCode = 'didntReceiveCode';
   static const resendMail = 'resendMail';
+  static const resendMailSuccess = 'resendMailSuccess';
   static const resetPasswordSendMailFailure = 'resetPasswordSendMailFailure';
   static const resetYour = 'resetYour';
   static const newPassword = 'newPassword';

@@ -12,12 +12,6 @@ import 'package:flutter_speech_emotion_recognition/router/router.dart';
 abstract class SettingsViewState extends State<SettingsView> {
   bool dataPermission = false;
 
-  @override
-  void initState() {
-    super.initState();
-    // TODO: implement data permission fetch
-  }
-
   void onSwitchChanged(bool value) {
     if (value) {
       context.read<ThemeService>().setTheme(ThemeMode.light);
@@ -27,7 +21,6 @@ abstract class SettingsViewState extends State<SettingsView> {
   }
 
   void onCheckBoxChanged(bool value) {
-    // TODO: implement data permission change
     setState(() {
       dataPermission = !dataPermission;
     });

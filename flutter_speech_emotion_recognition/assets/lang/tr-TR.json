@@ -27,6 +27,7 @@
     "confirm": "Onayla",
     "didntReceiveCode": "Kod ulaşmadı mı?",
     "resendMail": "Tekrar e-posta yolla!",
+    "resendMailSuccess": "E-posta tekrardan yollandı.",
     "resetPasswordSendMailFailure": "An error occurred while confirming the code.",
 
     "resetYour": "Sıfırla",

@@ -56,7 +56,24 @@ abstract class ResetPasswordPinViewState extends State<ResetPasswordPinView> {
     }
   }
 
-  void onResendMail() {
-    // TODO: implement resending mail logic here
+  void onResendMail() async {
+    final result = await context.read<AuthController>().sendResetPasswordEmail(
+      widget.emailModel,
+    );
+
+    result.fold(
+      () {
+        context.read<FeedbackUtil>().showSnackBar(
+          context,
+          LocaleKeys.resendMailSuccess.tr(),
+        );
+      },
+      (error) {
+        context.read<FeedbackUtil>().showSnackBar(
+          context,
+          LocaleKeys.sendMailFailure.tr(),
+        );
+      },
+    );
   }
 }

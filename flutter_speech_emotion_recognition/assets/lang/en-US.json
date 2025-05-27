@@ -27,6 +27,7 @@
     "confirm": "Confirm",
     "didntReceiveCode": "Didn't receive code?",
     "resendMail": "Resend mail!",
+    "resendMailSuccess": "New e-mail sent to your mail address.",
     "resetPasswordSendMailFailure": "An error occurred while confirming the code.",
 
     "resetYour": "Reset Your",
